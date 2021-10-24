@@ -1,0 +1,66 @@
+@import "../../styles/import.scss";
+.theme--dark.v-tabs > .v-tabs-bar {
+  background-color: transparent !important;
+}
+.destinations {
+  @include flexCenter;
+  justify-content: space-evenly;
+  width: 100%;
+  height: 100%;
+  &__left {
+    z-index: 1;
+    width: 100%;
+    max-width: 500px;
+    @include flexCenter;
+    img {
+      width: 100%;
+      max-width: 445px;
+      object-fit: contain;
+    }
+  }
+  &__right {
+    z-index: 1;
+    @include flexCenter;
+    flex-direction: column;
+    color: white;
+    width: 100%;
+    max-width: 500px;
+  }
+  &__active {
+    text-transform: uppercase;
+    font-size: 3.5rem;
+    letter-spacing: 0.2em;
+    text-align: center;
+    font-family: var(--ff-header);
+    line-height: 10rem;
+  }
+
+  &__text {
+    p {
+      color: var(--text-light);
+    }
+  }
+  &__data {
+    @include flexCenter;
+    width: 100%;
+    justify-content: space-evenly;
+
+    h5 {
+      opacity: 0.6;
+      font-weight: lighter;
+      font-size: 0.9rem;
+      color: var(--text-light);
+    }
+    span {
+      font-size: 1.7rem;
+    }
+  }
+}
+
+@include media("<desktop") {
+  .destinations {
+    flex-direction: column;
+    padding: 0 2rem;
+    margin-top: 2rem;
+  }
+}

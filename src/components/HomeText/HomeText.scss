@@ -1,0 +1,102 @@
+@import "../../styles/import.scss";
+
+.container {
+  @include flexCenter;
+  width: 100%;
+  height: 100%;
+  justify-content: space-around;
+
+  .main-circle {
+    z-index: 2;
+    background-color: white;
+    border-radius: 50%;
+    width: 274px;
+    height: 274px;
+    text-align: center;
+    font-size: 1.7rem;
+    letter-spacing: 2px;
+    @include flexCenter;
+    font-family: var(--ff-text);
+    position: relative;
+    transition: $transition-250;
+    cursor: pointer;
+
+    &:hover,
+    &:active,
+    &:focus {
+      &::before {
+        opacity: 0.3;
+        visibility: visible;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      width: 350px;
+      height: 350px;
+      border-radius: 50%;
+      background-color: rgb(133, 132, 132);
+      opacity: 0;
+      visibility: hidden;
+      transition: $transition-250;
+      z-index: -1;
+    }
+  }
+  .main-wrapper {
+    @include flexCenter;
+    flex-direction: column;
+    z-index: 2;
+    color: white;
+    width: 100%;
+    max-width: 450px;
+    text-transform: uppercase;
+    &__texts {
+      width: 100%;
+      font-weight: bold;
+      text-align: center;
+    }
+    &-question {
+      font-size: 1.4rem;
+      font-size: clamp(0.9rem, 3vw, 1.4rem);
+      letter-spacing: 4.73px;
+      font-family: var(--ff-header);
+      font-weight: lighter;
+      color: var(--text-light);
+    }
+    &-space {
+      font-size: 7rem;
+      font-size: clamp(5rem, 5vw, 7rem);
+      letter-spacing: 0.04em;
+      font-family: var(--ff-text);
+    }
+    &-p {
+      text-transform: none;
+      font-size: 0.95rem;
+      font-size: clamp(0.8rem, 3vw, 0.95rem);
+      color: var(--text-light);
+      font-family: var(--ff-header);
+      font-weight: lighter;
+    }
+  }
+}
+
+@include media("<tablet") {
+  .container {
+    flex-direction: column;
+    margin-top: 8rem;
+    gap: 2rem;
+    height: unset;
+    .main-wrapper {
+      padding: 0 1rem;
+    }
+    .main-circle {
+      width: 200px;
+      height: 200px;
+
+      &::before {
+        width: 250px;
+        height: 250px;
+      }
+    }
+  }
+}

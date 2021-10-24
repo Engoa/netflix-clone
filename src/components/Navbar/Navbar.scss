@@ -1,0 +1,176 @@
+@import "../../styles/import.scss";
+
+.navbar {
+  width: 100%;
+  max-width: 1200px;
+  min-height: 96px;
+  margin-top: 3rem;
+  position: fixed;
+  right: 0;
+  z-index: 1;
+  @include flexCenter;
+  background: inherit;
+
+  &:before {
+    all: unset;
+    content: "";
+    position: absolute;
+    opacity: 0.25;
+    background: white;
+    height: 1px;
+    width: 50%;
+    left: 0;
+    transform: translateX(-70%);
+    box-shadow: inset 0 0 0 200px rgba(255, 255, 255, 0.116);
+    z-index: 2;
+  }
+  &::after {
+    content: "";
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-40%, -50%);
+    z-index: 1;
+    border-radius: 0.3rem;
+    pointer-events: none;
+    -webkit-backdrop-filter: blur(81.5px);
+    backdrop-filter: blur(81.5px);
+    background-color: rgba(255, 255, 255, 0.04);
+  }
+
+  &--logo {
+    position: fixed;
+    left: 10rem;
+    cursor: pointer;
+    transition: $transition-350;
+    opacity: 0.9;
+    &:hover,
+    &:focus {
+      transform: scale(1.05);
+      opacity: 1;
+    }
+  }
+
+  &__navlinks {
+    @include flexCenter;
+    gap: 5rem;
+    justify-content: space-between;
+    cursor: default !important;
+    z-index: 2;
+    height: 100%;
+    font-family: var(--ff-header);
+  }
+  &__navlink {
+    color: white;
+    text-transform: uppercase;
+    font-size: 1.15rem;
+    font-size: clamp(0.75rem, 2.5vw, 1.15rem);
+    @include flexCenter;
+    transition: $transition-250;
+    position: relative;
+    &:hover,
+    &:active,
+    &:focus {
+      transform: scale(1.02);
+      &::before {
+        opacity: 0.5;
+        visibility: visible;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      height: 3px;
+      width: 100%;
+      bottom: -1.9rem;
+      background-color: white;
+      transition: $transition-150;
+      opacity: 0;
+      visibility: hidden;
+    }
+
+    &--number {
+      transition: $transition-250;
+      font-weight: bold;
+      font-size: 1.15rem;
+      font-size: clamp(0.75rem, 2.5vw, 1.15rem);
+      margin-right: 0.2em;
+      opacity: 1;
+    }
+  }
+}
+
+// Active link on router
+.router-link-exact-active {
+  position: relative;
+  opacity: 1;
+
+  &::before {
+    content: "";
+    position: absolute;
+    height: 3px;
+    width: 100%;
+    bottom: -1.9rem;
+    background-color: white;
+    transition: $transition-250;
+  }
+}
+
+.navbar-mobile {
+  display: none;
+}
+
+@include media("<desktop") {
+  .router-link-exact-active {
+    &::before {
+      display: none;
+    }
+  }
+  .navbar {
+    all: unset;
+    display: none;
+  }
+  .navbar-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-direction: row-reverse;
+    width: 100%;
+    position: fixed;
+    z-index: 3;
+    padding: 1.5rem;
+    opacity: 0.9;
+    &--hamburger {
+      .fa-bars {
+        color: white;
+        font-size: 1.5rem;
+      }
+    }
+    &--logo {
+      all: unset;
+    }
+
+    &--links {
+      border-radius: 0.3rem;
+      padding: 0 0.7rem !important;
+      height: 45px;
+      width: 100%;
+      position: absolute;
+      @include flexCenter;
+      top: 4.4rem;
+      left: 50%;
+      transform: translateX(-50%);
+      gap: 1.6rem;
+      -webkit-backdrop-filter: blur(81.5px);
+      backdrop-filter: blur(81.5px);
+      background-color: rgba(255, 255, 255, 0.041);
+    }
+  }
+  .navbar__navlink {
+    &::before {
+      bottom: -0.2rem;
+    }
+  }
+}
