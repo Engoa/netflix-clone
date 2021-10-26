@@ -1,23 +1,48 @@
 @import "../../../styles/import.scss";
 
 .sub--header {
-  letter-spacing: 4.73px;
   color: #fff;
   text-transform: uppercase;
-  font-size: 1.8rem;
   display: flex;
   align-items: center;
   width: fit-content;
   position: absolute;
-  left: 14.8%;
-  top: 17.5%;
+  left: 13.4%;
+  top: 18%;
+  gap: 0.5rem;
+
+  div {
+    z-index: 2;
+  }
+
+  h3 {
+    letter-spacing: 4.73px;
+    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
+    white-space: pre;
+  }
 
   span {
     opacity: 0.25;
-    letter-spacing: 4.73px;
     color: #fff;
-    font-size: 1.8rem;
-    min-width: 40px;
+    font-size: 2rem;
+    font-size: clamp(1.5rem, 3vw, 2rem);
     font-weight: bold;
+  }
+}
+
+@include media("<desktop") {
+  .sub--header {
+    all: unset;
+    color: white;
+    @include flexCenter;
+    text-transform: uppercase;
+    text-align: center;
+    width: 100%;
+    gap: 0.5rem;
+
+    h3 {
+      letter-spacing: 2px;
+    }
   }
 }

@@ -1,7 +1,11 @@
 <template>
   <div class="sub--header">
-    <span v-text="index" class="text--barlow" />
-    <h3 v-text="title" class="text--barlow" />
+    <div>
+      <span v-text="index" class="text--barlow" />
+    </div>
+    <div>
+      <h3 v-text="text" class="text--barlow" />
+    </div>
   </div>
 </template>
 
@@ -10,7 +14,7 @@ import "./SubHeader.scss";
 export default {
   name: "SubHeader",
   props: {
-    title: String,
+    text: String,
     index: String,
   },
 };

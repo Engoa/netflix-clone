@@ -27,3 +27,8 @@ $task-error: #a15551;
   align-items: center;
   justify-content: center;
 }
+@mixin blurEffect {
+  -webkit-backdrop-filter: blur(81.5px);
+  backdrop-filter: blur(81.5px);
+  background-color: rgba(255, 255, 255, 0.04);
+}

@@ -1,6 +1,19 @@
 .v-responsive {
   flex: unset !important;
+} // for stars image, fixes width
+
+.v-responsive__content {
+  flex: unset !important;
+  max-width: unset !important;
 }
+
+.v-carousel__item {
+  width: 550px;
+}
+
+// .v-carousel .v-window-item {
+//   max-width: 100%;
+// }
 .v-tabs > .v-tabs-bar .v-tab:not(.v-tab--active) {
   .theme--dark & {
     font-family: var(--ff-header) !important;
@@ -14,7 +27,33 @@
     transition: $transition-350;
   }
 }
+.theme--dark.v-tabs > .v-tabs-bar {
+  background-color: transparent !important;
+}
+.theme--light.v-tabs-items {
+  background-color: transparent !important;
+}
 
+.active-carousel {
+  background-color: black;
+}
+
+.v-carousel__controls__item.v-btn.v-item--active {
+  color: white !important;
+  opacity: 1 !important;
+  // Color on active carousel
+}
+.theme--dark.v-btn.v-btn--icon {
+  color: grey;
+  // Color in inactive carousel buttons
+}
+.v-btn > .v-btn__content .v-icon {
+  font-size: 12px !important;
+}
+
+.theme--light.v-navigation-drawer {
+  @include blurEffect;
+}
 // Active link on router
 
 .router-link-exact-active {
@@ -26,8 +65,11 @@
     position: absolute;
     height: 3px;
     width: 100%;
-    bottom: -2.2rem;
+    bottom: 0;
     background-color: white;
     transition: $transition-250;
   }
+}
+.v-btn > .v-btn__content .v-icon {
+  font-size: 1.5rem !important;
 }
