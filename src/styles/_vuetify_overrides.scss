@@ -68,6 +68,13 @@
     bottom: 0;
     background-color: white;
     transition: $transition-250;
+
+    @include media("<desktop") {
+      bottom: 0;
+      width: 3px;
+      height: 100%;
+      right: 0;
+    }
   }
 }
 .v-btn > .v-btn__content .v-icon {

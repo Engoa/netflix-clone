@@ -1,9 +1,9 @@
 <template>
   <div>
     <div class="navbar" v-if="$vuetify.breakpoint.width >= 1439">
-      <div :to="{ name: 'Home' }" class="navbar--logo">
+      <a href="/" class="navbar--logo">
         <v-img src="@/assets/images/logo.svg"></v-img>
-      </div>
+      </a>
       <ul class="navbar__navlinks">
         <router-link
           v-for="(nav, index) in navBarData"
@@ -12,7 +12,7 @@
         >
           <li class="navbar__navlink">
             <span class="navbar__navlink--number">{{ `0${index}` }}</span>
-            {{ ` ${nav.text}` }}
+            {{ ` ${nav.link}` }}
           </li>
         </router-link>
       </ul>
@@ -24,7 +24,7 @@
           <v-icon v-show="mobileNav" color="#fff">fas fa-times</v-icon>
         </v-btn>
       </div>
-      <div class="navbar-mobile--logo" @click="toggleMobileMenu">
+      <div class="navbar-mobile--logo">
         <router-link to="/">
           <v-img src="@/assets/images/logo.svg" width="30" height="30"></v-img>
         </router-link>
@@ -40,14 +40,18 @@
       width="200"
     >
       <ul class="navbar-mobile--links" v-show="mobileNav">
-        <li
-          class="navbar__navlink"
+        <router-link
+          :to="{ name: nav.link }"
           v-for="nav in navBarData"
-          :key="nav.text"
-          @click="closeNavBar"
+          :key="nav.link"
         >
-          <router-link :to="{ name: nav.link }">{{ nav.text }}</router-link>
-        </li>
+          <li class="navbar__navlink">
+            <v-btn text color="transparent" small elevation="0">
+              <v-icon color="#fff">{{ nav.icon }}</v-icon>
+              <span class="link-text">{{ nav.link }}</span>
+            </v-btn>
+          </li>
+        </router-link>
       </ul>
     </v-navigation-drawer>
   </div>
@@ -60,29 +64,26 @@ export default {
     mobileNav: false,
     navBarData: [
       {
-        text: "Home",
         link: "Home",
+        icon: "fas fa-home",
       },
       {
-        text: "Destination",
         link: "Destination",
+        icon: "fas fa-globe-americas",
       },
       {
-        text: "Crew",
         link: "Crew",
+        icon: "fas fa-user-astronaut",
       },
       {
-        text: "Technology",
         link: "Technology",
+        icon: "fas fa-space-shuttle",
       },
     ],
   }),
   methods: {
     toggleMobileMenu() {
       this.mobileNav = !this.mobileNav;
-    },
-    closeNavBar() {
-      this.mobileNav = false;
     },
   },
 };

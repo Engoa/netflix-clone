@@ -67,7 +67,7 @@
     }
   }
   &__navlink {
-    color: white;
+    color: white !important;
     text-transform: uppercase;
     font-size: 1rem;
     font-size: clamp(0.75rem, 2.5vw, 1rem);
@@ -114,11 +114,14 @@
 }
 
 @include media("<desktop") {
-  .router-link-exact-active {
-    &::before {
-      display: none;
-    }
-  }
+  // .router-link-exact-active {
+  //   &::before {
+  //     bottom: 0;
+  //     width: 3px;
+  //     height: 100% !important;
+  //     right: 0 !important;
+  //   }
+  // }
   .navbar {
     all: unset;
     display: none;
@@ -152,12 +155,15 @@
     letter-spacing: 1.3px;
     height: unset;
     width: 100%;
-
     &::before {
       bottom: 0;
       width: 3px;
       height: 100%;
       right: 0;
     }
+  }
+  .link-text {
+    color: #fff !important;
+    margin-left: 0.5rem;
   }
 }
