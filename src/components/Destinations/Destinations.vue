@@ -24,21 +24,19 @@
           eager
         >
           <div class="destinations__active">
-            <h1>{{ destination.name }}</h1>
+            <h1 v-text="destination.name" />
           </div>
           <div class="destinations__text">
-            <p>
-              {{ destination.description }}
-            </p>
+            <p v-text="destination.description"></p>
           </div>
           <div class="destinations__data">
             <div>
               <h5>Avg. Distance</h5>
-              <span>{{ destination.distance }}</span>
+              <span v-text="destination.distance" />
             </div>
             <div>
               <h5>Est Travel time</h5>
-              <span>{{ destination.travel }}</span>
+              <span v-text="destination.travel" />
             </div>
           </div>
         </v-tab-item>
