@@ -6,44 +6,11 @@
   background-color: #0f1925;
   position: absolute;
 
-  img {
-    height: 100%;
+  .v-image {
+    min-height: 100%;
     width: 100%;
     object-fit: cover;
-    @include media("<desktop") {
-      height: 110%;
-    }
-  }
-}
-.bg-mobile {
-  display: none;
-}
-.bg-tablet {
-  display: none;
-}
-.bg-desktop {
-  display: unset;
-}
-
-@include media("<=desktop") {
-  .bg-mobile {
-    display: none;
-  }
-  .bg-tablet {
-    display: unset;
-  }
-  .bg-desktop {
-    display: none;
-  }
-}
-@include media("<=tablet") {
-  .bg-mobile {
-    display: unset;
-  }
-  .bg-tablet {
-    display: none;
-  }
-  .bg-desktop {
-    display: none;
+    position: fixed;
+    inset: 0;
   }
 }

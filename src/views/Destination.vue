@@ -1,16 +1,13 @@
 <template>
   <div class="body">
-    <BackgroundImages />
     <Destinations />
   </div>
 </template>
 
 <script>
-import Destinations from "../components/Destinations/Destinations.vue";
-import BackgroundImages from "../components/UI/BackgroundImages/BackgroundImages.vue";
+import Destinations from "../components/Destinations/Destinations";
 export default {
-  components: { Destinations, BackgroundImages },
+  components: { Destinations },
   name: "Destination",
 };
-BackgroundImages;
 </script>

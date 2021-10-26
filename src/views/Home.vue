@@ -1,15 +1,13 @@
 <template>
   <div class="body">
-    <BackgroundImages />
     <HomeText />
   </div>
 </template>
 
 <script>
-import HomeText from "../components/HomeText/HomeText.vue";
-import BackgroundImages from "../components/UI/BackgroundImages/BackgroundImages.vue";
+import HomeText from "../components/HomeText/HomeText";
 export default {
-  components: { HomeText, BackgroundImages },
+  components: { HomeText },
   name: "Home",
 };
 </script>

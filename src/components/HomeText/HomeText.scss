@@ -25,19 +25,19 @@
     &:active,
     &:focus {
       &::before {
-        opacity: 0.3;
-        visibility: visible;
+        opacity: 0.4;
+        width: 350px;
+        height: 350px;
       }
     }
     &::before {
       content: "";
       position: absolute;
-      width: 350px;
-      height: 350px;
+      width: 325px;
+      height: 325px;
       border-radius: 50%;
       background-color: rgb(133, 132, 132);
-      opacity: 0;
-      visibility: hidden;
+      opacity: 0.3;
       transition: $transition-250;
       z-index: -1;
     }

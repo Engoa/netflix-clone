@@ -1,8 +1,12 @@
 <template>
+  <!-- :key is needed with the current route name for v-image to re-render -->
   <div class="bg">
-    <img draggable="false" class="bg-mobile" :src="getImageUrl(`background-${getImageNameByRoute}-mobile.jpg`)" />
-    <img draggable="false" class="bg-tablet" :src="getImageUrl(`background-${getImageNameByRoute}-tablet.jpg`)" />
-    <img draggable="false" class="bg-desktop" :src="getImageUrl(`background-${getImageNameByRoute}-desktop.jpg`)" />
+    <v-img
+      draggable="false"
+      :src="getImageSrcByDevice"
+      transition="scroll-y-transition"
+      :key="$route.name"
+    ></v-img>
   </div>
 </template>
 
@@ -11,24 +15,30 @@ import "./BackgroundImages.scss";
 export default {
   name: "BackgroundImages",
 
-  data: () => ({
-    imagePath: "",
-  }),
+  data: () => ({}),
+
   computed: {
-    getImageNameByRoute() {
-      switch (this.$route.name) {
-        case "Home":
-          return "home";
-        case "Destination":
-          return "destination";
-        case "Crew":
-          return "crew";
-        case "Technology":
-          return "technology";
+    getImageSrcByDevice() {
+      const img = (size) => {
+        return this.getImageUrl(
+          `background-${this.$route.meta.name}-${size}.jpg`
+        );
+      };
+
+      switch (true) {
+        case this.$vuetify.breakpoint.lgAndUp:
+          return img("desktop");
+
+        case this.$vuetify.breakpoint.lgAndDown &&
+          this.$vuetify.breakpoint.mdAndUp:
+          return img("tablet");
+
+        case this.$vuetify.breakpoint.mobile:
+          return img("mobile");
+
         default:
-          "";
+          return img("desktop");
       }
-      return this.$route.name;
     },
   },
 };

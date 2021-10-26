@@ -1,33 +1,48 @@
 <template>
-  <div class="container">
-    <div class="destinations">
-      <div class="destinations__left">
-        <img src="@/assets/images/image-mars.png" />
-      </div>
-      <div class="destinations__right">
+  <div class="destinations">
+    <div class="destinations__left">
+      <SubHeader title="pick your destination" index="01" />
+
+      <v-img
+        :src="getImageUrl(destinationData[tab].webp)"
+        transition="scale-transition"
+        :key="tab + 'tab'"
+      />
+    </div>
+    <div class="destinations__right">
+      <div class="destinations__tabs">
         <v-tabs dark v-model="tab">
-          <!-- <v-tab v-for="destination in destinationData" :key="destination"> {{ destination.name }} </v-tab> -->
+          <v-tab v-for="destination in destinationData" :key="destination.name">
+            {{ destination.name }}
+          </v-tab>
         </v-tabs>
-        <div class="destinations__active">
-          <h1>Mars</h1>
-        </div>
-        <div class="destinations__text">
-          <p>
-            Don't forget to pack your hiking boots, You'll need them to tackle Olympus Mons, the tallest planetary
-            mountain in our solar system. It's two and a half times the size of Everest!
-          </p>
-        </div>
-        <div class="destinations__data">
-          <div>
-            <h5>Avg. Distance</h5>
-            <span>225 Mil. KM</span>
-          </div>
-          <div>
-            <h5>Est Travel time</h5>
-            <span>9 Months</span>
-          </div>
-        </div>
       </div>
+      <v-tabs-items v-model="tab">
+        <v-tab-item
+          v-for="destination in destinationData"
+          :key="destination.name"
+          eager
+        >
+          <div class="destinations__active">
+            <h1>{{ destination.name }}</h1>
+          </div>
+          <div class="destinations__text">
+            <p>
+              {{ destination.description }}
+            </p>
+          </div>
+          <div class="destinations__data">
+            <div>
+              <h5>Avg. Distance</h5>
+              <span>{{ destination.distance }}</span>
+            </div>
+            <div>
+              <h5>Est Travel time</h5>
+              <span>{{ destination.travel }}</span>
+            </div>
+          </div>
+        </v-tab-item>
+      </v-tabs-items>
     </div>
   </div>
 </template>
@@ -35,11 +50,13 @@
 <script>
 import "@/components/Destinations/Destinations.scss";
 import destinationJSON from "../../assets/jsons/stars.json";
+import SubHeader from "../UI/SubHeader/SubHeader.vue";
 export default {
+  components: { SubHeader },
   name: "Destinations",
   data: () => ({
     destinationData: destinationJSON,
-    tab: null,
+    tab: 0,
     destinations: [
       {
         text: "Moon",
@@ -55,13 +72,5 @@ export default {
       },
     ],
   }),
-  methods: {
-    test() {
-      console.log(this.destinationData);
-    },
-  },
-  mounted() {
-    this.test();
-  },
 };
 </script>

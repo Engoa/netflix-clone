@@ -4,6 +4,7 @@
   width: 100%;
   max-width: 1200px;
   min-height: 96px;
+  height: 96px;
   margin-top: 3rem;
   position: fixed;
   right: 0;
@@ -61,19 +62,27 @@
     z-index: 2;
     height: 100%;
     font-family: var(--ff-header);
+    height: 100%;
   }
   &__navlink {
     color: white;
     text-transform: uppercase;
-    font-size: 1.15rem;
-    font-size: clamp(0.75rem, 2.5vw, 1.15rem);
+    font-size: 1rem;
+    font-size: clamp(0.75rem, 2.5vw, 1rem);
     @include flexCenter;
     transition: $transition-250;
     position: relative;
+    letter-spacing: 2.7px;
+    height: 100%;
+
     &:hover,
     &:active,
     &:focus {
       transform: scale(1.02);
+      @include media("<=desktop") {
+        transform: scale(1);
+      }
+
       &::before {
         opacity: 0.5;
         visibility: visible;
@@ -84,9 +93,9 @@
       position: absolute;
       height: 3px;
       width: 100%;
-      bottom: -1.9rem;
+      bottom: 0;
       background-color: white;
-      transition: $transition-150;
+      transition: $transition-250;
       opacity: 0;
       visibility: hidden;
     }
@@ -94,27 +103,11 @@
     &--number {
       transition: $transition-250;
       font-weight: bold;
-      font-size: 1.15rem;
-      font-size: clamp(0.75rem, 2.5vw, 1.15rem);
+      font-size: 1rem;
+      font-size: clamp(0.75rem, 2.5vw, 1rem);
       margin-right: 0.2em;
       opacity: 1;
     }
-  }
-}
-
-// Active link on router
-.router-link-exact-active {
-  position: relative;
-  opacity: 1;
-
-  &::before {
-    content: "";
-    position: absolute;
-    height: 3px;
-    width: 100%;
-    bottom: -1.9rem;
-    background-color: white;
-    transition: $transition-250;
   }
 }
 
@@ -153,12 +146,12 @@
     }
 
     &--links {
-      border-radius: 0.3rem;
       padding: 0 0.7rem !important;
       height: 45px;
       width: 100%;
       position: absolute;
       @include flexCenter;
+      justify-content: space-evenly;
       top: 4.4rem;
       left: 50%;
       transform: translateX(-50%);
@@ -169,8 +162,9 @@
     }
   }
   .navbar__navlink {
+    letter-spacing: 1.3px;
     &::before {
-      bottom: -0.2rem;
+      bottom: 0;
     }
   }
 }

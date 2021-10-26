@@ -1,11 +1,15 @@
 <template>
   <div>
     <div class="navbar">
-      <div class="navbar--logo">
+      <div :to="{ name: 'Home' }" class="navbar--logo">
         <v-img src="@/assets/images/logo.svg"></v-img>
       </div>
       <ul class="navbar__navlinks">
-        <li class="navbar__navlink" v-for="(nav, index) in navBarData" :key="nav.text">
+        <li
+          class="navbar__navlink"
+          v-for="(nav, index) in navBarData"
+          :key="nav.text"
+        >
           <router-link :to="{ name: nav.link }"
             ><span class="navbar__navlink--number">{{ `0${index}` }}</span
             >{{ ` ${nav.text}` }}</router-link

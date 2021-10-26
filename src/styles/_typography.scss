@@ -1,0 +1,10 @@
+.text {
+  &--barlow {
+    font-family: var(--ff-header);
+    font-weight: normal;
+  }
+  &--bellefair {
+    font-family: var(--ff-text);
+    font-weight: normal;
+  }
+}

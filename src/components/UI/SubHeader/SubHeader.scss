@@ -1,0 +1,23 @@
+@import "../../../styles/import.scss";
+
+.sub--header {
+  letter-spacing: 4.73px;
+  color: #fff;
+  text-transform: uppercase;
+  font-size: 1.8rem;
+  display: flex;
+  align-items: center;
+  width: fit-content;
+  position: absolute;
+  left: 14.8%;
+  top: 17.5%;
+
+  span {
+    opacity: 0.25;
+    letter-spacing: 4.73px;
+    color: #fff;
+    font-size: 1.8rem;
+    min-width: 40px;
+    font-weight: bold;
+  }
+}
