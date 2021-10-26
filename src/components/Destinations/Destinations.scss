@@ -10,7 +10,7 @@
   justify-content: space-between;
   width: 100%;
   height: 100%;
-  margin-top: 3rem;
+  margin-top: 0.3rem;
   &__left {
     z-index: 1;
     width: 100%;
@@ -84,13 +84,15 @@
     }
 
     &__active {
-      text-align: left;
+      text-align: center;
       line-height: 7rem;
+    }
+    &__text {
     }
 
     &__data {
-      justify-content: flex-start;
-      gap: 2.5rem;
+      justify-content: space-evenly;
+      padding-bottom: 3rem;
     }
   }
 }

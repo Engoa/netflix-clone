@@ -24,6 +24,7 @@
           <v-tab-item
             v-for="destination in destinationData"
             :key="destination.name"
+            transition="fade-transition"
             eager
           >
             <div class="destinations__active">

@@ -15,6 +15,7 @@
           :show-arrows="false"
           dark
           hide-delimiter-background
+          height="280"
         >
           <v-carousel-item
             v-for="(crew, index) in crewData"

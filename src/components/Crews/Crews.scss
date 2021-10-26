@@ -1,7 +1,6 @@
 @import "../../styles/import.scss";
 
 .crew {
-  margin-top: 3rem;
   @include flexCenter;
   justify-content: space-between;
   flex-direction: row-reverse;
@@ -34,7 +33,9 @@
     }
   }
   &__left {
-    padding: 0 1.5rem;
+    padding: 0 2rem;
+    padding-bottom: 3rem;
+    margin-top: 3rem;
 
     @include media("<=desktop") {
       width: 100%;
@@ -45,7 +46,6 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    height: 100%;
     width: 100%;
   }
   &__role,
@@ -61,12 +61,14 @@
       color: #fff;
       font-weight: normal;
       opacity: 0.5;
+      font-size: 2.3rem;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
     }
   }
   &__name {
     h1 {
       font-size: 4.5rem;
-      font-size: clamp(2rem, 3vw, 4.5rem);
+      font-size: clamp(1.9rem, 3vw, 4.5rem);
       color: #fff;
     }
   }
@@ -74,6 +76,8 @@
     color: var(--text-light);
     font-family: var(--ff-header);
     line-height: 1.78;
+    font-size: 0.95rem;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
   }
 }
 

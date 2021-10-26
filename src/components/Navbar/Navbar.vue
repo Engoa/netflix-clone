@@ -37,7 +37,7 @@
       temporary
       hide-overlay
       v-if="$vuetify.breakpoint.width <= 1440"
-      width="180"
+      width="200"
     >
       <ul class="navbar-mobile--links" v-show="mobileNav">
         <li
