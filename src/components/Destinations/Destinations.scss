@@ -56,17 +56,26 @@
     width: 100%;
     justify-content: space-evenly;
     text-transform: uppercase;
+    position: relative;
+    margin-top: 2rem;
+
+    .grey-line {
+      top: -1rem;
+    }
 
     h5 {
       opacity: 0.6;
       font-weight: lighter;
-      font-size: 0.9rem;
+      font-size: 1.2rem;
+      font-size: clamp(0.9rem, 3vw, 1.2rem);
       color: var(--text-light);
       font-family: var(--text-header);
     }
     span {
       font-size: 1.5rem;
-      font-family: var(--text-text);
+      font-size: clamp(1.5rem, 5vw, 1.5rem);
+      font-family: var(--ff-text);
+      font-weight: normal;
     }
   }
 }
@@ -87,12 +96,12 @@
       text-align: center;
       line-height: 7rem;
     }
-    &__text {
-    }
 
     &__data {
-      justify-content: space-evenly;
-      padding-bottom: 3rem;
+      padding-bottom: 5rem;
+      flex-direction: column;
+      text-align: center;
+      gap: 1rem;
     }
   }
 }

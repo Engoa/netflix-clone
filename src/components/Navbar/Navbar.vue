@@ -25,9 +25,9 @@
         </v-btn>
       </div>
       <div class="navbar-mobile--logo">
-        <router-link to="/">
-          <v-img src="@/assets/images/logo.svg" width="30" height="30"></v-img>
-        </router-link>
+        <a href="/">
+          <v-img src="@/assets/images/logo.svg" width="33" height="33"></v-img>
+        </a>
       </div>
     </div>
     <v-navigation-drawer
@@ -37,7 +37,7 @@
       temporary
       hide-overlay
       v-if="$vuetify.breakpoint.width <= 1440"
-      width="200"
+      width="50%"
     >
       <ul class="navbar-mobile--links" v-show="mobileNav">
         <router-link
@@ -47,7 +47,7 @@
         >
           <li class="navbar__navlink">
             <v-btn text color="transparent" small elevation="0">
-              <v-icon color="#fff">{{ nav.icon }}</v-icon>
+              <v-icon color="#fff" class="link-icon">{{ nav.icon }}</v-icon>
               <span class="link-text">{{ nav.link }}</span>
             </v-btn>
           </li>

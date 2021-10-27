@@ -1,22 +1,21 @@
 <template>
   <div class="container">
     <Carousel
-      is-crew
-      :data="crewData"
-      :subheader="{ text: 'meet your crew', index: '02' }"
+      :data="technologyData"
+      :subheader="{ text: 'space launch 101', index: '03' }"
     />
   </div>
 </template>
 
 <script>
-import crewJSON from "../../assets/jsons/crew.json";
+import technologyJSON from "../../assets/jsons/technology.json";
 import Carousel from "../Carousel/Carousel.vue";
 
 export default {
+  name: "Technologies",
   components: { Carousel },
-  name: "Crews",
   data: () => ({
-    crewData: crewJSON,
+    technologyData: technologyJSON,
   }),
 };
 </script>

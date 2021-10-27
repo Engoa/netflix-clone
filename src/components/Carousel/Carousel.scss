@@ -1,0 +1,118 @@
+@import "../../styles/import.scss";
+
+.carousel {
+  @include flexCenter;
+  justify-content: space-between;
+  flex-direction: row-reverse;
+  width: 100%;
+  max-width: 100%;
+  gap: 3rem;
+
+  @include media("<=desktop") {
+    flex-direction: column;
+  }
+
+  &__right {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+
+    .grey-bar {
+      position: relative;
+      width: 327px;
+      @include media(">mobile") {
+        display: none !important;
+      }
+      .grey-line {
+        bottom: 0;
+      }
+    }
+    .v-image {
+      width: 100%;
+      object-fit: cover;
+    }
+
+    .tech-image {
+      max-width: 600px;
+      min-height: 527px;
+      border-radius: 0.5rem;
+    }
+    .crew-image {
+      max-width: 445px;
+      min-height: 450px;
+    }
+  }
+  &__left {
+    padding: 0 2rem;
+    padding-bottom: 3rem;
+
+    @include media("<=desktop") {
+      width: 100%;
+    }
+  }
+  .items {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    width: 100%;
+  }
+  &__role,
+  &__name {
+    h1 {
+      font-weight: normal;
+      text-transform: uppercase;
+      white-space: pre;
+    }
+  }
+  &__role {
+    h1 {
+      color: #fff;
+      font-weight: normal;
+      opacity: 0.5;
+      font-size: 2.3rem;
+      font-size: clamp(1.5rem, 3vw, 2.3rem);
+    }
+  }
+  &__name {
+    h1 {
+      font-size: 4.5rem;
+      font-size: clamp(1.9rem, 3vw, 4.5rem);
+      color: #fff;
+    }
+  }
+  &__bio {
+    color: var(--text-light);
+    font-family: var(--ff-header);
+    line-height: 1.78;
+    font-size: 0.95rem;
+    font-size: clamp(0.8rem, 3vw, 0.95rem);
+  }
+}
+
+@include media("<desktop") {
+  .carousel {
+    &__item {
+      align-items: center;
+    }
+
+    &__right {
+      .v-image {
+        border-radius: 0.5rem;
+      }
+      .tech-image {
+        max-width: 340px;
+        min-width: 340px;
+        min-height: 175px;
+        max-height: 175px;
+      }
+      .crew-image {
+        max-height: 320px;
+        min-height: 320px;
+        max-width: 220px;
+        min-width: 220px;
+      }
+    }
+  }
+}

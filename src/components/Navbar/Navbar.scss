@@ -161,6 +161,10 @@
       height: 100%;
       right: 0;
     }
+    .fa-shuttle-space:before,
+    .fa-space-shuttle:before {
+      transform: rotate(-90deg);
+    }
   }
   .link-text {
     color: #fff !important;

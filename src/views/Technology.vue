@@ -1,9 +1,13 @@
 <template>
-  <div class="body"></div>
+  <div class="body">
+    <Technologies />
+  </div>
 </template>
 
 <script>
+import Technologies from "../components/Technologies/Technologies.vue";
 export default {
-  name: "Destination",
+  components: { Technologies },
+  name: "Technology",
 };
 </script>

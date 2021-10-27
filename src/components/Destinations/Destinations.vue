@@ -34,6 +34,7 @@
               <p v-text="destination.description"></p>
             </div>
             <div class="destinations__data">
+              <div class="grey-line"></div>
               <div>
                 <h5>Avg. Distance</h5>
                 <span v-text="destination.distance" />
