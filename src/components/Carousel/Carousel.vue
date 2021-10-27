@@ -1,7 +1,7 @@
 <template>
   <div class="carousel">
-      <SubHeader :text="subheader.text" :index="subheader.index" />
-    <div class="carousel__right">
+    <SubHeader :text="subheader.text" :index="subheader.index" />
+    <div class="carousel__right" ref="image">
       <v-img
         :class="isCrew ? 'crew-image' : 'tech-image'"
         :src="
@@ -9,7 +9,6 @@
             isCrew ? data[carousel].webp : data[carousel].images.portrait
           )
         "
-        transition="scale-transition"
         :key="carousel + 'carousel'"
       />
       <div class="grey-bar">
@@ -41,10 +40,12 @@
 <script>
 import SubHeader from "../UI/SubHeader/SubHeader.vue";
 import CarouselItem from "./CarouselItem.vue";
+import animations from "../../mixins/animations";
 import "./Carousel.scss";
 
 export default {
   components: { SubHeader, CarouselItem },
+  mixins: [animations],
   name: "Carousel",
   data: () => ({
     carousel: 0,
@@ -56,6 +57,17 @@ export default {
     subheader: {
       text: String,
       index: String,
+    },
+  },
+
+  mounted() {
+    this.leftToRight(this.$refs.image);
+  },
+  watch: {
+    carousel: {
+      handler() {
+        this.leftToRight(this.$refs.image);
+      },
     },
   },
 };

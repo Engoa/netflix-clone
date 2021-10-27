@@ -114,14 +114,6 @@
 }
 
 @include media("<desktop") {
-  // .router-link-exact-active {
-  //   &::before {
-  //     bottom: 0;
-  //     width: 3px;
-  //     height: 100% !important;
-  //     right: 0 !important;
-  //   }
-  // }
   .navbar {
     all: unset;
     display: none;

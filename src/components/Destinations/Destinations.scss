@@ -1,4 +1,13 @@
 @import "../../styles/import.scss";
+
+.destination-margin {
+  @include media("<desktop") {
+    margin-top: 7rem;
+  }
+  @include media("<tablet") {
+    margin-top: 5rem;
+  }
+}
 .theme--dark.v-tabs > .v-tabs-bar {
   background-color: transparent !important;
 }
@@ -9,8 +18,6 @@
   @include flexCenter;
   justify-content: space-between;
   width: 100%;
-  height: 100%;
-  margin-top: 0.3rem;
   &__left {
     z-index: 1;
     width: 100%;
@@ -22,8 +29,8 @@
 
     .v-image {
       width: 100%;
-      max-width: 445px;
       object-fit: cover;
+      max-width: 450px;
       min-height: 450px;
     }
   }
@@ -84,7 +91,7 @@
   .destinations {
     flex-direction: column;
     padding: 0 2rem;
-    gap: 1.5rem;
+    gap: 2rem;
 
     &__left {
       .v-image {

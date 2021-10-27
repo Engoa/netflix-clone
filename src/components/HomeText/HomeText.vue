@@ -11,7 +11,7 @@
     </div>
     <aside>
       <router-link :to="{ name: 'Destination' }" class="circle">
-        <div class="circle--main">EXPLORE</div>
+        <div class="circle--main" ref="circle">EXPLORE</div>
       </router-link>
     </aside>
   </div>
@@ -19,6 +19,7 @@
 
 <script>
 import "@/components/HomeText/HomeText.scss";
+import animations from "../../mixins/animations";
 
 export default {
   name: "HomeText",
@@ -26,6 +27,10 @@ export default {
     question: String,
     subtitle: String,
     paragraph: String,
+  },
+  mixins: [animations],
+  mounted() {
+    this.scaleAndFade(this.$refs.circle);
   },
 };
 </script>

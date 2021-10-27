@@ -1,11 +1,10 @@
 <template>
-  <div class="container">
+  <div class="container destination-margin">
+    <SubHeader text="pick your destination" index="01" />
     <div class="destinations">
-      <div class="destinations__left">
-        <SubHeader text="pick your destination" index="01" />
+      <div class="destinations__left" ref="planet">
         <v-img
           :src="getImageUrl(destinationData[tab].webp)"
-          transition="scale-transition"
           :key="tab + 'tab'"
         />
       </div>
@@ -55,6 +54,8 @@
 import destinationJSON from "../../assets/jsons/stars.json";
 import SubHeader from "../UI/SubHeader/SubHeader.vue";
 import "@/components/Destinations/Destinations.scss";
+import animations from "../../mixins/animations";
+
 export default {
   components: { SubHeader },
   name: "Destinations",
@@ -62,5 +63,18 @@ export default {
     destinationData: destinationJSON,
     tab: 0,
   }),
+  mixins: [animations],
+
+  mounted() {
+    this.rightToLeft(this.$refs.planet);
+  },
+  watch: {
+    tab: {
+      deep: true,
+      handler() {
+        this.rightToLeft(this.$refs.planet);
+      },
+    },
+  },
 };
 </script>

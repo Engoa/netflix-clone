@@ -6,12 +6,15 @@
       :src="getImageSrcByDevice"
       transition="scroll-y-transition"
       :key="$route.name"
+      class="bg-image"
     ></v-img>
   </div>
 </template>
 
 <script>
 import "./BackgroundImages.scss";
+import gsap from "gsap";
+
 export default {
   name: "BackgroundImages",
 

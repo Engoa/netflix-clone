@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <Carousel
-      is-crew
+      isCrew
       :data="crewData"
       :subheader="{ text: 'meet your crew', index: '02' }"
     />

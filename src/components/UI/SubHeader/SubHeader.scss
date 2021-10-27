@@ -8,7 +8,7 @@
   width: fit-content;
   position: absolute;
   left: 13.4%;
-  top: 18%;
+  top: 16.5%;
   gap: 0.5rem;
 
   div {
@@ -18,7 +18,7 @@
   h3 {
     letter-spacing: 4.73px;
     font-size: 2rem;
-    font-size: clamp(1.5rem, 3vw, 2rem);
+    font-size: clamp(1.3rem, 3vw, 2rem);
     white-space: pre;
   }
 
@@ -33,16 +33,12 @@
 
 @include media("<desktop") {
   .sub--header {
-    all: unset;
-    color: white;
-    @include flexCenter;
-    text-transform: uppercase;
-    text-align: center;
-    width: 100%;
-    gap: 0.5rem;
+    left: 50%;
+    top: 75px;
+    transform: translateX(-50%);
+  }
 
-    h3 {
-      letter-spacing: 2px;
-    }
+  h3 {
+    letter-spacing: 2px;
   }
 }
