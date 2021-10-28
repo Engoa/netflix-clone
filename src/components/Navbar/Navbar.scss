@@ -134,11 +134,10 @@
     }
 
     &--links {
-      padding: 6rem 3rem 3rem !important;
+      padding: 6rem 0;
       width: 100%;
       display: flex;
-      align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       flex-direction: column;
       gap: 2rem;
     }
@@ -147,19 +146,40 @@
     letter-spacing: 1.3px;
     height: unset;
     width: 100%;
+    padding: 0 0.7rem;
+    justify-content: flex-end;
+    gap: 1rem;
+    // justify-content: space-between;
+    flex-direction: row-reverse;
     &::before {
       bottom: 0;
       width: 3px;
       height: 100%;
-      right: 0;
+      right: unset;
+      left: 0;
     }
+
     .fa-shuttle-space:before,
     .fa-space-shuttle:before {
       transform: rotate(-90deg);
     }
   }
+  .v-application ul {
+    padding-left: unset !important;
+  }
+  .link-icon-wrapper {
+    text-align: center;
+    .link-icon {
+      margin-left: 0.2em;
+      &::before {
+        // Overrides for vuetify v-btn padding to center in the nav.
+        height: 30px;
+        width: 30px;
+        padding: 0.1rem;
+      }
+    }
+  }
   .link-text {
     color: #fff !important;
-    margin-left: 0.5rem;
   }
 }

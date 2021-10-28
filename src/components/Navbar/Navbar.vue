@@ -46,10 +46,12 @@
           :key="nav.link"
         >
           <li class="navbar__navlink">
-            <v-btn text color="transparent" small elevation="0">
-              <v-icon color="#fff" class="link-icon">{{ nav.icon }}</v-icon>
+            <div>
               <span class="link-text">{{ nav.link }}</span>
-            </v-btn>
+            </div>
+            <div class="link-icon-wrapper">
+              <v-icon color="#fff" class="link-icon">{{ nav.icon }}</v-icon>
+            </div>
           </li>
         </router-link>
       </ul>
