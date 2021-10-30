@@ -1,28 +1,27 @@
 <template>
   <v-app>
-    <BackgroundImages />
-    <nav>
-      <Navbar />
-    </nav>
-    <!-- Render anim if in desktop, none on mobile -->
-    <v-scroll-x-reverse-transition
-      leave-absolute
-      v-if="!$vuetify.breakpoint.mobile"
-      mode="out-in"
-    >
-      <router-view />
-    </v-scroll-x-reverse-transition>
-    <router-view v-if="$vuetify.breakpoint.mobile" />
+    <Navbar />
+    <router-view />
   </v-app>
 </template>
 
 <script>
 import Navbar from "./components/Navbar/Navbar.vue";
-import BackgroundImages from "./components/UI/BackgroundImages/BackgroundImages.vue";
 export default {
-  components: { Navbar, BackgroundImages },
+  components: { Navbar },
   name: "App",
 
-  data: () => ({}),
+  data: () => ({
+    //api.themoviedb.org/3/movie/550?api_key=aaf4434aae80f32eb7c2bbbc9ff754e8
+    url: "api.themoviedb.org/3/discover/movie?api_key=aaf4434aae80f32eb7c2bbbc9ff754e8",
+    API_KEY: "aaf4434aae80f32eb7c2bbbc9ff754e8",
+    movies: [],
+  }),
 };
 </script>
+<style lang="scss">
+#app {
+  background-color: var(--v-background-base);
+  height: 3000px;
+}
+</style>

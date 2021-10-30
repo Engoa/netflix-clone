@@ -1,0 +1,128 @@
+@import "@/styles/import.scss";
+
+.featured-movie {
+  width: 100%;
+  position: relative;
+  &__image {
+    img {
+      width: 100%;
+      min-height: 800px;
+      max-height: 800px;
+      object-fit: cover;
+      pointer-events: none;
+      position: relative;
+      background-position: center center;
+      @include media("<tablet") {
+        min-height: 350px;
+      }
+    }
+    &::before {
+      content: "";
+      position: absolute;
+      bottom: 0;
+      height: 100%;
+      width: 100%;
+      background: linear-gradient(to top, rgb(0, 0, 0) 0%, transparent 100%);
+      z-index: 1;
+    }
+  }
+  &__data {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    gap: 1rem;
+    position: absolute;
+    bottom: 20%;
+    padding: 0 4rem;
+    width: 100%;
+    max-width: 800px;
+    z-index: 2;
+
+    @include media("<tablet") {
+      gap: 0;
+    }
+  }
+
+  &__title {
+    width: 100%;
+    h1 {
+      font-size: 1.7rem;
+      font-size: clamp(1.3rem, 7vw, 4rem);
+      letter-spacing: 0.025em;
+      white-space: pre;
+
+      @include media("<tablet") {
+        text-align: center;
+      }
+    }
+  }
+  &__buttons {
+    @include flexCenter;
+    justify-content: flex-start;
+    z-index: 2;
+    gap: 1rem;
+    @include media("<tablet") {
+      display: none;
+    }
+    .v-btn {
+      background: var(--light-grey) !important;
+      border-radius: 0.2rem !important;
+      padding: 1.5rem 2rem !important;
+      transition: $transition-150;
+      font-weight: bold;
+      text-transform: capitalize;
+      font-size: 1.2rem !important;
+
+      &:hover {
+        color: black;
+        background: white !important;
+      }
+    }
+    .v-icon {
+      margin-right: 0.7rem;
+      transition: $transition-150;
+    }
+  }
+  &__description {
+    color: white;
+    font-size: 1.45rem;
+    font-size: clamp(0.6rem, 3vw, 1.45rem);
+    p:first-letter {
+      text-transform: uppercase;
+    }
+  }
+  &__rating {
+    background: red;
+    position: absolute;
+    bottom: 5rem;
+    right: 0;
+    z-index: 1;
+    background: var(--light-grey);
+    width: 130px;
+    height: 40px;
+    padding: 0 0.7rem;
+    @include flexCenter;
+    @include media("<tablet") {
+      height: 30px;
+      bottom: 1rem;
+    }
+
+    span {
+      width: 100%;
+      text-align: left;
+      font-size: 1.1rem;
+      font-weight: bold;
+      letter-spacing: 0.075em;
+    }
+
+    &::before {
+      content: "";
+      position: absolute;
+      background: rgb(255, 255, 255);
+      height: 100%;
+      width: 3px;
+      left: 0;
+    }
+  }
+}

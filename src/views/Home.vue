@@ -1,20 +1,15 @@
 <template>
-  <div class="body">
-    <HomeText
-      question="So, you want to Travel to"
-      subtitle="space"
-      paragraph="
-    Let's face it, if you want to go to space, you might as well geniunely go to
-    outer space and not hover kind of on the edge of it. Well sit back, and
-    relax because we'll give you a truly out of this world experience!"
-    />
+  <div>
+    <FeaturedMovie />
+    <Slide />
   </div>
 </template>
 
 <script>
-import HomeText from "../components/HomeText/HomeText";
+import FeaturedMovie from "../components/FeaturedMovie/FeaturedMovie.vue";
+import Slide from "../components/Slide/Slide.vue";
 export default {
-  components: { HomeText },
+  components: { FeaturedMovie, Slide },
   name: "Home",
 };
 </script>
