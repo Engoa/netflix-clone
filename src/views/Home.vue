@@ -1,15 +1,28 @@
 <template>
   <div>
     <FeaturedMovie />
-    <Slide />
+    <Slides text="Recommended for you" :data="netflixData" />
   </div>
 </template>
 
 <script>
 import FeaturedMovie from "../components/FeaturedMovie/FeaturedMovie.vue";
-import Slide from "../components/Slide/Slide.vue";
+import Slides from "../components/Slides/Slides.vue";
 export default {
-  components: { FeaturedMovie, Slide },
+  components: { FeaturedMovie, Slides },
   name: "Home",
+  data: () => ({
+    slidesArray: [],
+  }),
+  computed: {
+    createArray() {
+      return [
+        // {
+        //   text: "Recommended For You",
+        //   data: 
+        // },
+      ];
+    },
+  },
 };
 </script>

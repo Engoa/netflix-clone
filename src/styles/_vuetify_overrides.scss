@@ -26,3 +26,11 @@
 .theme--light.v-tabs-items {
   background-color: transparent !important;
 }
+
+.v-navigation-drawer {
+  z-index: 100;
+}
+
+.v-application ul {
+  padding: 0 !important;
+}

@@ -17,8 +17,12 @@
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
+    z-index: 1;
     &__logo {
       width: 100px;
+    }
+    &__hamburger {
+      font-size: 1.5rem !important;
     }
   }
   &__right {
@@ -27,5 +31,92 @@
     justify-content: flex-end;
     width: 100%;
     gap: 2rem;
+  }
+}
+
+.v-navigation-drawer__content {
+  width: 100%;
+}
+.sidebar {
+  padding: 1.5rem 2rem;
+  width: 100%;
+  &:hover,
+  &:active {
+    background-color: rgba(255, 0, 0, 0.603);
+  }
+  &__user {
+    @include flexCenter;
+    justify-content: space-between;
+  }
+  &__user-avatar {
+    transition: $transition-250;
+    .v-image {
+      border-radius: 0.3rem;
+    }
+    &:hover {
+      transform: scale(1.1);
+    }
+  }
+  &__user-name {
+    font-size: 1.05rem;
+    font-size: clamp(0.9rem, 3vw, 1.05rem);
+  }
+
+  .user-arrow {
+    transition: $transition-350;
+    &:hover,
+    &:active {
+      transform: translateX(5px);
+    }
+  }
+  &__notifications,
+  &__downloads {
+    transition: $transition-250;
+    border-top: 2px solid black;
+    display: flex;
+    justify-content: flex-start;
+    align-self: center;
+    padding: 1.5rem 2rem;
+    gap: 1rem;
+    span {
+      font-size: 1.05rem;
+      font-size: clamp(0.9rem, 3vw, 1.05rem);
+      letter-spacing: 0.08em;
+    }
+    .v-icon {
+      font-size: 1.3rem !important;
+    }
+    &:hover,
+    &:active {
+      background-color: rgba(255, 0, 0, 0.603);
+    }
+  }
+
+  &--links {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    cursor: default;
+    border-top: 2px solid black;
+  }
+  &__navlink {
+    transition: $transition-250;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    padding-left: 2rem;
+    span {
+      text-transform: capitalize;
+      opacity: 0.85;
+      font-size: 1.4rem;
+      font-size: clamp(1rem, 3vw, 1.4rem);
+      font-weight: lighter;
+      letter-spacing: 0.08em;
+    }
+    &:hover,
+    &:active {
+      background: rgba(128, 128, 128, 0.322);
+    }
   }
 }

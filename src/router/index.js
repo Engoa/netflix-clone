@@ -14,6 +14,25 @@ const routes = [
     },
   },
 
+  {
+    path: "/genres",
+    name: "Genres",
+    component: () =>
+      import(
+        /* webpackChunkName: "genres-chunk" */ "../views/Genres/Genres.vue"
+      ),
+    children: [
+      {
+        name: "genre",
+        path: ":slug",
+        component: () =>
+          import(
+            /* webpackChunkName: "genre-chunk" */ "../views/Genres/Genre.vue"
+          ),
+      },
+    ],
+  },
+
   // {
   //   path: "/crew",
   //   name: "Crew",

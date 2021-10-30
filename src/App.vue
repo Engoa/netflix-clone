@@ -6,22 +6,40 @@
 </template>
 
 <script>
+import { mapActions } from "vuex";
 import Navbar from "./components/Navbar/Navbar.vue";
+import axios from "axios";
 export default {
   components: { Navbar },
   name: "App",
 
   data: () => ({
-    //api.themoviedb.org/3/movie/550?api_key=aaf4434aae80f32eb7c2bbbc9ff754e8
-    url: "api.themoviedb.org/3/discover/movie?api_key=aaf4434aae80f32eb7c2bbbc9ff754e8",
-    API_KEY: "aaf4434aae80f32eb7c2bbbc9ff754e8",
     movies: [],
   }),
+
+  methods: {
+    ...mapActions({
+      setNetflixData: "netflix/setNetflixData",
+    }),
+  },
+
+  mounted() {
+    if (localStorage.getItem("netflix")) {
+      const dataLS = JSON.parse(localStorage.getItem("netflix"));
+      this.setNetflixData(dataLS);
+      return dataLS;
+    } else {
+      const url = `https://api.themoviedb.org/3/discover/movie?api_key=${process.env.VUE_APP_API}`;
+      axios.get(url).then((response) => {
+        const result = response.data.results;
+        this.setNetflixData(result);
+      });
+    }
+  },
 };
 </script>
 <style lang="scss">
 #app {
   background-color: var(--v-background-base);
-  height: 3000px;
 }
 </style>

@@ -3,7 +3,6 @@
     <div class="featured-movie">
       <div class="featured-movie__image">
         <img
-          draggable="false"
           src="https://occ-0-1853-1167.1.nflxso.net/dnm/api/v6/6AYY37jfdO6hpXcMjf9Yu5cnmO0/AAAABbG_guk5n6NkR9grI7LwXQbRu-NoVL0IkYsZRIRoZfOKKethszCQX9kFc-Vo9s-EkPZSMBlkU5M82m6JigUHUWKwA7iR.webp?r=09b"
         />
       </div>

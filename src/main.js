@@ -4,11 +4,15 @@ import router from "./router";
 import store from "./store";
 import vuetify from "./plugins/vuetify";
 import getImageUrl from "./mixins/getImageUrl";
-import axios from "axios";
+import AppMixin from "./mixins/AppMixin";
+import VueAwesomeSwiper from "vue-awesome-swiper";
+import "swiper/swiper-bundle.css";
+
+Vue.use(VueAwesomeSwiper);
 
 Vue.config.productionTip = false;
+Vue.mixin(AppMixin);
 Vue.mixin(getImageUrl);
-Vue.prototype.axios = axios;
 
 new Vue({
   router,

@@ -22,3 +22,26 @@ ol {
   cursor: pointer;
   list-style-type: none;
 }
+.anchors {
+  color: rgba(255, 255, 255, 0.856) !important;
+}
+
+.router-link-exact-active {
+  color: white !important;
+  font-weight: bold;
+  opacity: 1;
+  position: relative;
+  transition: $transition-250;
+
+  &::before {
+    content: "";
+    position: absolute;
+    left: 0%;
+    top: 50%;
+    transform: translateY(-50%);
+    background-color: red;
+    height: 100%;
+    width: 5px;
+    transition: $transition-250;
+  }
+}

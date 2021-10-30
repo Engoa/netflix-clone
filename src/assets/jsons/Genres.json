@@ -1,0 +1,50 @@
+[
+  {
+    "text": "action",
+    "value": "28"
+  },
+  {
+    "text": "adventure",
+    "value": "12"
+  },
+  {
+    "text": "animation",
+    "value": "16"
+  },
+  {
+    "text": "comedy",
+    "value": "35"
+  },
+  {
+    "text": "crime",
+    "value": "80"
+  },
+  {
+    "text": "documentary",
+    "value": "99"
+  },
+  {
+    "text": "drama",
+    "value": "18"
+  },
+  {
+    "text": "fantasy",
+    "value": "14"
+  },
+  {
+    "text": "history",
+    "value": "36"
+  },
+  {
+    "text": "horror",
+    "value": "27"
+  },
+  {
+    "text": "thriller",
+    "value": "53"
+  },
+  {
+    "text": "war",
+    "value": "10752"
+  }
+]
