@@ -1,5 +1,6 @@
 const state = {
   netflix: [],
+  currentMovie: [],
 };
 
 const saveLS = (key, value) => localStorage.setItem(key, JSON.stringify(value));
@@ -8,6 +9,11 @@ const mutations = {
   setNetflixData(state, payload) {
     state.netflix = payload;
   },
+
+  setCurrentMovieById(state, payload) {
+    state.netflix[payload];
+    state.currentMovie = [payload];
+  },
 };
 
 const actions = {
@@ -15,10 +21,21 @@ const actions = {
     commit("setNetflixData", payload);
     saveLS("netflix", state.netflix);
   },
+  setCurrentMovieById({ commit }, payload) {
+    commit("setCurrentMovieById", payload);
+  },
 };
 
 const getters = {
   getNetflixData: (state) => state.netflix,
+
+  getCurrentMovie: (state) => state.currentMovie,
+
+  getMovieById: (state) => {
+    return (id) => {
+      return state.netflix.find((data) => data.id === id);
+    };
+  },
 };
 
 export default {

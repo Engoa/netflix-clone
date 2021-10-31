@@ -11,18 +11,6 @@ import Slides from "../components/Slides/Slides.vue";
 export default {
   components: { FeaturedMovie, Slides },
   name: "Home",
-  data: () => ({
-    slidesArray: [],
-  }),
-  computed: {
-    createArray() {
-      return [
-        // {
-        //   text: "Recommended For You",
-        //   data: 
-        // },
-      ];
-    },
-  },
+  data: () => ({}),
 };
 </script>
