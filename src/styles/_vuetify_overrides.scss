@@ -1,3 +1,8 @@
+.v-image__placeholder {
+  display: flex !important;
+  // for circular on loading cards
+}
+
 .v-responsive {
   flex: unset !important;
 } // for stars image, fixes width
@@ -53,8 +58,4 @@
 }
 .v-card > * {
   background: var(--light-grey) !important;
-}
-.v-image__placeholder {
-  display: flex !important;
-  // for circular on loading cards
 }

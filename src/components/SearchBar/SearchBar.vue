@@ -39,14 +39,21 @@
             <v-img
               width="200"
               :src="`${
-                movie.poster_path === null
+                movie.poster_path === null ||
+                movie.poster_path === '' ||
+                !movie.poster_path
                   ? 'https://wallpaperaccess.com/full/2772922.png'
                   : `https://image.tmdb.org/t/p/original/${movie.poster_path}`
               }`"
               :alt="movie.title"
             >
-              <template v-slot:placeholder>
-                <v-row class="fill-height ma-0" align="center" justify="center">
+              <template
+                v-slot:placeholder
+                class="fill-height ma-0"
+                align="center"
+                justify="center"
+              >
+                <v-row>
                   <v-progress-circular
                     indeterminate
                     color="grey lighten-5"
