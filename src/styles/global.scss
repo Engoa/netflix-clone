@@ -49,3 +49,22 @@ ol {
     transition: $transition-250;
   }
 }
+
+.api__error {
+  h2 {
+    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    text-align: center;
+    white-space: pre;
+  }
+}
+
+.error-wrapper {
+  position: absolute;
+  top: 5rem;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 9;
+  color: white;
+  opacity: 0.5;
+}

@@ -46,7 +46,7 @@ export default {
       return {
         parallax: true,
         grabCursor: true,
-        speed: 1000,
+        speed: 800,
         navigation: {
           nextEl: "." + this.navClasses.next,
           prevEl: "." + this.navClasses.prev,
@@ -69,20 +69,11 @@ export default {
       setCurrentMovieById: "netflix/setCurrentMovieById",
     }),
 
-    addHashToLocation(params) {
-      history.pushState(
-        {},
-        null,
-        this.$route.path + "#" + encodeURIComponent(params)
-      );
-    },
-
     openModal(id) {
       const movie = this.movieId(id); // get movie by id
       this.setCurrentMovieById(movie); // setting the current movie by id
       this.isOpen = true;
       // this.$router.push("/movie/" + id);
-      // console.log(this.id);
     },
 
     closeModal() {

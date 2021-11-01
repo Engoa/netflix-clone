@@ -58,4 +58,8 @@
 }
 .v-card > * {
   background: var(--light-grey) !important;
+  .v-ripple__container {
+    display: none !important;
+    //Disable click effect on buttons
+  }
 }

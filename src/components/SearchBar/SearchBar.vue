@@ -10,7 +10,7 @@
       content-class="search__bar--dialog"
     >
       <v-app-bar>
-        <v-app-bar-nav-icon small @click="dialog = false">
+        <v-app-bar-nav-icon small @click="toggleSearch">
           <v-icon>fas fa-times</v-icon>
         </v-app-bar-nav-icon>
       </v-app-bar>
@@ -29,7 +29,7 @@
           autocomplete="off"
         ></v-text-field>
       </div>
-      <div class="search__error" v-if="error">
+      <div class="api__error" v-if="error">
         <h2>Error fetching data, Please try again later...</h2>
       </div>
       <div class="search__results" v-if="!error">
@@ -38,7 +38,7 @@
           v-for="(movie, index) in apiData"
           :key="movie.poster_path + index"
         >
-          <v-card class="slider__movie">
+          <v-card class="slider__movie" @click="openModal(movie.id)">
             <v-img
               width="200"
               :src="`${
@@ -50,13 +50,8 @@
               }`"
               :alt="movie.title"
             >
-              <template
-                v-slot:placeholder
-                class="fill-height ma-0"
-                align="center"
-                justify="center"
-              >
-                <v-row>
+              <template v-slot:placeholder>
+                <v-row class="card-loading">
                   <v-progress-circular
                     indeterminate
                     color="grey lighten-5"
@@ -67,6 +62,7 @@
           </v-card>
         </div>
       </div>
+      <MovieModal :isOpen="isOpen" @onClose="closeModal" />
     </v-dialog>
   </div>
 </template>
@@ -74,9 +70,12 @@
 <script>
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
+import MovieModal from "../MovieModal/MovieModal.vue";
+import { mapActions } from "vuex";
 import "./SearchBar.scss";
 
 export default {
+  components: { MovieModal },
   name: "SearchBar",
   data: () => ({
     apiData: [],
@@ -84,12 +83,27 @@ export default {
     queryString: "&query=",
     inputValue: "",
     error: false,
+    isOpen: false,
   }),
   created() {
     this.debouncedSearchData = debounce(this.fetchData, 500);
   },
 
   methods: {
+    ...mapActions({
+      setCurrentMovieById: "netflix/setCurrentMovieById",
+    }),
+
+    openModal(id) {
+      const movie = this.movieId(id); // get movie by id
+      this.setCurrentMovieById(movie); // setting the current movie by id
+      this.isOpen = true;
+      // this.$router.push("/movie/" + id);
+    },
+
+    closeModal() {
+      this.isOpen = false;
+    },
     async fetchData() {
       if (!this.inputValue) {
         this.apiData = [];
@@ -105,7 +119,6 @@ export default {
         }
       }
     },
-
     toggleSearch() {
       this.dialog = !this.dialog;
     },

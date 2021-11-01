@@ -1,8 +1,8 @@
 <template>
   <div class="featured-movie">
-    <div class="featured-movie__image" style="overflow: hidden">
+    <div class="featured-movie__image">
       <v-img
-        data-swiper-parallax="500"
+        data-swiper-parallax="600"
         data-swiper-parallax-scale="1.8"
         :src="`https://image.tmdb.org/t/p/original${data.backdrop_path}`"
       />
@@ -11,7 +11,7 @@
       <div
         class="featured-movie__title"
         data-swiper-parallax="-100"
-        data-swiper-parallax-duration="1600"
+        data-swiper-parallax-duration="1400"
         data-swiper-parallax-opacity="0"
       >
         <h1>{{ data.title || data.name }}</h1>
@@ -19,7 +19,7 @@
       <div
         class="featured-movie__buttons"
         data-swiper-parallax="-200"
-        data-swiper-parallax-duration="1500"
+        data-swiper-parallax-duration="1300"
         data-swiper-parallax-opacity="0"
       >
         <v-btn elevation="0.1"><v-icon> fas fa-play</v-icon>Play</v-btn>
@@ -28,7 +28,7 @@
       <div
         class="featured-movie__description"
         data-swiper-parallax="-300"
-        data-swiper-parallax-duration="1400"
+        data-swiper-parallax-duration="1200"
         data-swiper-parallax-opacity="0"
       >
         <p>
@@ -40,11 +40,11 @@
     </div>
     <div
       class="featured-movie__rating"
-      data-swiper-parallax-y="-400"
-      data-swiper-parallax-duration="1300"
+      data-swiper-parallax-y="-200"
+      data-swiper-parallax-duration="1100"
       data-swiper-parallax-opacity="0"
     >
-      <span> 15+ </span>
+      <span> {{ data.adult ? "12+" : "16+" }} </span>
     </div>
   </div>
 </template>

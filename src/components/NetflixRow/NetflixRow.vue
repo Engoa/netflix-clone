@@ -8,8 +8,11 @@
       },
     }"
   >
-    <span class="slider__header">{{ title }}</span>
+    <div v-if="error" class="error-wrapper api__error">
+      <h2>Error fetching data, Please try again later...</h2>
+    </div>
     <div class="slider__wrapper">
+      <span class="slider__header">{{ title }}</span>
       <NavigationArrows :classes="navigationElements" />
       <Swiper :options="swiperOptions" @slide-change="handleSwipe">
         <SwiperSlide
@@ -66,6 +69,7 @@ export default {
     loading: false,
     isIntersected: false,
     isOpen: false,
+    error: false,
 
     navigationElements: {
       prev: "prev__" + vm.generateRandomString(),
@@ -115,6 +119,7 @@ export default {
     },
     closeModal() {
       this.isOpen = false;
+
     },
     onIntersect(entries) {
       if (!this.isIntersected && entries[0].isIntersecting) {
@@ -134,6 +139,7 @@ export default {
         this.apiData = this.apiData.concat(response.results);
       } catch (error) {
         console.log(error);
+        this.error = true;
       } finally {
         this.loading = false;
       }

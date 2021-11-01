@@ -9,6 +9,7 @@ $max-height: 100vh;
 
   &__image {
     position: relative;
+    overflow: hidden;
     .v-image {
       width: 100%;
       min-height: $max-height;
@@ -28,7 +29,7 @@ $max-height: 100vh;
       bottom: 0;
       height: 100%;
       width: 100%;
-      background: linear-gradient(to top, rgb(0, 0, 0) 0%, transparent 100%);
+      background: linear-gradient(to top, rgba(0, 0, 0, 0.829) 0%, transparent 100%);
       z-index: 6;
     }
   }
