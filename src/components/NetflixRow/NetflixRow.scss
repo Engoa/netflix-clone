@@ -61,6 +61,6 @@
   text-transform: capitalize;
   font-size: 1.1rem;
   font-size: clamp(0.75rem, 3vw, 1.1rem);
-  z-index: 2;
+  z-index: 1;
   position: relative;
 }

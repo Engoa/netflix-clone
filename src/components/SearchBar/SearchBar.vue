@@ -20,10 +20,13 @@
           color="red"
           class="input__wrapper--input"
           background-color="var(--dark-grey)"
-          label="Input a movie name"
+          label="Search for a movie"
           v-model="inputValue"
           ref="input"
           width="300"
+          spellcheck="false"
+          autofocus
+          autocomplete="off"
         ></v-text-field>
       </div>
       <div class="search__results">
@@ -35,8 +38,10 @@
           <v-card class="slider__movie">
             <v-img
               width="200"
-              :src="`http://image.tmdb.org/t/p/w500/${
-                movie.poster_path || movie.backdrop_path
+              :src="`${
+                movie.poster_path === null
+                  ? 'https://wallpaperaccess.com/full/2772922.png'
+                  : `https://image.tmdb.org/t/p/original/${movie.poster_path}`
               }`"
               :alt="movie.title"
             >
@@ -76,7 +81,7 @@ export default {
   methods: {
     async fetchData() {
       if (!this.inputValue) {
-        this.apiData = "";
+        this.apiData = [];
       } else {
         try {
           const response = await NetflixService.searchMovies(

@@ -18,7 +18,11 @@
         >
           <v-card class="slider__movie">
             <v-img
-              :src="`http://image.tmdb.org/t/p/w500/${movie.poster_path}`"
+              :src="`${
+                movie.poster_path === null
+                  ? 'https://wallpaperaccess.com/full/2772922.png'
+                  : `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+              }`"
               :alt="movie.title"
             >
               <template v-slot:placeholder>

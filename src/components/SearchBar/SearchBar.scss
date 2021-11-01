@@ -10,14 +10,18 @@
   }
 }
 .theme--dark.v-input input {
-  padding: 1rem;
+  padding-left: 1rem;
 }
 .v-input--is-focused .v-input__slot {
   color: red !important;
 }
 
+.v-label {
+  padding-left: 1rem;
+}
 .v-label--active {
   color: red !important;
+  font-size: 1.2rem !important;
 }
 .v-input__control {
   @include flexCenter;
@@ -26,6 +30,7 @@
   width: 700px !important;
   background: #2c2c2c7e !important;
   border-radius: 0.3rem !important;
+  margin-top: 1rem;
   @include media("<tablet") {
     width: 300px !important;
   }
@@ -60,8 +65,4 @@
       border-radius: 0.2rem;
     }
   }
-}
-
-.test {
-  @include flexCenter;
 }
