@@ -1,0 +1,104 @@
+<template>
+  <div>
+    <v-icon @click="toggleSearch" class="nav__right__search nav__btn"
+      >fas fa-search</v-icon
+    >
+    <v-dialog
+      transition="dialog-bottom-transition"
+      fullscreen
+      v-model="dialog"
+      content-class="search__bar--dialog"
+    >
+      <v-app-bar>
+        <v-app-bar-nav-icon small @click="dialog = false">
+          <v-icon>fas fa-times</v-icon>
+        </v-app-bar-nav-icon>
+      </v-app-bar>
+      <div class="input__wrapper">
+        <v-text-field
+          @input="debouncedSearchData"
+          color="red"
+          class="input__wrapper--input"
+          background-color="var(--dark-grey)"
+          label="Input a movie name"
+          v-model="inputValue"
+          ref="input"
+          width="300"
+        ></v-text-field>
+      </div>
+      <div class="search__results">
+        <div
+          class="search__results__images"
+          v-for="(movie, index) in apiData"
+          :key="movie.poster_path + index"
+        >
+          <v-card class="slider__movie">
+            <v-img
+              width="200"
+              :src="`http://image.tmdb.org/t/p/w500/${
+                movie.poster_path || movie.backdrop_path
+              }`"
+              :alt="movie.title"
+            >
+              <template v-slot:placeholder>
+                <v-row class="fill-height ma-0" align="center" justify="center">
+                  <v-progress-circular
+                    indeterminate
+                    color="grey lighten-5"
+                  ></v-progress-circular>
+                </v-row>
+              </template>
+            </v-img>
+          </v-card>
+        </div>
+      </div>
+    </v-dialog>
+  </div>
+</template>
+
+<script>
+import NetflixService from "../../services/NetflixService";
+import debounce from "lodash/debounce";
+import "./SearchBar.scss";
+
+export default {
+  name: "SearchBar",
+  data: () => ({
+    apiData: [],
+    dialog: false,
+    queryString: "&query=",
+    inputValue: "",
+  }),
+  created() {
+    this.debouncedSearchData = debounce(this.fetchData, 500);
+  },
+
+  methods: {
+    async fetchData() {
+      if (!this.inputValue) {
+        this.apiData = "";
+      } else {
+        try {
+          const response = await NetflixService.searchMovies(
+            this.queryString + `${this.inputValue}`
+          );
+          this.apiData = response.results;
+        } catch {
+          console.log("Error fetching API");
+        }
+      }
+    },
+
+    test() {
+      console.log("test");
+    },
+
+    toggleSearch() {
+      this.dialog = !this.dialog;
+      this.$nextTick(() => {
+        this.$refs.input.$el.focus();
+      });
+    },
+  },
+};
+</script>

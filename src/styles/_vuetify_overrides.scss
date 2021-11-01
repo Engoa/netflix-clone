@@ -34,3 +34,23 @@
 .v-application ul {
   padding: 0 !important;
 }
+
+.v-dialog > * {
+  z-index: 10;
+}
+.v-toolbar {
+  background: black !important;
+  padding: 0 1rem;
+}
+.v-toolbar__content {
+  height: 60px !important;
+}
+.v-progress-circular--indeterminate .v-progress-circular__overlay {
+  color: red !important;
+}
+.theme--dark.v-card {
+  background: var(--light-grey) !important;
+}
+.v-card > * {
+  background: var(--light-grey) !important;
+}

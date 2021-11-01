@@ -6,9 +6,11 @@ import vuetify from "./plugins/vuetify";
 import getImageUrl from "./mixins/getImageUrl";
 import AppMixin from "./mixins/AppMixin";
 import VueAwesomeSwiper from "vue-awesome-swiper";
+import SwiperCore, { Navigation, Parallax } from "swiper";
 import "swiper/swiper-bundle.css";
 
 Vue.use(VueAwesomeSwiper);
+SwiperCore.use([Navigation, Parallax]);
 
 Vue.config.productionTip = false;
 Vue.mixin(AppMixin);

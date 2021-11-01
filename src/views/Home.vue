@@ -1,16 +1,42 @@
 <template>
   <div>
-    <FeaturedMovie />
-    <Slides text="Recommended for you" :data="netflixData" />
+    <HeroSwiper />
+    <v-main :style="{ marginTop: '-20vmin' }">
+      <NetflixRow
+        v-for="(item, index) in apiRows"
+        :title="item.title"
+        :key="item.title + index"
+        :queryString="item.queryString"
+      />
+    </v-main>
   </div>
 </template>
 
 <script>
-import FeaturedMovie from "../components/FeaturedMovie/FeaturedMovie.vue";
-import Slides from "../components/Slides/Slides.vue";
+import capitalize from "lodash/capitalize";
+// import MovieModal from "../MovieModal/MovieModal.vue";
+import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
+import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
 export default {
-  components: { FeaturedMovie, Slides },
+  components: { NetflixRow, HeroSwiper },
   name: "Home",
-  data: () => ({}),
+  computed: {
+    apiRows() {
+      return [
+        {
+          queryString: "&vote_count.gte=12000",
+          title: capitalize("Highest rated"),
+        },
+        ...Object.entries(this.MOVIEDB_GENERES).map(([value, key]) => ({
+          queryString: "with_genres=" + value,
+          title: capitalize(key) + " Movies",
+        })),
+        {
+          queryString: "&year=2000",
+          title: capitalize("Oldies but a goodies"),
+        },
+      ];
+    },
+  },
 };
 </script>

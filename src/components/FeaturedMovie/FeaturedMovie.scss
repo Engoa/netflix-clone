@@ -1,17 +1,20 @@
 @import "@/styles/import.scss";
 
+$max-height: 100vh;
 .featured-movie {
   width: 100%;
   position: relative;
+  min-width: 100vw;
+  max-height: $max-height;
+
   &__image {
-    img {
+    .v-image {
       width: 100%;
-      min-height: 800px;
-      max-height: 800px;
-      object-fit: cover;
+      min-height: $max-height;
+      max-height: $max-height;
       pointer-events: none;
       position: relative;
-      background-position: center center;
+
       @include media("<tablet") {
         min-height: 350px;
       }
@@ -23,7 +26,7 @@
       height: 100%;
       width: 100%;
       background: linear-gradient(to top, rgb(0, 0, 0) 0%, transparent 100%);
-      z-index: 1;
+      z-index: 6;
     }
   }
   &__data {
@@ -34,10 +37,10 @@
     gap: 1rem;
     position: absolute;
     bottom: 20%;
-    padding: 0 4rem;
+    padding: 0 6rem;
     width: 100%;
-    max-width: 800px;
-    z-index: 2;
+    max-width: $max-height;
+    z-index: 7;
 
     @include media("<tablet") {
       gap: 0;
@@ -97,9 +100,9 @@
   &__rating {
     background: red;
     position: absolute;
-    bottom: 5rem;
+    bottom: 8rem;
     right: 0;
-    z-index: 1;
+    z-index: 7;
     background: var(--light-grey);
     width: 140px;
     height: 40px;
@@ -107,7 +110,7 @@
     @include flexCenter;
     @include media("<tablet") {
       height: 30px;
-      bottom: 1rem;
+      bottom: 3rem;
       width: 100px;
     }
 

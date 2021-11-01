@@ -1,0 +1,67 @@
+@import "@/styles/import.scss";
+
+.search__bar--dialog {
+  background: #2c2c2c7e;
+  padding-bottom: 2rem;
+
+  .nav__left__logo {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+}
+.theme--dark.v-input input {
+  padding: 1rem;
+}
+.v-input--is-focused .v-input__slot {
+  color: red !important;
+}
+
+.v-label--active {
+  color: red !important;
+}
+.v-input__control {
+  @include flexCenter;
+}
+.v-input__slot {
+  width: 700px !important;
+  background: #2c2c2c7e !important;
+  border-radius: 0.3rem !important;
+  @include media("<tablet") {
+    width: 300px !important;
+  }
+}
+.v-input {
+  max-height: unset !important;
+}
+
+.search__results {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  width: 100%;
+
+  &__images {
+    cursor: pointer;
+    transition: $transition-350;
+    overflow: hidden;
+    @include media("<tablet") {
+      max-height: 280px;
+    }
+    &:hover {
+      transform: scale(1.1);
+      z-index: 2;
+    }
+    .v-image {
+      min-width: 200px;
+      max-height: 280px;
+      min-height: 280px;
+      border-radius: 0.2rem;
+    }
+  }
+}
+
+.test {
+  @include flexCenter;
+}

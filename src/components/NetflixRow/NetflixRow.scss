@@ -1,0 +1,66 @@
+@import "@/styles/import.scss";
+
+.slider {
+  padding: 0 1rem;
+  overflow: hidden;
+
+  &__wrapper {
+    position: relative;
+    cursor: default;
+  }
+
+  &:hover {
+    .nav-arrows {
+      opacity: 1;
+    }
+  }
+  .nav-arrows {
+    inset: 0 -1rem;
+    opacity: 0;
+  }
+
+  .swiper-wrapper {
+    align-items: stretch !important;
+    margin: 1rem 0;
+    min-height: 240px;
+    cursor: default;
+    z-index: 2;
+
+    @include media("<tablet") {
+      min-height: 200px;
+    }
+  }
+  .swiper-slide {
+    height: unset !important;
+  }
+
+  &__movie {
+    height: 100%;
+    display: flex !important;
+    align-items: center;
+    justify-content: center;
+    min-height: 270px;
+    cursor: pointer;
+    transition: $transition-350 !important;
+    border-radius: unset !important;
+    @include media("<desktop") {
+      min-height: 200px;
+    }
+
+    &:hover {
+      transform: scale(1.05);
+      z-index: 2;
+    }
+    .v-image {
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+.slider__header {
+  text-transform: capitalize;
+  font-size: 1.1rem;
+  font-size: clamp(0.75rem, 3vw, 1.1rem);
+  z-index: 2;
+  position: relative;
+}

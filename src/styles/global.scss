@@ -5,6 +5,10 @@
   font-family: var(--ff-header);
 }
 
+#app {
+  background-color: var(--v-background-base);
+}
+
 input,
 button {
   appearance: none;

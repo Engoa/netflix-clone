@@ -2,7 +2,10 @@
   <div>
     <nav :class="['nav', { 'nav--active': navBarActive }]">
       <div class="nav__left">
-        <v-icon width="100" class="nav__left__hamburger" @click="toggleNav"
+        <v-icon
+          width="100"
+          class="nav__left__hamburger nav__btn"
+          @click="toggleNav"
           >fas fa-bars</v-icon
         >
         <router-link to="/">
@@ -12,8 +15,10 @@
           />
         </router-link>
         <div class="nav__right">
-          <v-icon class="nav__right__search">fas fa-search</v-icon>
-          <v-icon class="nav__right__settings">fas fa-ellipsis-h</v-icon>
+          <SearchBar />
+          <v-icon class="nav__right__settings nav__btn"
+            >fas fa-ellipsis-h</v-icon
+          >
         </div>
       </div>
     </nav>
@@ -21,7 +26,7 @@
       v-model="sideNav"
       fixed
       temporary
-      :width="$vuetify.breakpoint.width > '768' ? '350' : '75%'"
+      :width="$vuetify.breakpoint.width > '768' ? '300' : '75%'"
     >
       <div class="sidebar">
         <router-link to="/profile" class="sidebar__user anchors">
@@ -71,7 +76,9 @@
 <script>
 import "./Navbar.scss";
 import Genres from "@/assets/jsons/Genres.json";
+import SearchBar from "../SearchBar/SearchBar.vue";
 export default {
+  components: { SearchBar },
   name: "Navbar",
   data: () => ({
     scrollPosition: 0,

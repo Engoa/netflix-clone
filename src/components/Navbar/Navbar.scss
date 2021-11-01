@@ -12,12 +12,17 @@
     transition: $transition-350;
   }
 
+  &__btn {
+    cursor: pointer;
+  }
+
   &__left {
     display: flex;
     align-items: center;
     justify-content: flex-start;
     gap: 2rem;
     z-index: 1;
+
     &__logo {
       width: 100px;
     }

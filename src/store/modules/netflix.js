@@ -1,3 +1,5 @@
+import uniqBy from "lodash/uniqBy";
+
 const state = {
   netflix: [],
   currentMovie: [],
@@ -7,7 +9,7 @@ const saveLS = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 
 const mutations = {
   setNetflixData(state, payload) {
-    state.netflix = payload;
+    state.netflix = uniqBy(state.netflix.concat(payload), (item) => item.id);
   },
 
   setCurrentMovieById(state, payload) {
