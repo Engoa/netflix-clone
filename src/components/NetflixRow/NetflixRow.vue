@@ -76,6 +76,7 @@ export default {
   created() {
     this.debouncedFetchData = debounce(this.fetchData, 200);
   },
+
   computed: {
     swiperOptions() {
       return {

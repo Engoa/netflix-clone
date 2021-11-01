@@ -17,6 +17,7 @@ $max-height: 100vh;
       .v-image__image {
         background-position: top !important;
       }
+
       @include media("<tablet") {
         min-height: 350px;
       }
@@ -59,9 +60,6 @@ $max-height: 100vh;
       font-size: clamp(1.3rem, 7vw, 4rem);
       letter-spacing: 0.025em;
       white-space: pre;
-
-      @include media("<tablet") {
-      }
     }
   }
   &__buttons {

@@ -32,6 +32,24 @@ const routes = [
       },
     ],
   },
+  // {
+  //   path: "/movie",
+  //   name: "Movie",
+  //   component: () =>
+  //     import(
+  //       /* webpackChunkName: "genres-chunk" */ "../views/Genres/Genres.vue"
+  //     ),
+  //   children: [
+  //     {
+  //       name: "movie",
+  //       path: ":id",
+  //       component: () =>
+  //         import(
+  //           /* webpackChunkName: "movie-modal-chunk" */ "../components/MovieModal/MovieModal.vue"
+  //         ),
+  //     },
+  //   ],
+  // },
 
   // {
   //   path: "/crew",
