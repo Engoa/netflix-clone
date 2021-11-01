@@ -78,14 +78,14 @@ export default {
       if (!this.inputValue) {
         this.apiData = "";
       } else {
-        try {
-          const response = await NetflixService.searchMovies(
-            this.queryString + `${this.inputValue}`
-          );
-          this.apiData = response.results;
-        } catch {
-          console.log("Error fetching API");
-        }
+        // try {
+        const response = await NetflixService.searchMovies(
+          this.queryString + `${this.inputValue}`
+        );
+        this.apiData = response.results;
+        // } catch {
+        //   console.log("Error fetching API");
+        // }
       }
     },
 
