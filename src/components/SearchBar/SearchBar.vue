@@ -4,7 +4,7 @@
       >fas fa-search</v-icon
     >
     <v-dialog
-      transition="dialog-bottom-transition"
+      transition="dialog-top-transition"
       fullscreen
       v-model="dialog"
       content-class="search__bar--dialog"
@@ -13,22 +13,21 @@
         <v-app-bar-nav-icon small @click="toggleSearch">
           <v-icon>fas fa-times</v-icon>
         </v-app-bar-nav-icon>
+        <div class="input__wrapper">
+          <v-text-field
+            @input="debouncedSearchData"
+            color="red"
+            class="input__wrapper--input"
+            background-color="var(--dark-grey)"
+            label="Search for a movie"
+            v-model="inputValue"
+            ref="input"
+            spellcheck="false"
+            autofocus
+            autocomplete="off"
+          ></v-text-field>
+        </div>
       </v-app-bar>
-      <div class="input__wrapper">
-        <v-text-field
-          @input="debouncedSearchData"
-          color="red"
-          class="input__wrapper--input"
-          background-color="var(--dark-grey)"
-          label="Search for a movie"
-          v-model="inputValue"
-          ref="input"
-          width="300"
-          spellcheck="false"
-          autofocus
-          autocomplete="off"
-        ></v-text-field>
-      </div>
       <div class="api__error" v-if="error">
         <h2>Error fetching data, Please try again later...</h2>
       </div>

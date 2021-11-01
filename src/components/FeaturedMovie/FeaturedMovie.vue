@@ -32,7 +32,7 @@
         data-swiper-parallax-opacity="0"
       >
         <p>
-          <VClamp :max-lines="4" autoresize>
+          <VClamp :max-lines="3" autoresize>
             {{ data.overview }}
           </VClamp>
         </p>
@@ -65,7 +65,8 @@ export default {
   mounted() {
     const headline = this.$refs.headline;
     fitty(headline, {
-      maxSize: 400,
+      maxSize: 80,
+      minSize: 20,
     });
   },
 };

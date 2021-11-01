@@ -30,6 +30,7 @@
       min-height: 200px;
     }
   }
+
   .swiper-slide {
     height: unset !important;
   }
@@ -63,4 +64,9 @@
   font-size: clamp(0.75rem, 7vw, 1.1rem);
   z-index: 1;
   position: relative;
+}
+.slider__wrapper {
+  @include media("<tablet") {
+    margin-top: 1rem;
+  }
 }

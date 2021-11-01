@@ -120,7 +120,7 @@ $max-height: 100vh;
     @include flexCenter;
     @include media("<tablet") {
       height: 30px;
-      bottom: 3rem;
+      bottom: 2rem;
       width: 100px;
     }
 

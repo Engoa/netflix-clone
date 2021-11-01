@@ -25,17 +25,34 @@
 .v-input__control {
   @include flexCenter;
 }
-.v-input__slot {
-  width: 700px !important;
-  background: #2c2c2c7e !important;
-  border-radius: 0.3rem !important;
-  margin-top: 1rem;
-  @include media("<tablet") {
-    width: 300px !important;
+
+.v-toolbar {
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  width: 100% !important;
+  height: 80px !important;
+
+  &__content {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 1rem !important;
   }
 }
-.v-input {
-  max-height: unset !important;
+.input__wrapper {
+  .v-input__slot {
+    width: 700px !important;
+    background: #2c2c2c7e !important;
+    border-radius: 0.3rem !important;
+    margin-top: 1rem;
+    @include media("<tablet") {
+      width: 300px !important;
+    }
+  }
+  .v-input {
+    max-height: unset !important;
+  }
 }
 
 .search__results {
@@ -45,6 +62,7 @@
   flex-wrap: wrap;
   gap: 0.5rem;
   width: 100%;
+  margin-top: 1rem;
 
   &__images {
     cursor: pointer;
@@ -70,4 +88,3 @@
   align-items: center;
   justify-content: center;
 }
-
