@@ -16,12 +16,12 @@
           v-for="(movie, index) in apiData"
           :key="movie.title + index"
         >
-          <v-card class="slider__movie">
+          <v-card class="slider__movie" @click="openModal(movie.id)">
             <v-img
               :src="`${
                 movie.poster_path === null
                   ? 'https://wallpaperaccess.com/full/2772922.png'
-                  : `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                  : `https://image.tmdb.org/t/p/original${movie.poster_path}`
               }`"
               :alt="movie.title"
             >
@@ -39,17 +39,20 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </Swiper>
     </div>
+    <MovieModal :isOpen="isOpen" @onClose="closeModal" />
   </div>
 </template>
 
 <script>
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
-import "./NetflixRow.scss";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
+import { mapActions } from "vuex";
+import MovieModal from "../MovieModal/MovieModal.vue";
+import "./NetflixRow.scss";
 
 export default {
-  components: { NavigationArrows },
+  components: { NavigationArrows, MovieModal },
   name: "NetflixRow",
   props: {
     queryString: String,
@@ -62,6 +65,8 @@ export default {
     totalPages: 1,
     loading: false,
     isIntersected: false,
+    isOpen: false,
+
     navigationElements: {
       prev: "prev__" + vm.generateRandomString(),
       next: "next__" + vm.generateRandomString(),
@@ -98,6 +103,18 @@ export default {
     },
   },
   methods: {
+    ...mapActions({
+      setCurrentMovieById: "netflix/setCurrentMovieById",
+    }),
+
+    openModal(id) {
+      const movie = this.movieId(id); // get movie by id
+      this.setCurrentMovieById(movie); // setting the current movie by id
+      this.isOpen = true;
+    },
+    closeModal() {
+      this.isOpen = false;
+    },
     onIntersect(entries) {
       if (!this.isIntersected && entries[0].isIntersecting) {
         this.isIntersected = true;

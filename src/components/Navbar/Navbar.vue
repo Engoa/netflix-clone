@@ -59,13 +59,14 @@
           </li>
         </router-link>
         <router-link
-          v-for="genre in genresData"
-          :key="genre.text"
-          :to="`/genres/${genre.text}`"
+          v-for="(genre, index) in apiRows"
+          :title="genre.title"
+          :key="genre.title + index"
+          :to="`/genres/${genre.title}`"
           class="anchors"
         >
           <li class="sidebar__navlink">
-            <span class="link-text">{{ genre.text }}</span>
+            <span class="link-text">{{ genre.link }}</span>
           </li>
         </router-link>
       </ul>
@@ -75,8 +76,9 @@
 
 <script>
 import "./Navbar.scss";
-import Genres from "@/assets/jsons/Genres.json";
 import SearchBar from "../SearchBar/SearchBar.vue";
+import capitalize from "lodash/capitalize";
+
 export default {
   components: { SearchBar },
   name: "Navbar",
@@ -84,7 +86,6 @@ export default {
     scrollPosition: 0,
     navBarActive: false,
     sideNav: false,
-    genresData: Genres,
   }),
   methods: {
     updateScroll() {
@@ -97,6 +98,16 @@ export default {
     },
     toggleNav() {
       this.sideNav = !this.sideNav;
+    },
+  },
+  computed: {
+    apiRows() {
+      return [
+        ...Object.entries(this.MOVIEDB_GENERES).map(([value, key]) => ({
+          link: key,
+          title: capitalize(value),
+        })),
+      ];
     },
   },
 

@@ -40,11 +40,12 @@
 }
 
 .v-navigation-drawer__content {
-  width: 100%;
+  background: var(--dark-grey) !important;
 }
 .sidebar {
   padding: 1.5rem 2rem;
   width: 100%;
+
   &:hover,
   &:active {
     background-color: rgba(255, 0, 0, 0.603);

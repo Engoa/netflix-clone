@@ -8,13 +8,15 @@ $max-height: 100vh;
   max-height: $max-height;
 
   &__image {
+    position: relative;
     .v-image {
       width: 100%;
       min-height: $max-height;
       max-height: $max-height;
       pointer-events: none;
-      position: relative;
-
+      .v-image__image {
+        background-position: top !important;
+      }
       @include media("<tablet") {
         min-height: 350px;
       }

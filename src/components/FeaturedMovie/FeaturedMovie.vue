@@ -4,7 +4,7 @@
       <v-img
         data-swiper-parallax="500"
         data-swiper-parallax-scale="1.8"
-        :src="`https://image.tmdb.org/t/p/original/${data.backdrop_path}`"
+        :src="`https://image.tmdb.org/t/p/original${data.backdrop_path}`"
       />
     </div>
     <div class="featured-movie__data">

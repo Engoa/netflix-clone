@@ -3,7 +3,6 @@
 .search__bar--dialog {
   background: #2c2c2c7e;
   padding-bottom: 2rem;
-
   .nav__left__logo {
     left: 50%;
     transform: translateX(-50%);
@@ -64,5 +63,13 @@
       min-height: 280px;
       border-radius: 0.2rem;
     }
+  }
+}
+
+.search__error {
+  h2 {
+    font-size: 1.2rem;
+    font-size: clamp(1.2rem, 3vw, 1.7rem);
+    text-align: center;
   }
 }

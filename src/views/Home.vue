@@ -14,7 +14,6 @@
 
 <script>
 import capitalize from "lodash/capitalize";
-// import MovieModal from "../MovieModal/MovieModal.vue";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
 import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
 export default {

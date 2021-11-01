@@ -29,7 +29,10 @@
           autocomplete="off"
         ></v-text-field>
       </div>
-      <div class="search__results">
+      <div class="search__error" v-if="error">
+        <h2>Error fetching data, Please try again later...</h2>
+      </div>
+      <div class="search__results" v-if="!error">
         <div
           class="search__results__images"
           v-for="(movie, index) in apiData"
@@ -43,7 +46,7 @@
                 movie.poster_path === '' ||
                 !movie.poster_path
                   ? 'https://wallpaperaccess.com/full/2772922.png'
-                  : `https://image.tmdb.org/t/p/original/${movie.poster_path}`
+                  : `https://image.tmdb.org/t/p/original${movie.poster_path}`
               }`"
               :alt="movie.title"
             >
@@ -80,6 +83,7 @@ export default {
     dialog: false,
     queryString: "&query=",
     inputValue: "",
+    error: false,
   }),
   created() {
     this.debouncedSearchData = debounce(this.fetchData, 500);
@@ -97,15 +101,13 @@ export default {
           this.apiData = response.results;
         } catch (error) {
           console.log(error);
+          this.error = true;
         }
       }
     },
 
     toggleSearch() {
       this.dialog = !this.dialog;
-      this.$nextTick(() => {
-        this.$refs.input.$el.focus();
-      });
     },
   },
 };
