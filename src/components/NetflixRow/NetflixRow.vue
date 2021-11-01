@@ -102,19 +102,19 @@ export default {
     },
 
     async fetchData() {
-      // try {
-      this.loading = true;
-      const response = await NetflixService.discoverMovies(
-        this.queryString,
-        this.currentPage
-      );
-      this.totalPages = response.total_pages;
-      this.apiData = this.apiData.concat(response.results);
-      // } catch {
-      //   console.log("Error fetching API");
-      // } finally {
-      // }
-      this.loading = false;
+      try {
+        this.loading = true;
+        const response = await NetflixService.discoverMovies(
+          this.queryString,
+          this.currentPage
+        );
+        this.totalPages = response.total_pages;
+        this.apiData = this.apiData.concat(response.results);
+      } catch (error) {
+        console.log(error);
+      } finally {
+        this.loading = false;
+      }
     },
     handleSwipe(event) {
       const realIndex = event.realIndex;

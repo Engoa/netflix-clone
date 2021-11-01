@@ -51,12 +51,12 @@ export default {
 
   methods: {
     async fetchData() {
-      // try {
-      const response = await NetflixService.trendingLastDays();
-      this.apiData = response.results;
-      // } catch {
-      //   console.log("Error fetching API");
-      // }
+      try {
+        const response = await NetflixService.trendingLastDays();
+        this.apiData = response.results;
+      } catch (error) {
+        console.log(error);
+      }
     },
   },
 };

@@ -2,7 +2,7 @@ import axios from "axios";
 import store from "../store";
 
 const BASE_URL = "https://api.themoviedb.org/3/",
-  API_KEY = `?api_key=${process.env.VUE_APP_API}`,
+  API_KEY = `?api_key=aaf4434aae80f32eb7c2bbbc9ff754e8`,
   genUrl = (apiType) => BASE_URL + apiType + API_KEY + "&",
   genFullUrl = (apiType, query = "", page = 1) =>
     genUrl(apiType) + query + `&page=${page}`;
