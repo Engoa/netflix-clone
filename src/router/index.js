@@ -32,12 +32,13 @@ const routes = [
       },
     ],
   },
+
   // {
   //   path: "/movie",
   //   name: "Movie",
   //   component: () =>
   //     import(
-  //       /* webpackChunkName: "genres-chunk" */ "../views/Genres/Genres.vue"
+  //       /* webpackChunkName: "movie-modal-chunk" */ "../views/MovieModal/MovieModal.vue"
   //     ),
   //   children: [
   //     {

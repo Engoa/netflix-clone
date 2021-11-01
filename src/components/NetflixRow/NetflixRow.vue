@@ -84,7 +84,12 @@ export default {
   computed: {
     swiperOptions() {
       return {
+        parallax: true,
         spaceBetween: 8,
+        longSwipesMs: 50,
+        longSwipesRatio: 0.1,
+        observer: true,
+        passiveListeners: true,
         navigation: {
           nextEl: "." + this.navigationElements.next,
           prevEl: "." + this.navigationElements.prev,
@@ -98,10 +103,13 @@ export default {
             slidesPerView: 4.5,
           },
           968: {
-            slidesPerView: 6.5,
+            slidesPerView: 5.5,
           },
           1440: {
-            slidesPerView: 10,
+            slidesPerView: 7.5,
+          },
+          1850: {
+            slidesPerView: 8.5,
           },
         },
       };
@@ -119,7 +127,6 @@ export default {
     },
     closeModal() {
       this.isOpen = false;
-
     },
     onIntersect(entries) {
       if (!this.isIntersected && entries[0].isIntersecting) {

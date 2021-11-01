@@ -14,8 +14,9 @@
 
 <script>
 import capitalize from "lodash/capitalize";
-import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
 import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
+import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
+
 export default {
   components: { NetflixRow, HeroSwiper },
   name: "Home",
@@ -36,6 +37,12 @@ export default {
         },
       ];
     },
+  },
+
+  mounted() {
+    setTimeout(() => {
+      window.scrollTo(0, 0); // Force scroll to top on load
+    }, 500);
   },
 };
 </script>

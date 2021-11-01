@@ -14,7 +14,7 @@
         data-swiper-parallax-duration="1400"
         data-swiper-parallax-opacity="0"
       >
-        <h1>{{ data.title || data.name }}</h1>
+        <h1 ref="headline">{{ data.title || data.name }}</h1>
       </div>
       <div
         class="featured-movie__buttons"
@@ -51,6 +51,7 @@
 
 <script>
 import VClamp from "vue-clamp";
+import fitty from "fitty";
 
 import "./FeaturedMovie.scss";
 export default {
@@ -60,6 +61,12 @@ export default {
   },
   props: {
     data: null,
+  },
+  mounted() {
+    const headline = this.$refs.headline;
+    fitty(headline, {
+      maxSize: 400,
+    });
   },
 };
 </script>

@@ -42,16 +42,16 @@ export default {
         prev: "hero__nav__prev",
       };
     },
+
     swiperOptions() {
       return {
         parallax: true,
-        grabCursor: true,
         speed: 800,
+        slidesPerView: 1,
         navigation: {
           nextEl: "." + this.navClasses.next,
           prevEl: "." + this.navClasses.prev,
         },
-        slidesPerView: 1,
       };
     },
   },

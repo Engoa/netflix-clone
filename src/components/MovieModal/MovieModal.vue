@@ -29,8 +29,8 @@
         </div>
         <div class="movie-modal__information--data">
           <span>{{ movie.vote_count }} votes</span>
-          <span>{{ movie.release_date }}</span>
-          <span>{{ movie.media_type }}</span>
+          <span>{{ movie.release_date.toString().split("-")[0] }}</span>
+          <span>{{ !movie.media_type ? "Movie" : movie.media_type }}</span>
           <span> {{ movie.adult ? "16+" : "12+" }}</span>
           <span>HD</span>
           <span>5.1</span>
@@ -42,7 +42,7 @@
         </div>
         <div class="movie-modal__information--overview">
           <p>
-            <VClamp :max-lines="3" autoresize>
+            <VClamp :max-lines="5" autoresize>
               {{ movie.overview }}
             </VClamp>
           </p>
@@ -54,6 +54,7 @@
 
 <script>
 import VClamp from "vue-clamp";
+// import fitty from "fitty";
 import "./MovieModal.scss";
 export default {
   name: "MovieModal",
@@ -62,6 +63,13 @@ export default {
   props: {
     isOpen: Boolean,
   },
+
+  // mounted() {
+  //   const modalheadline = this.$refs.modalheadline;
+  //   fitty(modalheadline, {
+  //     maxSize: 400,
+  //   });
+  // },
 
   computed: {
     showPopup: {
