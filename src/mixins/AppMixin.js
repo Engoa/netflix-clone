@@ -1,11 +1,11 @@
 import { mapGetters } from "vuex";
 
 export default {
+  data: () => ({}),
   computed: {
     ...mapGetters({
       netflixData: "netflix/getNetflixData",
       movieId: "netflix/getMovieById",
-      currentMovie: "netflix/getCurrentMovie",
     }),
 
     MOVIEDB_GENERES() {
@@ -29,6 +29,10 @@ export default {
   methods: {
     generateRandomString(length = 5) {
       return Math.random().toString(36).substring(length);
+    },
+
+    OPEN_VIDEO(vid) {
+      this.$router.push({ query: { vid } });
     },
   },
 };

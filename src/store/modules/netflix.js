@@ -2,7 +2,6 @@ import uniqBy from "lodash/uniqBy";
 
 const state = {
   netflix: [],
-  currentMovie: [],
 };
 
 const saveLS = (key, value) => localStorage.setItem(key, JSON.stringify(value));

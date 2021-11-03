@@ -1,7 +1,7 @@
 @import "@/styles/import.scss";
 
 .search__bar--dialog {
-  background: #2c2c2c7e;
+  background: #2b2a2a93;
   padding-bottom: 2rem;
   .nav__left__logo {
     left: 50%;
@@ -71,8 +71,8 @@
     @include media("<tablet") {
       max-height: 280px;
     }
-    &:hover {
-      transform: scale(1.1);
+    &:active {
+      transform: scale(1.05);
       z-index: 2;
     }
     .v-image {

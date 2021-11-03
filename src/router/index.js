@@ -32,44 +32,6 @@ const routes = [
       },
     ],
   },
-
-  // {
-  //   path: "/movie",
-  //   name: "Movie",
-  //   component: () =>
-  //     import(
-  //       /* webpackChunkName: "movie-modal-chunk" */ "../views/MovieModal/MovieModal.vue"
-  //     ),
-  //   children: [
-  //     {
-  //       name: "movie",
-  //       path: ":id",
-  //       component: () =>
-  //         import(
-  //           /* webpackChunkName: "movie-modal-chunk" */ "../components/MovieModal/MovieModal.vue"
-  //         ),
-  //     },
-  //   ],
-  // },
-
-  // {
-  //   path: "/crew",
-  //   name: "Crew",
-  //   meta: {
-  //     name: "crew",
-  //   },
-  //   component: () =>
-  //     import(/* webpackChunkName: "crew-chunk" */ "../views/Crew.vue"),
-
-  // receive id in component: this.$route.params.id
-  // push to route with id: this.$router.push({ name:'Name', id })
-
-  // children: {
-  //   path: ":id",
-  //   name: "Crew",
-  //   component: () =>
-  //     import(/* webpackChunkName: "crew-chunk" */ "../views/CrewItem.vue"),
-  // },
 ];
 
 const router = new VueRouter({

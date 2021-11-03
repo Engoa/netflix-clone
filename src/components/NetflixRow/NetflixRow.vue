@@ -19,7 +19,7 @@
           v-for="(movie, index) in apiData"
           :key="movie.title + index"
         >
-          <v-card class="slider__movie" @click="openModal(movie.id)">
+          <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
             <v-img
               :src="`${
                 movie.poster_path === null
@@ -42,7 +42,6 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </Swiper>
     </div>
-    <MovieModal :isOpen="isOpen" @onClose="closeModal" />
   </div>
 </template>
 
@@ -50,12 +49,10 @@
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
-import { mapActions } from "vuex";
-import MovieModal from "../MovieModal/MovieModal.vue";
 import "./NetflixRow.scss";
 
 export default {
-  components: { NavigationArrows, MovieModal },
+  components: { NavigationArrows },
   name: "NetflixRow",
   props: {
     queryString: String,
@@ -109,25 +106,14 @@ export default {
             slidesPerView: 7.5,
           },
           1850: {
-            slidesPerView: 8.5,
+            slidesPerView: 9,
           },
         },
       };
     },
   },
-  methods: {
-    ...mapActions({
-      setCurrentMovieById: "netflix/setCurrentMovieById",
-    }),
 
-    openModal(id) {
-      const movie = this.movieId(id); // get movie by id
-      this.setCurrentMovieById(movie); // setting the current movie by id
-      this.isOpen = true;
-    },
-    closeModal() {
-      this.isOpen = false;
-    },
+  methods: {
     onIntersect(entries) {
       if (!this.isIntersected && entries[0].isIntersecting) {
         this.isIntersected = true;

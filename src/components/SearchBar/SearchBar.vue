@@ -19,7 +19,7 @@
             color="red"
             class="input__wrapper--input"
             background-color="var(--dark-grey)"
-            label="Search for a movie"
+            placeholder="Search for a movie"
             v-model="inputValue"
             ref="input"
             spellcheck="false"
@@ -37,7 +37,7 @@
           v-for="(movie, index) in apiData"
           :key="movie.poster_path + index"
         >
-          <v-card class="slider__movie" @click="openModal(movie.id)">
+          <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
             <v-img
               width="200"
               :src="`${
@@ -61,7 +61,6 @@
           </v-card>
         </div>
       </div>
-      <MovieModal :isOpen="isOpen" @onClose="closeModal" />
     </v-dialog>
   </div>
 </template>
@@ -69,12 +68,9 @@
 <script>
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
-import MovieModal from "../MovieModal/MovieModal.vue";
-import { mapActions } from "vuex";
 import "./SearchBar.scss";
 
 export default {
-  components: { MovieModal },
   name: "SearchBar",
   data: () => ({
     apiData: [],
@@ -89,20 +85,6 @@ export default {
   },
 
   methods: {
-    ...mapActions({
-      setCurrentMovieById: "netflix/setCurrentMovieById",
-    }),
-
-    openModal(id) {
-      const movie = this.movieId(id); // get movie by id
-      this.setCurrentMovieById(movie); // setting the current movie by id
-      this.isOpen = true;
-      // this.$router.push("/movie/" + id);
-    },
-
-    closeModal() {
-      this.isOpen = false;
-    },
     async fetchData() {
       if (!this.inputValue) {
         this.apiData = [];

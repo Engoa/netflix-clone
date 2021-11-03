@@ -51,6 +51,7 @@ ol {
 }
 
 .api__error {
+  text-transform: uppercase;
   h2 {
     font-size: 1.2rem;
     font-size: clamp(1.2rem, 3vw, 1.7rem);
@@ -60,6 +61,7 @@ ol {
 }
 
 .error-wrapper {
+  text-transform: uppercase;
   position: absolute;
   top: 5rem;
   left: 50%;

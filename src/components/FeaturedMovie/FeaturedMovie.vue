@@ -1,5 +1,5 @@
 <template>
-  <div class="featured-movie">
+  <div class="featured-movie" >
     <div class="featured-movie__image">
       <v-img
         data-swiper-parallax="600"

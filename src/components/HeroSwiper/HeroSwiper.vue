@@ -2,13 +2,12 @@
   <header class="hero">
     <Swiper :options="swiperOptions">
       <SwiperSlide v-for="movie in apiData" :key="movie.id + 'hero'">
-        <div @click="openModal(movie.id)">
+        <div @click="OPEN_VIDEO(movie.id)">
           <FeaturedMovie :data="movie" />
         </div>
       </SwiperSlide>
     </Swiper>
     <NavigationArrows :classes="navClasses" />
-    <MovieModal :isOpen="isOpen" @onClose="closeModal" />
   </header>
 </template>
 
@@ -16,15 +15,13 @@
 import NetflixService from "../../services/NetflixService";
 import FeaturedMovie from "../FeaturedMovie/FeaturedMovie.vue";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
-import MovieModal from "../MovieModal/MovieModal.vue";
-import { mapActions } from "vuex";
 
 import "./HeroSwiper.scss";
 
 export default {
   name: "HeroSwiper",
 
-  components: { FeaturedMovie, NavigationArrows, MovieModal },
+  components: { FeaturedMovie, NavigationArrows },
 
   data: () => ({
     apiData: null,
@@ -64,20 +61,6 @@ export default {
       } catch (error) {
         console.log(error);
       }
-    },
-    ...mapActions({
-      setCurrentMovieById: "netflix/setCurrentMovieById",
-    }),
-
-    openModal(id) {
-      const movie = this.movieId(id); // get movie by id
-      this.setCurrentMovieById(movie); // setting the current movie by id
-      this.isOpen = true;
-      // this.$router.push("/movie/" + id);
-    },
-
-    closeModal() {
-      this.isOpen = false;
     },
   },
 };

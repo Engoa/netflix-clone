@@ -36,13 +36,13 @@ export default {
     pointer-events: all;
     z-index: 10;
     background-color: var(--light-grey);
-    width: 60px;
+    width: 50px;
     transition: $transition-350;
+
     @include flexCenter;
-    border-radius: 0.2rem;
 
     @include media("<tablet") {
-      width: 35px;
+      width: 25px;
     }
     &:hover {
       background-color: var(--dark-grey);

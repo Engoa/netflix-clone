@@ -42,7 +42,7 @@ export default {
   mounted() {
     setTimeout(() => {
       window.scrollTo(0, 0); // Force scroll to top on load
-    }, 500);
+    }, 700);
   },
 };
 </script>

@@ -23,9 +23,13 @@ export default {
     await store.dispatch("netflix/setNetflixData", res.data.results);
     return res.data;
   },
-
-  mounted() {
-    console.log(genUrl);
+  async searchMovieByID(query) {
+    const res = await axios.get(`${BASE_URL}movie/${query}${API_KEY}`);
+    return res.data;
+  },
+  async searchMovieByIDForVideo(query) {
+    const res = await axios.get(`${BASE_URL}movie/${query}/videos${API_KEY}`);
+    return res.data;
   },
 };
 // https://api.themoviedb.org/3/search/company?api_key=<<api_key>>&page=1

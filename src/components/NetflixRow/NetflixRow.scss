@@ -15,8 +15,15 @@
     }
   }
   .nav-arrows {
-    inset: 0 -1rem;
+    inset: 2.65rem -1rem;
     opacity: 0;
+
+    &-item {
+      @include media("<mobile") {
+        height: 200px;
+        inset: 2.6rem -1rem;
+      }
+    }
   }
 
   .swiper-wrapper {
@@ -48,7 +55,7 @@
       min-height: 200px;
     }
 
-    &:hover {
+    &:active {
       transform: scale(1.05);
       z-index: 2;
     }
@@ -66,7 +73,5 @@
   position: relative;
 }
 .slider__wrapper {
-  @include media("<tablet") {
-    margin-top: 1rem;
-  }
+  margin-top: 1.5rem;
 }
