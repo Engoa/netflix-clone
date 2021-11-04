@@ -1,5 +1,5 @@
 <template>
-  <div class="nav-arrows">
+  <div ref="navarrows" class="nav-arrows">
     <div class="nav-arrows-item" :class="classes.prev">
       <v-icon>fas fa-chevron-left</v-icon>
     </div>

@@ -1,11 +1,14 @@
 import { mapGetters } from "vuex";
 
 export default {
-  data: () => ({}),
+  data: () => ({
+    myArray: [],
+  }),
   computed: {
     ...mapGetters({
       netflixData: "netflix/getNetflixData",
       movieId: "netflix/getMovieById",
+      getUser: "netflix/getUserData",
     }),
 
     MOVIEDB_GENERES() {
@@ -27,6 +30,13 @@ export default {
   },
 
   methods: {
+    setLS(key, value) {
+      localStorage.setItem(key, JSON.stringify(value));
+    },
+    getLS(value) {
+      localStorage.getItem(value);
+    },
+
     generateRandomString(length = 5) {
       return Math.random().toString(36).substring(length);
     },
@@ -34,5 +44,9 @@ export default {
     OPEN_VIDEO(vid) {
       this.$router.push({ query: { vid } });
     },
+    // ADD_TO_LIST(obj) {
+    //   this.myArray.push(obj);
+    //   console.log(this.myArray);
+    // },
   },
 };

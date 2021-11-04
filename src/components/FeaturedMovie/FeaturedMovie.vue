@@ -1,10 +1,10 @@
 <template>
-  <div class="featured-movie" >
+  <div class="featured-movie">
     <div class="featured-movie__image">
       <v-img
         data-swiper-parallax="600"
         data-swiper-parallax-scale="1.8"
-        :src="`https://image.tmdb.org/t/p/original${data.backdrop_path}`"
+        :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
       />
     </div>
     <div class="featured-movie__data">
@@ -14,7 +14,7 @@
         data-swiper-parallax-duration="1400"
         data-swiper-parallax-opacity="0"
       >
-        <h1 ref="headline">{{ data.title || data.name }}</h1>
+        <h1 ref="headline">{{ movie.title || movie.name }}</h1>
       </div>
       <div
         class="featured-movie__buttons"
@@ -24,6 +24,7 @@
       >
         <v-btn elevation="0.1"><v-icon> fas fa-play</v-icon>Play</v-btn>
         <v-btn elevation="0.1"><v-icon> fas fa-plus</v-icon>My List</v-btn>
+        <!-- @click.stop="ADD_TO_LIST(movie)" -->
       </div>
       <div
         class="featured-movie__description"
@@ -33,7 +34,7 @@
       >
         <p>
           <VClamp :max-lines="3" autoresize>
-            {{ data.overview }}
+            {{ movie.overview }}
           </VClamp>
         </p>
       </div>
@@ -44,7 +45,7 @@
       data-swiper-parallax-duration="1100"
       data-swiper-parallax-opacity="0"
     >
-      <span> {{ data.adult ? "12+" : "16+" }} </span>
+      <span> {{ movie.adult ? "12+" : "16+" }} </span>
     </div>
   </div>
 </template>
@@ -60,8 +61,9 @@ export default {
     VClamp,
   },
   props: {
-    data: null,
+    movie: null,
   },
+
   mounted() {
     const headline = this.$refs.headline;
     fitty(headline, {

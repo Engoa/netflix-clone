@@ -5,11 +5,11 @@
     transition="dialog-bottom-transition"
     :fullscreen="false"
   >
-    <div class="movie-modal__top" v-if="movie">
+    <div class="movie-modal__top">
       <div class="movie-modal__close">
         <v-icon @click="$emit('onClose')">fas fa-times</v-icon>
       </div>
-      <div class="movie-modal__link">
+      <div class="movie-modal__link" v-if="movie">
         <a :href="movie.homepage" target="_blank">
           <v-btn text fab small>
             <v-icon> fas fa-link </v-icon>

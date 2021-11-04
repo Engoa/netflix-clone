@@ -3,7 +3,7 @@
     <Swiper :options="swiperOptions">
       <SwiperSlide v-for="movie in apiData" :key="movie.id + 'hero'">
         <div @click="OPEN_VIDEO(movie.id)">
-          <FeaturedMovie :data="movie" />
+          <FeaturedMovie :movie="movie" />
         </div>
       </SwiperSlide>
     </Swiper>

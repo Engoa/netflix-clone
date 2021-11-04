@@ -31,12 +31,13 @@ export default {
       if (!isOpen && this.$route.query?.vid) {
         this.$router.push({ query: null });
       }
+      const arrows = document.querySelector(".nav-arrows");
+      if (isOpen) {
+        arrows.style.display = "none";
+      } else {
+        arrows.style.display = "flex";
+      }
     },
   },
 };
 </script>
-<style lang="scss">
-#app {
-  background-color: var(--v-background-base);
-}
-</style>

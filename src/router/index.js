@@ -15,6 +15,12 @@ const routes = [
   },
 
   {
+    path: "/login",
+    name: "Landing",
+    component: () =>
+      import(/* webpackChunkName: "genres-chunk" */ "../views/Landing.vue"),
+  },
+  {
     path: "/genres",
     name: "Genres",
     component: () =>
