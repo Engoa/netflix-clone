@@ -96,6 +96,10 @@ $max-height: 100vh;
     .v-icon {
       margin-right: 0.7rem;
       transition: $transition-150;
+
+      @include media("<tablet") {
+        font-size: 1.1rem;
+      }
     }
   }
   &__description {

@@ -23,10 +23,11 @@
         data-swiper-parallax-opacity="0"
       >
         <v-btn elevation="0.1" @click="OPEN_VIDEO(movie.id)"
-          ><v-icon> fas fa-play</v-icon>Play</v-btn
+          ><v-icon>fas fa-play</v-icon>Play</v-btn
         >
-        <v-btn elevation="0.1"><v-icon> fas fa-plus</v-icon>My List</v-btn>
-        <!-- @click.stop="ADD_TO_LIST(movie)" -->
+        <v-btn elevation="0.1" @click.stop="addToList(movie.id)"
+          ><v-icon> fas fa-plus</v-icon>My List</v-btn
+        >
       </div>
       <div
         class="featured-movie__description"
@@ -60,15 +61,27 @@
 <script>
 import VClamp from "vue-clamp";
 import fitty from "fitty";
+import { mapActions } from "vuex";
 
 import "./FeaturedMovie.scss";
 export default {
   name: "FeaturedMovie",
+  data: () => ({
+    snackbar: {
+      active: false,
+      message: "",
+    },
+  }),
   components: {
     VClamp,
   },
   props: {
     movie: null,
+  },
+  methods: {
+    ...mapActions({
+      addList: "mylist/addList",
+    }),
   },
 
   mounted() {

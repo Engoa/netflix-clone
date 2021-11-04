@@ -48,6 +48,7 @@ export default {
   },
 
   mounted() {
+    // Check for user
     const LSuser = JSON.parse(localStorage.getItem("user"));
     if (LSuser) {
       this.setUserData(LSuser);

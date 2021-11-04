@@ -1,11 +1,17 @@
 @import "@/styles/import.scss";
 
 .v-menu__content {
-  right: 3.5rem !important;
+  right: 3.65rem !important;
   top: 3rem !important;
   left: unset !important;
   width: 100px;
-  border-radius: 0.3rem;
+  border-radius: 0.2rem;
+  position: absolute;
+
+  @include media("<tablet") {
+    right: 2.4rem !important;
+    top: 3rem !important;
+  }
 
   .v-list {
     padding: 0 !important;
@@ -16,9 +22,12 @@
     transition: $transition-350;
     cursor: pointer;
     font-weight: bold;
-    padding: 0 !important;
+
+    a {
+      width: 100%;
+    }
     &:hover {
-      background-color: rgba(255, 0, 0, 0.603) !important;
+      background-color: var(--red) !important;
     }
   }
 }

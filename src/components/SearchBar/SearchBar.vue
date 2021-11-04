@@ -37,7 +37,11 @@
           v-for="(movie, index) in apiData"
           :key="movie.poster_path + index"
         >
-          <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
+          <v-card
+            class="slider__movie"
+            @click="OPEN_VIDEO(movie.id)"
+            :title="movie.title"
+          >
             <v-img
               width="200"
               :src="`${

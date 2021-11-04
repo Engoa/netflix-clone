@@ -37,7 +37,7 @@
             />
           </div>
           <div class="sidebar__user-name">
-            <span>Ido Ben Zaken</span>
+            <span>{{ userData.fullname }}</span>
           </div>
           <v-icon class="user-arrow">fa fa-arrow-right</v-icon>
         </router-link>

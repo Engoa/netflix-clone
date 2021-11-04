@@ -7,9 +7,11 @@
         >
       </template>
       <v-list>
-        <v-list-item>
-          <v-list-item-title>Settings</v-list-item-title>
-        </v-list-item>
+        <router-link to="/settings">
+          <v-list-item>
+            <v-list-item-title> Settings </v-list-item-title>
+          </v-list-item>
+        </router-link>
         <v-list-item @click.stop="logout">
           <v-list-item-title>Logout</v-list-item-title>
         </v-list-item>

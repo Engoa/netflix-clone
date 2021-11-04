@@ -38,6 +38,14 @@
     align-items: center !important;
     justify-content: center !important;
     gap: 1rem !important;
+
+    .v-icon {
+      transition: $transition-350;
+      &:hover {
+        color: var(--red);
+        transform: rotate(-90deg);
+      }
+    }
   }
 }
 .input__wrapper {
@@ -64,12 +72,18 @@
   width: 100%;
   margin-top: 1rem;
 
+  .v-card {
+    min-height: 100% !important;
+  }
+
   &__images {
     cursor: pointer;
     transition: $transition-350;
     overflow: hidden;
+    border-radius: 0.3rem;
     @include media("<tablet") {
       max-height: 280px;
+      max-width: 175px;
     }
     &:active {
       transform: scale(1.05);
@@ -77,6 +91,7 @@
     }
     .v-image {
       min-width: 200px;
+
       max-height: 280px;
       min-height: 280px;
       border-radius: 0.2rem;

@@ -16,7 +16,7 @@
       <NavigationArrows :classes="navigationElements" />
       <Swiper :options="swiperOptions" @slide-change="handleSwipe">
         <SwiperSlide
-          v-for="(movie, index) in apiData"
+          v-for="(movie, index) in data || apiData"
           :key="movie.title + index"
         >
           <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
@@ -37,11 +37,29 @@
                 </v-row>
               </template>
             </v-img>
+            <v-icon
+              class="add__btn card__buttons"
+              @click.stop="addToList(movie.id)"
+              >fas fa-plus</v-icon
+            >
+            <v-icon
+              class="delete__btn card__buttons"
+              @click.stop="deleteFromList(index)"
+              >fas fa-times</v-icon
+            >
           </v-card>
         </SwiperSlide>
         <div class="swiper-pagination" slot="pagination"></div>
       </Swiper>
     </div>
+    <v-snackbar v-model="snackbar.active">
+      {{ snackbar.message }}
+      <template v-slot:action="{ attrs }">
+        <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">
+          Close
+        </v-btn>
+      </template>
+    </v-snackbar>
   </div>
 </template>
 
@@ -49,6 +67,8 @@
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
+import { mapActions } from "vuex";
+
 import "./NetflixRow.scss";
 
 export default {
@@ -57,6 +77,7 @@ export default {
   props: {
     queryString: String,
     title: String,
+    data: null,
   },
 
   data: (vm) => ({
@@ -67,6 +88,10 @@ export default {
     isIntersected: false,
     isOpen: false,
     error: false,
+    snackbar: {
+      active: false,
+      message: "",
+    },
 
     navigationElements: {
       prev: "prev__" + vm.generateRandomString(),
@@ -74,8 +99,9 @@ export default {
     },
     debouncedFetchData: null,
   }),
+
   created() {
-    this.debouncedFetchData = debounce(this.fetchData, 200);
+    this.debouncedFetchData = debounce(this.fetchData, 150);
   },
 
   computed: {
@@ -100,13 +126,13 @@ export default {
             slidesPerView: 4.5,
           },
           968: {
-            slidesPerView: 5.5,
+            slidesPerView: 4.5,
           },
           1440: {
-            slidesPerView: 7.5,
+            slidesPerView: 5,
           },
           1850: {
-            slidesPerView: 9,
+            slidesPerView: 6.5,
           },
         },
       };
@@ -114,6 +140,17 @@ export default {
   },
 
   methods: {
+    ...mapActions({
+      addList: "mylist/addList",
+      removeFromlist: "mylist/removeFromlist",
+    }),
+
+    deleteFromList(index) {
+      this.removeFromlist(index);
+      this.snackbar.active = true;
+      this.snackbar.message = "Movie successfully deleted from list!";
+    },
+
     onIntersect(entries) {
       if (!this.isIntersected && entries[0].isIntersecting) {
         this.isIntersected = true;

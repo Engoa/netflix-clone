@@ -166,6 +166,7 @@ export default {
         this.movie = response;
         this.movievideo = responseForVideo;
         this.error = false;
+        console.log(this.movie);
       } catch (error) {
         console.log(error);
         this.error = true;

@@ -25,24 +25,14 @@ const routes = [
     name: "Register",
     component: Register,
   },
-  // {
-  //   path: "/login",
-  //   name: "Login",
-  //   component: () =>
-  //     import(/* webpackChunkName: "login-chunk" */ "../views/Login.vue"),
-  //   meta: {
-  //     name: "login",
-  //   },
-  // },
-  // {
-  //   path: "/register",
-  //   name: "Register",
-  //   component: () =>
-  //     import(/* webpackChunkName: "register-chunk" */ "../views/Register.vue"),
-  //   meta: {
-  //     name: "register",
-  //   },
-  // },
+
+  {
+    path: "/settings",
+    name: "Settings",
+    component: () =>
+      import(/* webpackChunkName: "settings-chunk" */ "../views/Settings.vue"),
+  },
+
   {
     path: "/genres",
     name: "Genres",

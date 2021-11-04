@@ -2,11 +2,14 @@
   <div>
     <HeroSwiper />
     <v-main :style="{ marginTop: '-20vmin' }">
-      <NetflixRow
-        v-for="(item, index) in myArray"
-        title="My List"
-        :key="item.title + index"
-      />
+      <v-expand-transition append>
+        <NetflixRow
+          :data="myList"
+          title="My List"
+          v-if="myList.length"
+          class="mylist"
+        />
+      </v-expand-transition>
       <NetflixRow
         v-for="(item, index) in apiRows"
         :title="item.title"
@@ -21,10 +24,16 @@
 import capitalize from "lodash/capitalize";
 import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
+import { mapActions } from "vuex";
 
 export default {
   components: { NetflixRow, HeroSwiper },
   name: "Home",
+  methods: {
+    ...mapActions({
+      setMyList: "mylist/setMyList",
+    }),
+  },
 
   computed: {
     apiRows() {
@@ -50,6 +59,12 @@ export default {
     setTimeout(() => {
       window.scrollTo(0, 0); // Force scroll to top on load
     }, 700);
+
+    // Check for list
+    const myListLS = JSON.parse(localStorage.getItem("mylist"));
+    if (myListLS) {
+      this.setMyList(myListLS);
+    }
   },
 };
 </script>

@@ -35,7 +35,7 @@ export default {
   &-item {
     pointer-events: all;
     z-index: 10;
-    background-color: var(--light-grey);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.801) 2%, transparent);
     width: 50px;
     transition: $transition-350;
 
@@ -45,7 +45,7 @@ export default {
       width: 25px;
     }
     &:hover {
-      background-color: var(--dark-grey);
+      background: radial-gradient(circle, rgb(0, 0, 0) 5%, transparent);
     }
     .v-icon {
       height: 100% !important;

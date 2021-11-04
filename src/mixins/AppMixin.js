@@ -9,6 +9,7 @@ export default {
       netflixData: "netflix/getNetflixData",
       movieId: "netflix/getMovieById",
       userData: "user/getUserData",
+      myList: "mylist/getMyList",
     }),
 
     MOVIEDB_GENERES() {
@@ -37,9 +38,11 @@ export default {
     OPEN_VIDEO(vid) {
       this.$router.push({ query: { vid } });
     },
-    // ADD_TO_LIST(obj) {
-    //   this.myArray.push(obj);
-    //   console.log(this.myArray);
-    // },
+
+    addToList(id) {
+      this.addList(this.movieId(id));
+      this.snackbar.active = true;
+      this.snackbar.message = "Movie successfully added to list!";
+    },
   },
 };

@@ -5,7 +5,7 @@
   padding: 1rem 1.5rem;
   position: fixed;
   z-index: 99;
-  transition: $transition-350;
+  transition: all 0.5s ease-in-out;
   transition-delay: 0.2s;
   &--active {
     background-color: black;
@@ -21,8 +21,9 @@
     align-items: center;
     justify-content: flex-start;
     gap: 3rem;
-    z-index: 1;
-
+    @include media("<tablet") {
+      gap: 1.5rem;
+    }
     &__logo {
       width: 100px;
     }
@@ -36,6 +37,10 @@
     justify-content: flex-end;
     width: 100%;
     gap: 3rem;
+
+    @include media("<tablet") {
+      gap: 1.5rem;
+    }
   }
 }
 
@@ -48,7 +53,7 @@
 
   &:hover,
   &:active {
-    background-color: rgba(255, 0, 0, 0.603);
+    background-color: var(--red);
   }
   &__user {
     @include flexCenter;
@@ -94,7 +99,7 @@
     }
     &:hover,
     &:active {
-      background-color: rgba(255, 0, 0, 0.603);
+      background-color: var(--red);
     }
   }
 
