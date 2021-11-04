@@ -34,7 +34,7 @@ export default {
       localStorage.setItem(key, JSON.stringify(value));
     },
     getLS(value) {
-      localStorage.getItem(value);
+      JSON.parse(localStorage.getItem(value));
     },
 
     generateRandomString(length = 5) {

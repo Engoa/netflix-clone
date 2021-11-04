@@ -34,7 +34,7 @@
     content: "";
     position: absolute;
     background-color: rgba(0, 0, 0, 0.808);
-    border-radius: 0.3rem;
+    border-radius: 0.4rem;
     height: 660px;
     width: 100%;
     z-index: -1;
@@ -53,6 +53,9 @@
     width: 100%;
     text-align: left;
     font-size: 1.1rem;
+    @include media("<tablet") {
+      text-align: center;
+    }
   }
   &__details {
     display: flex;

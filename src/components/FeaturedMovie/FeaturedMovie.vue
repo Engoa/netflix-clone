@@ -45,7 +45,7 @@
       data-swiper-parallax-duration="1100"
       data-swiper-parallax-opacity="0"
     >
-      <span> {{ movie.adult ? "12+" : "16+" }} </span>
+      <span> {{ !movie.adult ? "12+" : "16+" }}</span>
     </div>
   </div>
 </template>

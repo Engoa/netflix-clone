@@ -25,8 +25,7 @@
         </Fitty>
       </div>
     </div>
-    <!-- // TODO: find better name ya asshole -->
-    <div class="data" v-if="movie">
+    <div class="movie-modal__data" v-if="movie">
       <div class="movie-modal__image--poster">
         <v-img
           class="poster-image"
@@ -64,7 +63,7 @@
             <span v-else>Unknown Date</span>
           </template>
           <span>{{ !movie.media_type ? "Movie" : movie.media_type }}</span>
-          <span> {{ movie.adult ? "16+" : "12+" }}</span>
+          <span> {{ !movie.adult ? "12+" : "16+" }}</span>
           <span>HD</span>
           <span>5.1</span>
         </div>
@@ -85,7 +84,7 @@
           <span> {{ movie.runtime }} Minutes</span>
         </div>
         <div class="movie-modal__information--budget">
-          <span> {{ movie.budget }} Dollars </span>
+          <span> {{ movie.budget.toLocaleString() }}$ Dollars in budget </span>
         </div>
         <div class="movie-modal__information--overview">
           <p>
@@ -167,6 +166,7 @@ export default {
         this.movie = response;
         this.movievideo = responseForVideo;
         this.error = false;
+        console.log(this.movie);
       } catch (error) {
         console.log(error);
         this.error = true;

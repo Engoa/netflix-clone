@@ -85,12 +85,10 @@ export default {
       } else {
         this.user = {
           email: this.email,
-          password: this.password,
         };
         this.setLS("user", this.user);
         this.$router.replace("/");
       }
-      console.log(this.user);
     },
   },
 };

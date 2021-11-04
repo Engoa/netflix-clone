@@ -39,5 +39,15 @@ export default {
       }
     },
   },
+
+
+   // TO DO CHECK IF NO USER IN LS
+  // created() {
+  //   if (this.getLS("user")) {
+  //     this.$router.push({ path: "login" });
+  //     console.log(this.getLS("user"));
+  //   }
+  //   console.log(this.getLS("user"));
+  // },
 };
 </script>
