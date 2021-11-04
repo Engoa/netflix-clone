@@ -22,7 +22,9 @@
         data-swiper-parallax-duration="1300"
         data-swiper-parallax-opacity="0"
       >
-        <v-btn elevation="0.1"><v-icon> fas fa-play</v-icon>Play</v-btn>
+        <v-btn elevation="0.1" @click="OPEN_VIDEO(movie.id)"
+          ><v-icon> fas fa-play</v-icon>Play</v-btn
+        >
         <v-btn elevation="0.1"><v-icon> fas fa-plus</v-icon>My List</v-btn>
         <!-- @click.stop="ADD_TO_LIST(movie)" -->
       </div>
@@ -37,6 +39,11 @@
             {{ movie.overview }}
           </VClamp>
         </p>
+      </div>
+      <div class="featured-movie__buttons play-btn">
+        <v-btn elevation="0.1" @click="OPEN_VIDEO(movie.id)"
+          ><v-icon> fas fa-play</v-icon>Play</v-btn
+        >
       </div>
     </div>
     <div

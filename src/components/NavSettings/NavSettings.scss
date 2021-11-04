@@ -1,0 +1,24 @@
+@import "@/styles/import.scss";
+
+.v-menu__content {
+  right: 3.5rem !important;
+  top: 3rem !important;
+  left: unset !important;
+  width: 100px;
+  border-radius: 0.3rem;
+
+  .v-list {
+    padding: 0 !important;
+  }
+
+  .v-list-item {
+    text-align: center;
+    transition: $transition-350;
+    cursor: pointer;
+    font-weight: bold;
+    padding: 0 !important;
+    &:hover {
+      background-color: rgba(255, 0, 0, 0.603) !important;
+    }
+  }
+}

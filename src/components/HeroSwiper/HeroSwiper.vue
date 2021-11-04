@@ -2,9 +2,7 @@
   <header class="hero">
     <Swiper :options="swiperOptions">
       <SwiperSlide v-for="movie in apiData" :key="movie.id + 'hero'">
-        <div @click="OPEN_VIDEO(movie.id)">
-          <FeaturedMovie :movie="movie" />
-        </div>
+        <FeaturedMovie :movie="movie" />
       </SwiperSlide>
     </Swiper>
     <NavigationArrows :classes="navClasses" />
@@ -29,7 +27,9 @@ export default {
   }),
 
   created() {
-    this.fetchData();
+    if (JSON.parse(localStorage.getItem("user"))) {
+      this.fetchData();
+    }
   },
 
   computed: {

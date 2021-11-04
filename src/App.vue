@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Navbar />
+    <Navbar v-if="userData.email" />
     <MovieModal v-model="videoModalOpen" />
     <router-view />
   </v-app>
@@ -9,6 +9,7 @@
 <script>
 import MovieModal from "./components/MovieModal/MovieModal";
 import Navbar from "./components/Navbar/Navbar";
+import { mapActions } from "vuex";
 
 export default {
   components: { Navbar, MovieModal },
@@ -17,6 +18,12 @@ export default {
   data: () => ({
     videoModalOpen: false,
   }),
+
+  methods: {
+    ...mapActions({
+      setUserData: "user/setUserData",
+    }),
+  },
 
   watch: {
     $route: {
@@ -40,14 +47,21 @@ export default {
     },
   },
 
-
-   // TO DO CHECK IF NO USER IN LS
-  // created() {
-  //   if (this.getLS("user")) {
-  //     this.$router.push({ path: "login" });
-  //     console.log(this.getLS("user"));
-  //   }
-  //   console.log(this.getLS("user"));
-  // },
+  mounted() {
+    const LSuser = JSON.parse(localStorage.getItem("user"));
+    if (LSuser) {
+      this.setUserData(LSuser);
+    }
+    if (!LSuser && this.$route.name === "Home") {
+      this.$router.replace("/login");
+    }
+    if (
+      (LSuser && this.$route.name === "Login") ||
+      (LSuser && this.$route.name === "Register")
+    ) {
+      console.log(this.$route.name);
+      this.$router.replace("/");
+    }
+  },
 };
 </script>

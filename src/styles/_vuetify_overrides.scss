@@ -65,12 +65,12 @@
 }
 
 .v-ripple__container {
-  display: none !important;
   //Disable click effect on buttons
 }
 .v-snack__wrapper {
   background: rgba(0, 0, 0, 0.808) !important;
-  .v-btn__content {
+  .v-btn__content,
+  .v-snack__content {
     font-weight: bold !important;
     font-family: var(--ff-header) !important;
   }

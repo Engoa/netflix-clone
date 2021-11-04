@@ -10,11 +10,6 @@ const mutations = {
   setNetflixData(state, payload) {
     state.netflix = uniqBy(state.netflix.concat(payload), (item) => item.id);
   },
-
-  setCurrentMovieById(state, payload) {
-    state.netflix[payload];
-    state.currentMovie = [payload];
-  },
 };
 
 const actions = {
@@ -22,15 +17,10 @@ const actions = {
     commit("setNetflixData", payload);
     saveLS("netflix", state.netflix);
   },
-  setCurrentMovieById({ commit }, payload) {
-    commit("setCurrentMovieById", payload);
-  },
 };
 
 const getters = {
   getNetflixData: (state) => state.netflix,
-
-  getCurrentMovie: (state) => state.currentMovie,
 
   getMovieById: (state) => {
     return (id) => {

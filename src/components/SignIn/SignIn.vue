@@ -3,10 +3,10 @@
     <div class="landing-bg">
       <v-img src="@/assets/images/landing.jpg"></v-img>
     </div>
-    <div class="login">
+    <div class="sign-in-up">
       <form @submit.prevent="onSubmit">
-        <div class="login__details">
-          <div class="login__header">
+        <div class="sign-in-up__details">
+          <div class="sign-in-up__header">
             <h1>Sign In</h1>
           </div>
           <input
@@ -17,9 +17,9 @@
           />
           <input type="password" placeholder="Password" v-model="password" />
         </div>
-        <div class="login__cta">
+        <div class="sign-in-up__cta">
           <v-btn type="submit">Sign In</v-btn>
-          <div class="login__cta--options">
+          <div class="sign-in-up__cta--options">
             <v-checkbox v-model="checkbox">
               <template v-slot:label>
                 Remember me
@@ -31,19 +31,20 @@
         </div>
       </form>
 
-      <div class="login__signups">
-        <div class="login--facebook">
+      <div class="sign-in-up__signups">
+        <div class="sign-in-up--facebook">
           <v-img
             width="20"
             height="20"
             src="@/assets/images/Facebook_icon_2013.svg"
           ></v-img>
-          <span>Login with Facebook</span>
+          <a href="https://facebook.com">Sign In with Facebook</a>
         </div>
-        <div class="login--new">
-          <span>New to Netflix?</span> <a href="/">Sign up now</a>
+        <div class="sign-in-up--new">
+          <span>New to Netflix?</span>
+          <router-link to="register"> Sign up now</router-link>
         </div>
-        <div class="login--captcha">
+        <div class="sign-in-up--captcha">
           <span
             >This page is protected by Google reCaptcha to ensure you're not a
             bot</span
@@ -52,8 +53,8 @@
         </div>
       </div>
     </div>
-    <v-snackbar v-model="snackbar">
-      Input fields cannot be empty!
+    <v-snackbar v-model="snackbar.active">
+      {{ snackbar.message }}
       <template v-slot:action="{ attrs }">
         <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">
           Close
@@ -64,30 +65,46 @@
 </template>
 
 <script>
-import "./Login.scss";
-// import { mapActions } from "vuex";
+import "./SignIn.scss";
+import { mapActions } from "vuex";
+
 export default {
-  name: "Login",
+  name: "SignIn",
 
   data: () => ({
-    checkbox: false,
-    password: null,
     email: null,
-    user: null,
-    snackbar: false,
+    password: null,
+    checkbox: false,
+    snackbar: {
+      active: false,
+      message: "",
+    },
   }),
 
   methods: {
+    ...mapActions({
+      setUserData: "user/setUserData",
+    }),
+
     onSubmit() {
       if (!this.email & !this.password) {
-        this.snackbar = true;
+        this.snackbar.active = true;
+        this.snackbar.message = "Input fields cannot be empty!";
+        return;
+      } else if (
+        this.password !== this.userData.password ||
+        this.email !== this.userData.email
+      ) {
+        this.snackbar.active = true;
+        this.snackbar.message = "Invalid email or password!";
         return;
       } else {
-        this.user = {
-          email: this.email,
-        };
-        this.setLS("user", this.user);
-        this.$router.replace("/");
+        this.snackbar.active = true;
+        this.snackbar.message = "Successfully logged in - redirecting...";
+        this.setUserData(this.user);
+        setTimeout(() => {
+          this.$router.replace("/");
+        }, 2000);
       }
     },
   },

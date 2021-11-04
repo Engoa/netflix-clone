@@ -1,12 +1,18 @@
-const state = {
-  user: [],
-};
-
 const saveLS = (key, value) => localStorage.setItem(key, JSON.stringify(value));
+const state = {
+  user: {},
+};
 
 const mutations = {
   setUserData(state, payload) {
-    state.user = state.user(payload);
+    if (payload) {
+      state.user = payload;
+    }
+  },
+  logoutUser(state, payload) {
+    if (payload) {
+      state.user = payload;
+    }
   },
 };
 
@@ -15,10 +21,14 @@ const actions = {
     commit("setUserData", payload);
     saveLS("user", state.user);
   },
+  logoutUser({ commit, state }, payload) {
+    commit("logoutUser", payload);
+    saveLS("user", state.user);
+  },
 };
 
 const getters = {
-  getUserData: (state) => state.User,
+  getUserData: (state) => state.user,
 };
 
 export default {

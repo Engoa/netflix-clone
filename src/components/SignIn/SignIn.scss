@@ -19,7 +19,7 @@
     inset: 0;
   }
 }
-.login {
+.sign-in-up {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -33,8 +33,8 @@
   &::before {
     content: "";
     position: absolute;
-    background-color: rgba(0, 0, 0, 0.808);
-    border-radius: 0.4rem;
+    background-color: rgba(0, 0, 0, 0.664);
+    border-radius: 0.5rem;
     height: 660px;
     width: 100%;
     z-index: -1;
@@ -66,7 +66,8 @@
     margin: 0 auto;
     width: 100%;
 
-    input {
+    input,
+    select {
       background: #333333;
       color: white;
       padding-left: 1rem;
@@ -79,6 +80,11 @@
         letter-spacing: 0.02em;
       }
     }
+
+    select {
+      cursor: pointer;
+      color: white !important;
+    }
   }
   &__cta {
     display: flex;
@@ -87,10 +93,18 @@
     flex-direction: column;
     margin-top: 1rem;
     width: 100%;
+    transition: $transition-250;
+
     .v-btn {
       min-height: 45px;
       width: 100%;
       background: #e50914 !important;
+      transition: $transition-250;
+
+      &:active,
+      &:hover {
+        background: rgba(184, 39, 39, 0.712) !important;
+      }
     }
     &--options {
       display: flex;
@@ -101,6 +115,7 @@
 
       a {
         color: white;
+        font-weight: lighter;
       }
 
       .v-label {
@@ -140,6 +155,7 @@
       opacity: 0.75;
     }
     a {
+      opacity: 1;
       color: white;
     }
   }
@@ -148,10 +164,11 @@
     opacity: 0.75;
     font-weight: lighter;
 
-    padding-bottom: 4rem;
+    padding-bottom: 2rem;
     a {
       margin-left: 0.5rem;
-      color: #4980ff;
+      color: #477bf5 !important;
+      font-weight: bold;
     }
   }
 }

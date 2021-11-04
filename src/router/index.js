@@ -1,6 +1,8 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
+import Login from "../views/Login.vue";
+import Register from "../views/Register.vue";
 
 Vue.use(VueRouter);
 
@@ -13,13 +15,34 @@ const routes = [
       name: "home",
     },
   },
-
   {
     path: "/login",
-    name: "Landing",
-    component: () =>
-      import(/* webpackChunkName: "genres-chunk" */ "../views/Landing.vue"),
+    name: "Login",
+    component: Login,
   },
+  {
+    path: "/register",
+    name: "Register",
+    component: Register,
+  },
+  // {
+  //   path: "/login",
+  //   name: "Login",
+  //   component: () =>
+  //     import(/* webpackChunkName: "login-chunk" */ "../views/Login.vue"),
+  //   meta: {
+  //     name: "login",
+  //   },
+  // },
+  // {
+  //   path: "/register",
+  //   name: "Register",
+  //   component: () =>
+  //     import(/* webpackChunkName: "register-chunk" */ "../views/Register.vue"),
+  //   meta: {
+  //     name: "register",
+  //   },
+  // },
   {
     path: "/genres",
     name: "Genres",

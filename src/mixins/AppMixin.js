@@ -8,7 +8,7 @@ export default {
     ...mapGetters({
       netflixData: "netflix/getNetflixData",
       movieId: "netflix/getMovieById",
-      getUser: "netflix/getUserData",
+      userData: "user/getUserData",
     }),
 
     MOVIEDB_GENERES() {
@@ -30,13 +30,6 @@ export default {
   },
 
   methods: {
-    setLS(key, value) {
-      localStorage.setItem(key, JSON.stringify(value));
-    },
-    getLS(value) {
-      JSON.parse(localStorage.getItem(value));
-    },
-
     generateRandomString(length = 5) {
       return Math.random().toString(36).substring(length);
     },

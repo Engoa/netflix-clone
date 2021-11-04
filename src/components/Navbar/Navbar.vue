@@ -15,10 +15,8 @@
           />
         </router-link>
         <div class="nav__right">
+          <NavSettings />
           <SearchBar />
-          <v-icon class="nav__right__settings nav__btn"
-            >fas fa-ellipsis-h</v-icon
-          >
         </div>
       </div>
     </nav>
@@ -78,9 +76,10 @@
 import "./Navbar.scss";
 import SearchBar from "../SearchBar/SearchBar.vue";
 import capitalize from "lodash/capitalize";
+import NavSettings from "../NavSettings/NavSettings.vue";
 
 export default {
-  components: { SearchBar },
+  components: { SearchBar, NavSettings },
   name: "Navbar",
   data: () => ({
     scrollPosition: 0,
