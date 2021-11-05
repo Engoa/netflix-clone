@@ -15,7 +15,25 @@
           />
         </router-link>
         <div class="nav__right">
-          <NavSettings />
+          <div class="nav__right--settings">
+            <v-menu absolute>
+              <template v-slot:activator="{ on, attrs }">
+                <v-icon v-bind="attrs" v-on="on" class="nav__btn"
+                  >fas fa-ellipsis-h</v-icon
+                >
+              </template>
+              <v-list>
+                <router-link to="/settings">
+                  <v-list-item>
+                    <v-list-item-title> Settings </v-list-item-title>
+                  </v-list-item>
+                </router-link>
+                <v-list-item @click.stop="logout">
+                  <v-list-item-title>Logout</v-list-item-title>
+                </v-list-item>
+              </v-list>
+            </v-menu>
+          </div>
           <SearchBar />
         </div>
       </div>
@@ -26,22 +44,20 @@
       temporary
       :width="$vuetify.breakpoint.width > '768' ? '300' : '75%'"
     >
-      <div class="sidebar">
-        <router-link to="/profile" class="sidebar__user anchors">
-          <div class="sidebar__user-avatar">
-            <v-img
-              class="nav__left__logo"
-              src="../../assets/images/avatar.png"
-              height="45"
-              width="55"
-            />
-          </div>
-          <div class="sidebar__user-name">
-            <span>{{ userData.fullname }}</span>
-          </div>
-          <v-icon class="user-arrow">fa fa-arrow-right</v-icon>
-        </router-link>
-      </div>
+      <router-link to="/profile" class="sidebar__user anchors">
+        <div class="sidebar__user--avatar">
+          <v-img
+            class="nav__left__logo"
+            src="../../assets/images/avatar.png"
+            height="45"
+            width="55"
+          />
+        </div>
+        <div class="sidebar__user--name">
+          <span>{{ userData.fullname.split(" ")[0] }}</span>
+        </div>
+        <v-icon class="sidebar__user--arrow">fa fa-arrow-right</v-icon>
+      </router-link>
       <router-link to="/notifications" class="sidebar__notifications anchors">
         <v-icon>far fa-bell</v-icon>
         <span>Notifications</span>
@@ -76,10 +92,10 @@
 import "./Navbar.scss";
 import SearchBar from "../SearchBar/SearchBar.vue";
 import capitalize from "lodash/capitalize";
-import NavSettings from "../NavSettings/NavSettings.vue";
+import { mapActions } from "vuex";
 
 export default {
-  components: { SearchBar, NavSettings },
+  components: { SearchBar },
   name: "Navbar",
   data: () => ({
     scrollPosition: 0,
@@ -97,6 +113,13 @@ export default {
     },
     toggleNav() {
       this.sideNav = !this.sideNav;
+    },
+    ...mapActions({
+      setUserData: "user/setUserData",
+    }),
+    logout() {
+      window.localStorage.removeItem("user");
+      this.$router.go("/login");
     },
   },
   computed: {

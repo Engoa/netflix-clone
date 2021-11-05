@@ -18,30 +18,37 @@
   }
 }
 
-// Checks for buttons on My List row or a normal row ^^^
+// ^^^ Checks for buttons on My List row or a normal row ^^^
+.swiper-slide {
+  height: unset !important;
+}
+
 .slider {
-  padding: 0 1rem;
   overflow: hidden;
-
-  &__wrapper {
-    position: relative;
-    cursor: default;
+  margin-top: 1.5rem;
+  @include media("<tablet") {
+    margin-top: 1rem;
   }
-
   &:hover {
     .nav-arrows {
       opacity: 1;
       visibility: visible;
     }
   }
+
+  &__wrapper {
+    padding: 0 1rem;
+    position: relative;
+    cursor: default;
+  }
+
   .nav-arrows {
-    inset: 2.65rem -1rem;
     opacity: 0;
 
     &-item {
       @include media("<mobile") {
-        height: 200px;
-        inset: 2.6rem -1rem;
+        height: 100%;
+        margin-top: 1.2rem;
       }
     }
   }
@@ -52,38 +59,17 @@
     min-height: 450px;
     cursor: default;
     z-index: 2;
-
     @include media("<tablet") {
       min-height: 200px;
     }
-    .slider__movie {
-      position: relative;
-
-      .card__buttons {
-        position: absolute;
-        z-index: 99;
-        top: 0.5rem;
-        right: 1rem;
-        background-color: transparent !important;
-        transition: $transition-350;
-        display: block;
-        width: 30px;
-        height: 30px;
-
-        @include media("<mobile") {
-          top: 0;
-          right: 0;
-        }
-        &:hover {
-          transform: scale(1.3);
-          color: red;
-        }
-      }
-    }
   }
 
-  .swiper-slide {
-    height: unset !important;
+  &__header {
+    text-transform: capitalize;
+    font-size: 1.1rem;
+    font-size: clamp(0.75rem, 7vw, 1.15rem);
+    z-index: 1;
+    position: relative;
   }
 
   &__movie {
@@ -92,42 +78,70 @@
     align-items: center;
     justify-content: center;
     min-height: 400px;
-    cursor: pointer;
+    cursor: default;
     transition: $transition-350 !important;
-
-    .v-card {
-      border-radius: 0.3rem !important;
-    }
-
-    @include media("<desktop") {
+    will-change: transform;
+    @include media("<tablet") {
       min-height: 200px;
-      &:hover {
-        transform: unset !important;
-      }
     }
 
     &:hover,
     &:active {
-      transform: scale(1.05);
+      transform: scale(1.02);
       z-index: 5;
+      .card__buttons {
+        visibility: visible;
+        opacity: 1;
+        height: 40px;
+
+        @include media("<tablet") {
+          height: 0;
+        }
+      }
     }
+
     .v-image {
       width: 100%;
       height: 100%;
     }
-  }
-}
-.slider__header {
-  text-transform: capitalize;
-  font-size: 1.1rem;
-  font-size: clamp(0.75rem, 7vw, 1.15rem);
-  z-index: 1;
-  position: relative;
-}
 
-.slider__wrapper {
-  margin-top: 2rem;
-  @include media("<tablet") {
-    margin-top: 1rem;
+    .card__buttons {
+      position: absolute;
+      top: -0.05rem;
+      left: 50.15%;
+      transform: translateX(-50%);
+      background-color: black !important;
+      color: var(--red);
+      width: 101%;
+      z-index: 99;
+      border-top-left-radius: 0.3rem;
+      border-top-right-radius: 0.3rem;
+      height: 0px;
+      opacity: 0;
+      visibility: hidden;
+      transition: $transition-350;
+      will-change: height, opacity, visibility;
+
+      @include media("<tablet") {
+        color: white;
+        height: 0px;
+        opacity: 1;
+        visibility: visible;
+        right: 0;
+        left: unset;
+        transform: unset;
+        &:active {
+          color: red;
+        }
+      }
+    }
+    // Remove annoying Vuetify active effect on icons on image cards on the row
+    .v-icon.v-icon::after {
+      display: none !important;
+    }
+    .v-ripple__container {
+      //Disable click effect on buttons
+      display: none !important;
+    }
   }
 }

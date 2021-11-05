@@ -12,8 +12,8 @@
       <h2>Error fetching data, Please try again later...</h2>
     </div>
     <div class="slider__wrapper">
-      <span class="slider__header">{{ title }}</span>
       <NavigationArrows :classes="navigationElements" />
+      <span class="slider__header">{{ title }}</span>
       <Swiper :options="swiperOptions" @slide-change="handleSwipe">
         <SwiperSlide
           v-for="(movie, index) in data || apiData"
@@ -38,11 +38,13 @@
               </template>
             </v-img>
             <v-icon
+              active-class="no-active"
               class="add__btn card__buttons"
               @click.stop="addToList(movie.id)"
               >fas fa-plus</v-icon
             >
             <v-icon
+              active-class="no-active"
               class="delete__btn card__buttons"
               @click.stop="deleteFromList(index)"
               >fas fa-times</v-icon
@@ -146,9 +148,13 @@ export default {
     }),
 
     deleteFromList(index) {
-      this.removeFromlist(index);
+      setTimeout(() => {
+        this.removeFromlist(index);
+      }, 180);
       this.snackbar.active = true;
-      this.snackbar.message = "Movie successfully deleted from list!";
+      this.snackbar.message = `Movie successfully deleted from list! Movies: ${
+        this.myList.length - 1
+      }`;
     },
 
     onIntersect(entries) {

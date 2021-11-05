@@ -14,10 +14,25 @@
             type="email"
             placeholder="Email Address"
             v-model="email"
+            required
           />
-          <input type="text" placeholder="Full Name" v-model="fname" />
-          <input type="number" placeholder="Phone Number" v-model="phone" />
-          <select v-model="country">
+          <input
+            type="text"
+            placeholder="Full Name"
+            v-model="fname"
+            maxlength="15"
+            minlength="3"
+            required
+          />
+          <input
+            type="number"
+            placeholder="Phone Number"
+            v-model="phone"
+            minlength="7"
+            maxlength="10"
+            required
+          />
+          <select v-model="country" required>
             <option
               :value="country.name"
               v-for="country in countryList"
@@ -26,7 +41,13 @@
               {{ country.name }}
             </option>
           </select>
-          <input type="password" placeholder="Password" v-model="password" />
+          <input
+            type="password"
+            placeholder="Password"
+            v-model="password"
+            minlength="6"
+            required
+          />
         </div>
         <div class="sign-in-up__cta">
           <v-btn type="submit">Sign Up</v-btn>
@@ -89,7 +110,6 @@ export default {
   computed: {
     countryList() {
       return [
-        { name: "Country", code: "" },
         { name: "Albania", code: "AL" },
         { name: "Åland Islands", code: "AX" },
         { name: "Algeria", code: "DZ" },
@@ -326,7 +346,7 @@ export default {
           name: "United Kingdom of Great Britain and Northern Ireland (the)",
           code: "GB",
         },
-        { name: "United States Minor Outlying Islands (the)", code: "UM" },
+        { name: "United Statesminlengthor Outlying Islands (the)", code: "UM" },
         { name: "United States of America (the)", code: "US" },
         { name: "Uruguay", code: "UY" },
         { name: "Uzbekistan", code: "UZ" },
@@ -373,7 +393,7 @@ export default {
         this.snackbar.active = true;
         this.snackbar.message = `Hi ${
           this.user.fullname.split(" ")[0]
-        }, you're now successfully Signed up!`;
+        }, you're now successfully signed up!`;
         setTimeout(() => {
           this.$router.replace("/");
         }, 2000);

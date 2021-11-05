@@ -45,6 +45,7 @@ export default {
         parallax: true,
         speed: 800,
         slidesPerView: 1,
+        grabCursor: true,
         navigation: {
           nextEl: "." + this.navClasses.next,
           prevEl: "." + this.navClasses.prev,

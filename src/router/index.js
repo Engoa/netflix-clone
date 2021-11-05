@@ -27,10 +27,12 @@ const routes = [
   },
 
   {
-    path: "/settings",
-    name: "Settings",
+    path: "/profile",
+    name: "Profile",
     component: () =>
-      import(/* webpackChunkName: "settings-chunk" */ "../views/Settings.vue"),
+      import(
+        /* webpackChunkName: "profile-chunk" */ "../views/Profile.vue"
+      ),
   },
 
   {

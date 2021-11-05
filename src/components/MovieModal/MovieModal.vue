@@ -93,9 +93,7 @@
         </div>
         <div class="movie-modal__information--overview">
           <p>
-            <VClamp :max-lines="3" autoresize>
-              {{ movie.overview }}
-            </VClamp>
+            {{ movie.overview }}
           </p>
         </div>
       </div>
@@ -112,13 +110,12 @@
 
 <script>
 import "./MovieModal.scss";
-import VClamp from "vue-clamp";
 import NetflixService from "../../services/NetflixService";
 import Fitty from "@/components/Fitty";
 
 export default {
   name: "MovieModal",
-  components: { VClamp, Fitty },
+  components: { Fitty },
 
   model: {
     event: "onClose",

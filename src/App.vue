@@ -38,11 +38,15 @@ export default {
       if (!isOpen && this.$route.query?.vid) {
         this.$router.push({ query: null });
       }
-      const arrows = document.querySelector(".nav-arrows");
+      const arrows = document.querySelectorAll(".nav-arrows");
       if (isOpen) {
-        arrows.style.display = "none";
+        arrows.forEach((arrow) => {
+          arrow.style.display = "none";
+        });
       } else {
-        arrows.style.display = "flex";
+        arrows.forEach((arrow) => {
+          arrow.style.display = "flex ";
+        });
       }
     },
   },

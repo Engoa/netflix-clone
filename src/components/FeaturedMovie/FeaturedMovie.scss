@@ -110,7 +110,7 @@ $max-height: 100vh;
       transition: $transition-150;
 
       @include media("<tablet") {
-        font-size: 1.1rem;
+        font-size: 1rem;
       }
     }
   }
@@ -128,7 +128,7 @@ $max-height: 100vh;
     bottom: 25%;
     right: 0;
     z-index: 7;
-    background: var(--light-grey);
+    background: var(--black);
     width: 140px;
     height: 40px;
     padding: 0 0.7rem;
@@ -163,7 +163,10 @@ $max-height: 100vh;
   @include media("<tablet") {
     display: flex;
   }
-  .v-btn {
-    padding: 1rem !important;
+
+  .v-btn,
+  .v-btn__content {
+    padding: 0.8rem !important;
+    line-height: unset !important;
   }
 }

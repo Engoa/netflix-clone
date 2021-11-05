@@ -5,7 +5,7 @@ const state = {
 
 const mutations = {
   addList(state, payload) {
-    state.myList.push(payload);
+    state.myList.unshift(payload);
   },
   setMyList(state, payload) {
     state.myList = payload;

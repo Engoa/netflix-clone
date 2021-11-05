@@ -1,9 +1,6 @@
 import { mapGetters } from "vuex";
 
 export default {
-  data: () => ({
-    myArray: [],
-  }),
   computed: {
     ...mapGetters({
       netflixData: "netflix/getNetflixData",
@@ -40,9 +37,18 @@ export default {
     },
 
     addToList(id) {
-      this.addList(this.movieId(id));
-      this.snackbar.active = true;
-      this.snackbar.message = "Movie successfully added to list!";
+      if (this.myList.length > 19) {
+        this.snackbar.active = true;
+        this.snackbar.message =
+          "Oops, reached max limit (20), please remove something in order to add more!";
+        return;
+      } else {
+        this.addList(this.movieId(id));
+        this.snackbar.active = true;
+        this.snackbar.message = `Movie successfully added to list! Movies: ${
+          this.myList.length + 1
+        }`;
+      }
     },
   },
 };
