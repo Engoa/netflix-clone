@@ -2,14 +2,12 @@
   <div>
     <HeroSwiper />
     <v-main :style="{ marginTop: '-20vmin' }">
-      <v-expand-transition append>
-        <NetflixRow
-          :data="myList"
-          title="My List"
-          v-if="myList.length"
-          class="mylist"
-        />
-      </v-expand-transition>
+      <NetflixRow
+        :data="myList"
+        title="My List"
+        v-if="myList.length"
+        class="mylist"
+      />
       <NetflixRow
         v-for="(item, index) in apiRows"
         :title="item.title"

@@ -52,7 +52,7 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </Swiper>
     </div>
-    <v-snackbar v-model="snackbar.active">
+    <v-snackbar v-model="snackbar.active" timeout="1500">
       {{ snackbar.message }}
       <template v-slot:action="{ attrs }">
         <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">

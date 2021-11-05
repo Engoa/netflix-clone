@@ -53,7 +53,7 @@
         </div>
       </div>
     </div>
-    <v-snackbar v-model="snackbar.active">
+    <v-snackbar v-model="snackbar.active" timeout="2000">
       {{ snackbar.message }}
       <template v-slot:action="{ attrs }">
         <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">

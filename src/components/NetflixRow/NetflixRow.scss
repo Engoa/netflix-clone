@@ -15,9 +15,6 @@
   }
   .delete__btn {
     display: block !important;
-    &:hover {
-      transform: rotate(90deg) !important;
-    }
   }
 }
 
@@ -34,6 +31,7 @@
   &:hover {
     .nav-arrows {
       opacity: 1;
+      visibility: visible;
     }
   }
   .nav-arrows {
@@ -110,7 +108,7 @@
 
     &:hover,
     &:active {
-      transform: scale(1.1);
+      transform: scale(1.05);
       z-index: 5;
     }
     .v-image {
@@ -122,7 +120,14 @@
 .slider__header {
   text-transform: capitalize;
   font-size: 1.1rem;
-  font-size: clamp(0.75rem, 7vw, 1.1rem);
+  font-size: clamp(0.75rem, 7vw, 1.15rem);
   z-index: 1;
   position: relative;
+}
+
+.slider__wrapper {
+  margin-top: 2rem;
+  @include media("<tablet") {
+    margin-top: 1rem;
+  }
 }

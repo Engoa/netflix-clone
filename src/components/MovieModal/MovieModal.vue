@@ -86,9 +86,14 @@
         <div class="movie-modal__information--budget">
           <span> {{ movie.budget.toLocaleString() }}$ Dollars in budget </span>
         </div>
+        <div class="movie-modal__information--revenue">
+          <span>
+            {{ movie.revenue.toLocaleString() }}$ Dollars in revenue
+          </span>
+        </div>
         <div class="movie-modal__information--overview">
           <p>
-            <VClamp :max-lines="4" autoresize>
+            <VClamp :max-lines="3" autoresize>
               {{ movie.overview }}
             </VClamp>
           </p>

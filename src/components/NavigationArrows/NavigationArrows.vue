@@ -35,7 +35,7 @@ export default {
   &-item {
     pointer-events: all;
     z-index: 10;
-    background: radial-gradient(circle, rgba(0, 0, 0, 0.801) 2%, transparent);
+    background: radial-gradient(circle, rgba(0, 0, 0, 0.801) 0%, transparent);
     width: 50px;
     transition: $transition-350;
 
@@ -54,6 +54,7 @@ export default {
     }
     &.swiper-button-disabled {
       opacity: 0;
+      visibility: hidden;
     }
 
     &-item:first-child {
