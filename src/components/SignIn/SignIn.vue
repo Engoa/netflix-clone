@@ -53,14 +53,6 @@
         </div>
       </div>
     </div>
-    <v-snackbar v-model="snackbar.active" timeout="2000">
-      {{ snackbar.message }}
-      <template v-slot:action="{ attrs }">
-        <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
   </div>
 </template>
 
@@ -74,11 +66,6 @@ export default {
   data: () => ({
     email: null,
     password: null,
-    checkbox: false,
-    snackbar: {
-      active: false,
-      message: "",
-    },
   }),
 
   methods: {
@@ -88,19 +75,22 @@ export default {
 
     onSubmit() {
       if (!this.email & !this.password) {
-        this.snackbar.active = true;
-        this.snackbar.message = "Input fields cannot be empty!";
+        this.$root.$emit("snackbar", {
+          text: "Input fields cannot be empty!",
+        });
         return;
       } else if (
         this.password !== this.userData.password ||
         this.email !== this.userData.email
       ) {
-        this.snackbar.active = true;
-        this.snackbar.message = "Invalid email or password!";
+        this.$root.$emit("snackbar", {
+          text: "Invalid email or password!",
+        });
         return;
       } else {
-        this.snackbar.active = true;
-        this.snackbar.message = "Successfully logged in - redirecting...";
+        this.$root.$emit("snackbar", {
+          text: "Successfully logged in - redirecting...",
+        });
         this.setUserData(this.user);
         setTimeout(() => {
           this.$router.replace("/");

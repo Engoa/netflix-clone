@@ -41,9 +41,12 @@
           </VClamp>
         </p>
       </div>
-      <div class="featured-movie__buttons play-btn">
+      <div class="featured-movie__buttons mobile-btns">
         <v-btn elevation="0.1" @click="OPEN_VIDEO(movie.id)"
           ><v-icon> fas fa-play</v-icon>Play</v-btn
+        >
+        <v-btn elevation="0.1" @click.stop="addToList(movie.id)"
+          ><v-icon> fas fa-plus</v-icon>My List</v-btn
         >
       </div>
     </div>
@@ -66,12 +69,7 @@ import { mapActions } from "vuex";
 import "./FeaturedMovie.scss";
 export default {
   name: "FeaturedMovie",
-  data: () => ({
-    snackbar: {
-      active: false,
-      message: "",
-    },
-  }),
+  data: () => ({}),
   components: {
     VClamp,
   },

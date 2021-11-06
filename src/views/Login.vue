@@ -1,12 +1,12 @@
 <template>
   <main>
-    <SignIn />
+    <LoginSignup title="Sign In" />
   </main>
 </template>
 
 <script>
-import SignIn from "../components/SignIn/SignIn";
+import LoginSignup from "../components/LogInSignup/LoginSignup.vue";
 export default {
-  components: { SignIn },
+  components: { LoginSignup },
 };
 </script>

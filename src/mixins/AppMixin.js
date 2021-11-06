@@ -38,16 +38,28 @@ export default {
 
     addToList(id) {
       if (this.myList.length > 19) {
-        this.snackbar.active = true;
-        this.snackbar.message =
-          "Oops, reached max limit (20), please remove something in order to add more!";
+        this.$root.$emit("snackbar", {
+          text: "Oops, reached max limit (20), please remove something in order to add more!",
+        });
+
         return;
       } else {
         this.addList(this.movieId(id));
-        this.snackbar.active = true;
-        this.snackbar.message = `Movie successfully added to list! Movies: ${
-          this.myList.length + 1
-        }`;
+        this.$root.$emit("snackbar", {
+          text: `Movie successfully added to list! Movies: ${this.myList.length}`,
+        });
+
+        if (window.scrollY > 450) {
+          if (this.$vuetify.breakpoint.width < 768) {
+            setTimeout(() => {
+              this.$vuetify.goTo(0);
+            }, 300);
+          } else {
+            setTimeout(() => {
+              this.$vuetify.goTo(650);
+            }, 300);
+          }
+        }
       }
     },
   },

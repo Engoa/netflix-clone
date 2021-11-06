@@ -4,9 +4,10 @@
   box-sizing: border-box;
   font-family: var(--ff-header);
 }
-
-#app {
-  background-color: var(--v-background-base);
+.v-application,
+body,
+html {
+  background-color: #000000 !important;
 }
 
 input,

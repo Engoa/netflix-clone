@@ -26,6 +26,7 @@
 .slider {
   overflow: hidden;
   margin-top: 1.5rem;
+
   @include media("<tablet") {
     margin-top: 1rem;
   }
@@ -33,6 +34,13 @@
     .nav-arrows {
       opacity: 1;
       visibility: visible;
+    }
+  }
+
+  & {
+    .v-card,
+    .v-image {
+      border-radius: 0.5rem !important;
     }
   }
 
@@ -95,7 +103,7 @@
         height: 40px;
 
         @include media("<tablet") {
-          height: 0;
+          height: 0px;
         }
       }
     }
@@ -111,7 +119,7 @@
       left: 50.15%;
       transform: translateX(-50%);
       background-color: black !important;
-      color: var(--red);
+      color: white;
       width: 101%;
       z-index: 99;
       border-top-left-radius: 0.3rem;
@@ -122,9 +130,13 @@
       transition: $transition-350;
       will-change: height, opacity, visibility;
 
+      &:active,
+      &:hover {
+        color: red;
+      }
+
       @include media("<tablet") {
         color: white;
-        height: 0px;
         opacity: 1;
         visibility: visible;
         right: 0;
@@ -137,10 +149,6 @@
     }
     // Remove annoying Vuetify active effect on icons on image cards on the row
     .v-icon.v-icon::after {
-      display: none !important;
-    }
-    .v-ripple__container {
-      //Disable click effect on buttons
       display: none !important;
     }
   }

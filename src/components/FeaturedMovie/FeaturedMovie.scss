@@ -135,7 +135,7 @@ $max-height: 100vh;
     @include flexCenter;
     @include media("<tablet") {
       height: 30px;
-      bottom: 2rem;
+      bottom: 1.2rem;
       width: 100px;
     }
 
@@ -158,7 +158,7 @@ $max-height: 100vh;
   }
 }
 
-.play-btn {
+.mobile-btns {
   display: none;
   @include media("<tablet") {
     display: flex;

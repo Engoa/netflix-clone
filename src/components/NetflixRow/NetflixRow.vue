@@ -54,14 +54,6 @@
         <div class="swiper-pagination" slot="pagination"></div>
       </Swiper>
     </div>
-    <v-snackbar v-model="snackbar.active" timeout="1500">
-      {{ snackbar.message }}
-      <template v-slot:action="{ attrs }">
-        <v-btn color="#e50914" text v-bind="attrs" @click="snackbar = false">
-          Close
-        </v-btn>
-      </template>
-    </v-snackbar>
   </div>
 </template>
 
@@ -70,7 +62,6 @@ import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
 import { mapActions } from "vuex";
-
 import "./NetflixRow.scss";
 
 export default {
@@ -90,10 +81,6 @@ export default {
     isIntersected: false,
     isOpen: false,
     error: false,
-    snackbar: {
-      active: false,
-      message: "",
-    },
 
     navigationElements: {
       prev: "prev__" + vm.generateRandomString(),
@@ -150,11 +137,10 @@ export default {
     deleteFromList(index) {
       setTimeout(() => {
         this.removeFromlist(index);
-      }, 180);
-      this.snackbar.active = true;
-      this.snackbar.message = `Movie successfully deleted from list! Movies: ${
-        this.myList.length - 1
-      }`;
+        this.$root.$emit("snackbar", {
+          text: `Movie successfully deleted from list! Movies: ${this.myList.length}`,
+        });
+      }, 100);
     },
 
     onIntersect(entries) {

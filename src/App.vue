@@ -2,6 +2,8 @@
   <v-app>
     <Navbar v-if="userData.email" />
     <MovieModal v-model="videoModalOpen" />
+    <SnackBar />
+
     <router-view />
   </v-app>
 </template>
@@ -9,10 +11,11 @@
 <script>
 import MovieModal from "./components/MovieModal/MovieModal";
 import Navbar from "./components/Navbar/Navbar";
+import SnackBar from "./components/SnackBar";
 import { mapActions } from "vuex";
 
 export default {
-  components: { Navbar, MovieModal },
+  components: { Navbar, MovieModal, SnackBar },
   name: "App",
 
   data: () => ({
