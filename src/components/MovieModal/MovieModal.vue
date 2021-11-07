@@ -3,7 +3,7 @@
     v-model="showPopup"
     content-class="movie-modal"
     transition="dialog-bottom-transition"
-    :fullscreen="false"
+    :fullscreen="$vuetify.breakpoint.width < 768 ? true : false"
   >
     <div class="movie-modal__top">
       <div class="movie-modal__close">
@@ -134,7 +134,7 @@ export default {
       autoplay: 0,
       controls: 1,
       resize: true,
-      origin: "http://localhost:8080",
+      origin: "localhost:8080",
       autoHide: true,
     },
   }),

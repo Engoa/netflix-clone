@@ -1,11 +1,9 @@
 <template>
   <section class="netflix__genres">
-    <router-view />
+    <router-view :key="$route.fullPath" />
   </section>
 </template>
 
 <script>
 export default {};
 </script>
-
-<style></style>

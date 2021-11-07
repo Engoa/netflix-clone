@@ -4,16 +4,18 @@
       >fas fa-search</v-icon
     >
     <v-dialog
+      ref="dialog"
       transition="dialog-top-transition"
       fullscreen
       v-model="dialog"
+      attach
       content-class="search__bar--dialog"
     >
       <v-app-bar>
         <v-app-bar-nav-icon small @click="toggleSearch">
           <v-icon>fas fa-times</v-icon>
         </v-app-bar-nav-icon>
-        <div class="input__wrapper">
+        <div class="input__wrapper" v-if="dialog">
           <v-text-field
             @input="debouncedSearchData"
             color="red"
@@ -21,17 +23,17 @@
             background-color="var(--dark-grey)"
             placeholder="Search for a movie"
             v-model="inputValue"
-            ref="input"
             spellcheck="false"
-            autofocus
             autocomplete="off"
+            rounded
+            autofocus
           ></v-text-field>
         </div>
       </v-app-bar>
       <div class="api__error" v-if="error">
         <h2>Error fetching data, Please try again later...</h2>
       </div>
-      <div class="search__results" v-if="!error">
+      <div class="search__results my-dialog-inner-container" v-if="!error">
         <div
           class="search__results__images"
           v-for="(movie, index) in apiData"
@@ -72,6 +74,8 @@
 <script>
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
+import gsap, { ScrollTrigger } from "gsap/all";
+gsap.registerPlugin(ScrollTrigger);
 import "./SearchBar.scss";
 
 export default {
@@ -83,13 +87,36 @@ export default {
     inputValue: "",
     error: false,
     isOpen: false,
+    debouncedSearchData: null,
   }),
+
   created() {
     this.debouncedSearchData = debounce(this.fetchData, 500);
   },
 
   methods: {
+    // listenToModalScroll() {
+    //   const vm = this;
+    //   ScrollTrigger.create({
+    //     scroller: this.$refs.dialog.$el.querySelector(".v-dialog__content"),
+    //     trigger: this.$refs.dialog.$el.querySelector(
+    //       ".my-dialog-inner-container"
+    //     ),
+    //     start: "top bottom",
+    //     markers: true,
+
+    //     onUpdate({ progress }) {
+    //       console.log(progress);
+    //       if (!progress) return;
+    //       if (progress > 0.5) {
+    //         console.log("test dasdsad");
+    //       }
+    //     },
+    //   });
+    // },
+
     async fetchData() {
+      ScrollTrigger.refresh();
       if (!this.inputValue) {
         this.apiData = [];
       } else {
@@ -98,6 +125,9 @@ export default {
             this.queryString + `${this.inputValue}`
           );
           this.apiData = response.results;
+          // this.$nextTick(() => {
+          //   this.listenToModalScroll();
+          // });
         } catch (error) {
           console.log(error);
           this.error = true;

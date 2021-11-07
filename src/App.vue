@@ -3,7 +3,6 @@
     <Navbar v-if="userData.email" />
     <MovieModal v-model="videoModalOpen" />
     <SnackBar />
-
     <router-view />
   </v-app>
 </template>
@@ -55,21 +54,29 @@ export default {
   },
 
   mounted() {
+    setTimeout(() => {
+      this.$vuetify.goTo(0);
+    }, 1000);
     // Check for user
-    const LSuser = JSON.parse(localStorage.getItem("user"));
-    if (LSuser) {
-      this.setUserData(LSuser);
-    }
-    if (!LSuser && this.$route.name === "Home") {
-      this.$router.replace("/login");
-    }
-    if (
-      (LSuser && this.$route.name === "Login") ||
-      (LSuser && this.$route.name === "Register")
-    ) {
-      console.log(this.$route.name);
-      this.$router.replace("/");
-    }
+    setTimeout(() => {
+      const LSuser = JSON.parse(localStorage.getItem("user"));
+      if (LSuser) {
+        this.setUserData(LSuser);
+      }
+      if (
+        (!LSuser && this.$route.name === "Home") ||
+        (!LSuser && this.$route.name === "Genre") ||
+        (!LSuser && this.$route.name === "Genres")
+      ) {
+        this.$router.replace("/login");
+      }
+      if (
+        (LSuser && this.$route.name === "Login") ||
+        (LSuser && this.$route.name === "Register")
+      ) {
+        this.$router.replace("/");
+      }
+    }, 100);
   },
 };
 </script>

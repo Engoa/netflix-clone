@@ -40,6 +40,7 @@ export default {
       if (this.myList.length > 19) {
         this.$root.$emit("snackbar", {
           text: "Oops, reached max limit (20), please remove something in order to add more!",
+          icon: "fas fa-times",
         });
 
         return;
@@ -47,6 +48,7 @@ export default {
         this.addList(this.movieId(id));
         this.$root.$emit("snackbar", {
           text: `Movie successfully added to list! Movies: ${this.myList.length}`,
+          icon: "fas fa-check",
         });
 
         if (window.scrollY > 450) {
@@ -57,7 +59,7 @@ export default {
           } else {
             setTimeout(() => {
               this.$vuetify.goTo(650);
-            }, 300);
+            }, 200);
           }
         }
       }

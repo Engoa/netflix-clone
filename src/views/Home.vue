@@ -3,12 +3,7 @@
     <HeroSwiper />
     <v-main :style="{ marginTop: '-20vmin' }">
       <v-expand-transition group appear eager>
-        <NetflixRow
-          :data="myList"
-          title="My List"
-          v-if="myList.length"
-          class="mylist"
-        />
+        <MyList />
       </v-expand-transition>
 
       <NetflixRow
@@ -25,16 +20,11 @@
 import capitalize from "lodash/capitalize";
 import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
 import HeroSwiper from "../components/HeroSwiper/HeroSwiper.vue";
-import { mapActions } from "vuex";
+import MyList from "../components/MyList.vue";
 
 export default {
-  components: { NetflixRow, HeroSwiper },
+  components: { NetflixRow, HeroSwiper, MyList },
   name: "Home",
-  methods: {
-    ...mapActions({
-      setMyList: "mylist/setMyList",
-    }),
-  },
 
   computed: {
     apiRows() {
@@ -54,18 +44,6 @@ export default {
         })),
       ];
     },
-  },
-
-  mounted() {
-    setTimeout(() => {
-      window.scrollTo(0, 0); // Force scroll to top on load
-    }, 700);
-
-    // Check for list
-    const myListLS = JSON.parse(localStorage.getItem("mylist"));
-    if (myListLS) {
-      this.setMyList(myListLS);
-    }
   },
 };
 </script>

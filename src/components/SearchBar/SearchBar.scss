@@ -1,7 +1,7 @@
 @import "@/styles/import.scss";
 
 .search__bar--dialog {
-  background: #2b2a2a93;
+  background: var(--black);
   padding-bottom: 2rem;
   .nav__left__logo {
     left: 50%;
@@ -24,6 +24,21 @@
 }
 .v-input__control {
   @include flexCenter;
+}
+.theme--dark.v-input input {
+  padding-left: 0 !important;
+  min-height: 43px !important;
+  transition: $transition-250 !important;
+}
+.v-input__slot {
+  margin-bottom: 0 !important;
+  padding: 0 1rem !important;
+}
+.v-text-field--rounded > .v-input__control > .v-input__slot {
+  transition: $transition-250 !important;
+  &:focus-within {
+    border: 1px solid var(--red) !important;
+  }
 }
 
 .v-toolbar {
@@ -51,7 +66,7 @@
 .input__wrapper {
   .v-input__slot {
     width: 700px !important;
-    background: #2c2c2c7e !important;
+    background: #333333 !important;
     border-radius: 0.3rem !important;
     margin-top: 1rem;
     @include media("<tablet") {
@@ -71,6 +86,7 @@
   gap: 0.5rem;
   width: 100%;
   margin-top: 1rem;
+  min-height: 100%;
 
   .v-card {
     min-height: 100% !important;

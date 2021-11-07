@@ -13,6 +13,7 @@
 import NetflixService from "../../services/NetflixService";
 import FeaturedMovie from "../FeaturedMovie/FeaturedMovie.vue";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
+import debounce from "lodash";
 
 import "./HeroSwiper.scss";
 
@@ -24,11 +25,12 @@ export default {
   data: () => ({
     apiData: null,
     isOpen: false,
+    debouncedHeroData: null,
   }),
 
   created() {
     if (JSON.parse(localStorage.getItem("user"))) {
-      this.fetchData();
+      this.debouncedHeroData = debounce(this.fetchData(), 200);
     }
   },
 

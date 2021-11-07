@@ -1,8 +1,6 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
 import Home from "../views/Home.vue";
-import Login from "../views/Login.vue";
-import Register from "../views/Register.vue";
 
 Vue.use(VueRouter);
 
@@ -18,33 +16,34 @@ const routes = [
   {
     path: "/login",
     name: "Login",
-    component: Login,
+    component: () =>
+      import(/* webpackChunkName: "login-chunk" */ "../views/Login.vue"),
   },
   {
     path: "/register",
     name: "Register",
-    component: Register,
+    component: () =>
+      import(/* webpackChunkName: "register-chunk" */ "../views/Register.vue"),
   },
 
   {
     path: "/profile",
     name: "Profile",
     component: () =>
-      import(
-        /* webpackChunkName: "profile-chunk" */ "../views/Profile.vue"
-      ),
+      import(/* webpackChunkName: "profile-chunk" */ "../views/Profile.vue"),
   },
 
   {
     path: "/genres",
     name: "Genres",
+
     component: () =>
       import(
         /* webpackChunkName: "genres-chunk" */ "../views/Genres/Genres.vue"
       ),
     children: [
       {
-        name: "genre",
+        name: "Genre",
         path: ":slug",
         component: () =>
           import(

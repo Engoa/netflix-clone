@@ -5,11 +5,16 @@
   padding: 1rem 1.5rem;
   position: fixed;
   z-index: 99;
-  transition: all 0.5s ease-in-out;
+  transition: all 0.3s ease-in-out;
   transition-delay: 0.2s;
+  will-change: background-color;
   &--active {
     background-color: black;
     transition: $transition-350;
+  }
+
+  &:hover {
+    background-color: black;
   }
 
   &__btn {
@@ -54,26 +59,21 @@
     justify-content: space-between;
     width: 100%;
     padding: 1.5rem 2rem;
+    will-change: background-color;
+
     &:hover,
     &:active {
       background-color: var(--red);
     }
     &--name {
-      font-size: 1.1rem;
-      font-size: clamp(0.9rem, 3vw, 1.12rem);
+      font-size: 1.05rem;
+      font-size: clamp(1rem, 3vw, 1.1rem);
       text-transform: capitalize;
     }
     &--avatar {
       transition: $transition-250;
       .v-image {
         border-radius: 0.1rem;
-      }
-    }
-    &--arrow {
-      transition: $transition-350;
-      &:hover,
-      &:active {
-        transform: translateX(5px);
       }
     }
   }
@@ -87,6 +87,8 @@
     align-self: center;
     padding: 1.5rem 2rem;
     gap: 1rem;
+    will-change: background-color;
+
     span {
       font-size: 1.05rem;
       font-size: clamp(0.9rem, 3vw, 1.05rem);
@@ -115,6 +117,8 @@
     align-items: center;
     justify-content: flex-start;
     padding-left: 2rem;
+    will-change: background-color;
+
     span {
       text-transform: capitalize;
       opacity: 0.85;
@@ -132,37 +136,36 @@
 
 .nav__right--settings {
   position: relative;
-}
+  &__menu {
+    right: 3.65rem !important;
+    top: 3.75rem !important;
+    left: unset !important;
+    width: 100px;
+    border-radius: 0.2rem;
+    position: absolute;
 
-.v-menu__content {
-  right: 3.65rem !important;
-  top: 3rem !important;
-  left: unset !important;
-  width: 100px;
-  border-radius: 0.2rem;
-  position: absolute;
-
-  @include media("<tablet") {
-    right: 2.2rem !important;
-    top: 2.8rem !important;
-  }
-
-  .v-list {
-    padding: 0 !important;
-    background: var(--black) !important;
-  }
-
-  .v-list-item {
-    text-align: center;
-    transition: $transition-350;
-    cursor: pointer;
-    font-weight: bold;
-
-    a {
-      width: 100%;
+    @include media("<tablet") {
+      right: 2.15rem !important;
     }
-    &:hover {
-      background-color: var(--red) !important;
+
+    .v-list {
+      padding: 0 !important;
+      background: var(--black) !important;
+    }
+
+    .v-list-item {
+      text-align: center;
+      transition: $transition-350;
+      cursor: pointer;
+      font-weight: bold;
+      will-change: background-color;
+
+      a {
+        width: 100%;
+      }
+      &:hover {
+        background-color: var(--red) !important;
+      }
     }
   }
 }

@@ -36,14 +36,13 @@
             rounded
             spellcheck="false"
           />
-          <v-select v-model="fields.country" v-if="isRegister" rounded placeholder="Country">
-            <option
-              :value="country.name"
-              v-for="country in countryList"
-              :key="country.name"
-            >
-              {{ country.name }}
-            </option>
+          <v-select
+            v-model="fields.country"
+            v-if="isRegister"
+            :items="states"
+            rounded
+            placeholder="Country"
+          >
           </v-select>
           <v-text-field
             type="password"
@@ -103,6 +102,67 @@ export default {
       password: null,
       checkbox: false,
     },
+    states: [
+      "Alabama",
+      "Alaska",
+      "American Samoa",
+      "Arizona",
+      "Arkansas",
+      "California",
+      "Colorado",
+      "Connecticut",
+      "Delaware",
+      "District of Columbia",
+      "Federated States of Micronesia",
+      "Florida",
+      "Georgia",
+      "Guam",
+      "Hawaii",
+      "Idaho",
+      "Illinois",
+      "Indiana",
+      "Iowa",
+      "Kansas",
+      "Kentucky",
+      "Louisiana",
+      "Maine",
+      "Marshall Islands",
+      "Maryland",
+      "Massachusetts",
+      "Michigan",
+      "Minnesota",
+      "Mississippi",
+      "Missouri",
+      "Montana",
+      "Nebraska",
+      "Nevada",
+      "New Hampshire",
+      "New Jersey",
+      "New Mexico",
+      "New York",
+      "North Carolina",
+      "North Dakota",
+      "Northern Mariana Islands",
+      "Ohio",
+      "Oklahoma",
+      "Oregon",
+      "Palau",
+      "Pennsylvania",
+      "Puerto Rico",
+      "Rhode Island",
+      "South Carolina",
+      "South Dakota",
+      "Tennessee",
+      "Texas",
+      "Utah",
+      "Vermont",
+      "Virgin Island",
+      "Virginia",
+      "Washington",
+      "West Virginia",
+      "Wisconsin",
+      "Wyoming",
+    ],
     user: null,
   }),
 
@@ -132,6 +192,7 @@ export default {
         if (!this.fields.email & !this.fields.password) {
           this.$root.$emit("snackbar", {
             text: "Input fields cannot be empty!",
+            icon: "fas fa-times",
           });
 
           return;
@@ -141,11 +202,13 @@ export default {
         ) {
           this.$root.$emit("snackbar", {
             text: "Invalid email or password!",
+            icon: "fas fa-times",
           });
           return;
         } else {
           this.$root.$emit("snackbar", {
             text: "Successfully logged in - redirecting...",
+            icon: "fas fa-check",
           });
           this.setUserData(this.user);
           setTimeout(() => {
@@ -155,38 +218,41 @@ export default {
       }
 
       if (this.isRegister) {
-        // if (
-        //   !this.fields.email ||
-        //   !this.fields.password ||
-        //   !this.fields.fname ||
-        //   !this.fields.country ||
-        //   !this.fields.phone
-        // ) {
-        //   this.$root.$emit("snackbar", {
-        //     text: "Input fields must have a value and cannot be empty!",
-        //   });
+        if (
+          !this.fields.email ||
+          !this.fields.password ||
+          !this.fields.fname ||
+          !this.fields.country ||
+          !this.fields.phone
+        ) {
+          this.$root.$emit("snackbar", {
+            text: "Input fields must have a value and cannot be empty!",
+            icon: "fas fa-times",
+          });
 
-        //   return;
-        // } else {
-        this.user = {
-          email: this.fields.email,
-          fullname: this.fields.fname,
-          phone: this.fields.phone,
-          country: this.fields.country,
-          password: this.fields.password,
-        };
-        this.setUserData(this.user);
-        this.$root.$emit("snackbar", {
-          text: `Hi ${
-            this.user.fullname.split(" ")[0]
-          }, you're now successfully signed up!`,
-        });
-        setTimeout(() => {
-          this.$router.replace("/login");
-        }, 2000);
+          return;
+        } else {
+          this.user = {
+            email: this.fields.email,
+            fullname: this.fields.fname,
+            phone: this.fields.phone,
+            country: this.fields.country,
+            password: this.fields.password,
+          };
+          this.setUserData(this.user);
+          this.$root.$emit("snackbar", {
+            text: `Hi ${
+              this.user.fullname.split(" ")[0].charAt(0).toUpperCase() +
+              this.user.fullname.slice(1).split(" ")
+            }, you're now successfully signed up!`,
+            icon: "fas fa-check",
+          });
+          setTimeout(() => {
+            this.$router.replace("/login");
+          }, 2000);
+        }
       }
     },
-    // },
   },
 };
 </script>

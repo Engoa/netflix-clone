@@ -1,6 +1,9 @@
 <template>
-  <v-snackbar v-model="snackbar" timeout="1500" height="40">
+  <v-snackbar v-model="snackbar" timeout="1500" height="50">
     <p class="snack-text">{{ config.text }}</p>
+    <v-icon>
+      {{ config.icon }}
+    </v-icon>
   </v-snackbar>
 </template>
 
@@ -32,16 +35,17 @@ export default {
 
 <style lang="scss">
 .v-snack__wrapper {
-  background: rgba(0, 0, 0, 0.808) !important;
-  width: 100% !important;
-  max-width: 200px !important;
+  background: rgba(0, 0, 0, 0.877) !important;
+  padding: 1rem !important;
   .v-snack__content {
     display: flex;
     align-items: center;
     justify-content: center;
+    gap: 0.5rem;
     opacity: 0.85;
-    font-weight: bold !important;
     font-family: var(--ff-header) !important;
+    font-size: 0.95rem;
+    font-weight: bold !important;
   }
   .v-icon {
     color: var(--red);

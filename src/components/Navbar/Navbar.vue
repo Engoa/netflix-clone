@@ -16,7 +16,7 @@
         </router-link>
         <div class="nav__right">
           <div class="nav__right--settings">
-            <v-menu absolute>
+            <v-menu absolute content-class="nav__right--settings__menu">
               <template v-slot:activator="{ on, attrs }">
                 <v-icon v-bind="attrs" v-on="on" class="nav__btn"
                   >fas fa-ellipsis-h</v-icon
@@ -44,7 +44,7 @@
       temporary
       :width="$vuetify.breakpoint.width > '768' ? '300' : '75%'"
     >
-      <router-link to="/profile" class="sidebar__user anchors">
+      <router-link to="/profile" class="sidebar__user anchors" title="Profile">
         <div class="sidebar__user--avatar">
           <v-img
             class="nav__left__logo"
@@ -58,11 +58,11 @@
         </div>
         <v-icon class="sidebar__user--arrow">fa fa-arrow-right</v-icon>
       </router-link>
-      <router-link to="/notifications" class="sidebar__notifications anchors">
+      <router-link to="/notifications" class="sidebar__notifications anchors"  title="Notifications">
         <v-icon>far fa-bell</v-icon>
         <span>Notifications</span>
       </router-link>
-      <router-link to="/downloads" class="sidebar__downloads anchors">
+      <router-link to="/downloads" class="sidebar__downloads anchors" title="Downloads">
         <v-icon>fas fa-save</v-icon>
         <span>My Downloads</span>
       </router-link>
@@ -74,7 +74,7 @@
         </router-link>
         <router-link
           v-for="(genre, index) in apiRows"
-          :title="genre.title"
+          :title="genre.link.charAt(0).toUpperCase() + genre.link.slice(1)"
           :key="genre.title + index"
           :to="`/genres/${genre.title}`"
           class="anchors"
@@ -119,6 +119,8 @@ export default {
     }),
     logout() {
       window.localStorage.removeItem("user");
+      window.localStorage.removeItem("mylist");
+      window.localStorage.removeItem("netflix");
       this.$router.go("/login");
     },
   },

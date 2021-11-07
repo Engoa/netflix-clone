@@ -104,6 +104,10 @@
       color: var(--red) !important;
     }
 
+    .v-input__icon {
+      height: 50px !important;
+    }
+
     .v-input,
     .v-select {
       background: #333333;
@@ -203,4 +207,8 @@
       font-weight: bold;
     }
   }
+}
+
+.v-application .primary--text {
+  color: var(--red) !important;
 }

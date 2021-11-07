@@ -4,6 +4,7 @@
   position: relative;
   overflow: hidden;
   margin-bottom: 3rem;
+  will-change: auto;
   &:hover {
     .nav-arrows {
       opacity: 1;

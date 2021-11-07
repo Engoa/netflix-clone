@@ -1,5 +1,6 @@
 <template>
   <div
+    v-if="userData.email"
     class="slider"
     v-intersect="{
       handler: onIntersect,
@@ -71,16 +72,20 @@ export default {
     queryString: String,
     title: String,
     data: null,
+    currentPage: {
+      type: Number,
+      default: 1,
+    },
   },
 
   data: (vm) => ({
     apiData: [],
-    currentPage: 1,
     totalPages: 1,
     loading: false,
     isIntersected: false,
     isOpen: false,
     error: false,
+    rowPage: 1,
 
     navigationElements: {
       prev: "prev__" + vm.generateRandomString(),
@@ -139,6 +144,7 @@ export default {
         this.removeFromlist(index);
         this.$root.$emit("snackbar", {
           text: `Movie successfully deleted from list! Movies: ${this.myList.length}`,
+          icon: "fas fa-check",
         });
       }, 100);
     },
@@ -170,8 +176,8 @@ export default {
       const realIndex = event.realIndex;
       const perView = event.params.slidesPerView;
       const isAtEnd = this.apiData.length - realIndex <= perView;
-      if (isAtEnd && !this.loading && this.currentPage <= this.totalPages) {
-        this.currentPage++;
+      if (isAtEnd && !this.loading && this.rowPage <= this.totalPages) {
+        this.rowPage++;
         this.debouncedFetchData();
       }
     },
