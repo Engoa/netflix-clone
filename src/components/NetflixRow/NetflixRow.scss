@@ -106,7 +106,7 @@
         height: 45px;
 
         @include media("<desktop") {
-          height: 0px;
+          height: 26px;
         }
       }
     }
@@ -151,6 +151,13 @@
         right: 0;
         left: unset;
         transform: unset;
+        height: 23px;
+      }
+    }
+    .v-icon.v-icon {
+      font-size: 1.6rem !important;
+      @include media("<desktop") {
+        font-size: 1rem !important;
       }
     }
 

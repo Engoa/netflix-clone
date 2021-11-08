@@ -248,7 +248,7 @@ export default {
             icon: "fas fa-check",
           });
           setTimeout(() => {
-            this.$router.replace("/login");
+            this.$router.replace("/");
           }, 2000);
         }
       }

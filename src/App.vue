@@ -3,6 +3,7 @@
     <Navbar v-if="userData.email" />
     <MovieModal v-model="videoModalOpen" />
     <SnackBar />
+    <GoToTopBtn />
     <router-view />
   </v-app>
 </template>
@@ -12,9 +13,10 @@ import MovieModal from "./components/MovieModal/MovieModal";
 import Navbar from "./components/Navbar/Navbar";
 import SnackBar from "./components/SnackBar";
 import { mapActions } from "vuex";
+import GoToTopBtn from "./components/GoToTopBtn.vue";
 
 export default {
-  components: { Navbar, MovieModal, SnackBar },
+  components: { Navbar, MovieModal, SnackBar, GoToTopBtn },
   name: "App",
 
   data: () => ({

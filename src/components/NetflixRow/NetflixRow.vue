@@ -116,16 +116,19 @@ export default {
             slidesPerView: 2.5,
           },
           640: {
-            slidesPerView: 4.5,
+            slidesPerView: 3,
           },
           968: {
-            slidesPerView: 4.5,
+            slidesPerView: 4,
           },
           1440: {
-            slidesPerView: 5,
+            slidesPerView: 5.5,
           },
           1850: {
-            slidesPerView: 6.5,
+            slidesPerView: 7,
+          },
+          2500: {
+            slidesPerView: 9.5,
           },
         },
       };

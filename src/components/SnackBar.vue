@@ -1,5 +1,5 @@
 <template>
-  <v-snackbar v-model="snackbar" timeout="1500" height="50">
+  <v-snackbar v-model="snackbar" timeout="2000" height="50">
     <p class="snack-text">{{ config.text }}</p>
     <v-icon>
       {{ config.icon }}
@@ -34,9 +34,16 @@ export default {
 </script>
 
 <style lang="scss">
+@import "@/styles/import.scss";
+
 .v-snack__wrapper {
   background: rgba(0, 0, 0, 0.877) !important;
-  padding: 1rem !important;
+
+  @include media("<tablet") {
+    margin: 0 !important;
+    width: 100%;
+    border-radius: 0 !important;
+  }
   .v-snack__content {
     display: flex;
     align-items: center;
@@ -44,8 +51,10 @@ export default {
     gap: 0.5rem;
     opacity: 0.85;
     font-family: var(--ff-header) !important;
-    font-size: 0.95rem;
+    font-size: 1rem;
+    font-size: clamp(0.85rem, 3vw, 1rem);
     font-weight: bold !important;
+    padding: 1rem !important;
   }
   .v-icon {
     color: var(--red);

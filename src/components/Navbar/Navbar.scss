@@ -135,22 +135,21 @@
 }
 
 .nav__right--settings {
-  position: relative;
   &__menu {
-    right: 3.65rem !important;
-    top: 3.75rem !important;
-    left: unset !important;
-    width: 100px;
-    border-radius: 0.2rem;
-    position: absolute;
+    left: 50% !important;
+    top: unset !important;
+    bottom: -6rem !important;
+    transform: translateX(-50%);
+    min-width: 100px !important;
+    border-radius: 0.2rem !important;
 
     @include media("<tablet") {
-      right: 2.15rem !important;
+      bottom: -7.1rem !important;
     }
 
     .v-list {
       padding: 0 !important;
-      background: var(--black) !important;
+      background: black !important;
     }
 
     .v-list-item {

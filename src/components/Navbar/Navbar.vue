@@ -16,9 +16,13 @@
         </router-link>
         <div class="nav__right">
           <div class="nav__right--settings">
-            <v-menu absolute content-class="nav__right--settings__menu">
+            <v-menu
+              open-on-hover
+              content-class="nav__right--settings__menu"
+              attach=".settings-btn"
+            >
               <template v-slot:activator="{ on, attrs }">
-                <v-icon v-bind="attrs" v-on="on" class="nav__btn"
+                <v-icon v-bind="attrs" v-on="on" class="nav__btn settings-btn"
                   >fas fa-ellipsis-h</v-icon
                 >
               </template>
@@ -48,7 +52,7 @@
         <div class="sidebar__user--avatar">
           <v-img
             class="nav__left__logo"
-            src="../../assets/images/avatar.png"
+            src="../../assets/images/avatar2.png"
             height="45"
             width="55"
           />
@@ -58,11 +62,19 @@
         </div>
         <v-icon class="sidebar__user--arrow">fa fa-arrow-right</v-icon>
       </router-link>
-      <router-link to="/notifications" class="sidebar__notifications anchors"  title="Notifications">
+      <router-link
+        to="/notifications"
+        class="sidebar__notifications anchors"
+        title="Notifications"
+      >
         <v-icon>far fa-bell</v-icon>
         <span>Notifications</span>
       </router-link>
-      <router-link to="/downloads" class="sidebar__downloads anchors" title="Downloads">
+      <router-link
+        to="/downloads"
+        class="sidebar__downloads anchors"
+        title="Downloads"
+      >
         <v-icon>fas fa-save</v-icon>
         <span>My Downloads</span>
       </router-link>
