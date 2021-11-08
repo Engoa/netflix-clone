@@ -20,12 +20,10 @@
     <div class="error--wrapper" v-if="error">
       <v-img src="https://wallpaperaccess.com/full/2772922.png"></v-img>
       <div class="error--wrapper__text">
-        <Fitty :minSize="20" :maxSize="20" multiLine tag="h4">
-          Error fetching data, please try again later!
-        </Fitty>
+        <h2>Error fetching data, please try again later!</h2>
       </div>
     </div>
-    <div class="movie-modal__data" v-if="movie">
+    <div class="movie-modal__data" v-if="movie && !error">
       <div class="movie-modal__image--poster">
         <v-img
           class="poster-image"
@@ -63,7 +61,7 @@
             <span v-else>Unknown Date</span>
           </template>
           <span>{{ !movie.media_type ? "Movie" : movie.media_type }}</span>
-          <span> {{ !movie.adult ? "12+" : "16+" }}</span>
+          <span v-text="movie.adult ? '12+' : '16+'" />
           <span>HD</span>
           <span>5.1</span>
         </div>
@@ -74,7 +72,7 @@
         </div>
 
         <div class="movie-modal__information--data2">
-          <span>
+          <span v-if="movie.spoken_languages.length">
             {{
               movie.spoken_languages
                 .map((item) => item.english_name)
@@ -95,6 +93,11 @@
           <p>
             {{ movie.overview }}
           </p>
+        </div>
+        <div class="movie-modal__information--tagline" v-if="movie.tagline">
+          <span>
+            {{ movie.tagline }}
+          </span>
         </div>
       </div>
       <div class="movie-modal__video">

@@ -165,7 +165,8 @@
     &--genres,
     &--data2,
     &--budget,
-    &--revenue {
+    &--revenue,
+    &--tagline {
       letter-spacing: 0.055em;
       font-weight: bold;
       opacity: 0.85;
@@ -184,12 +185,19 @@
       p {
         font-weight: lighter;
         letter-spacing: 0.02em;
+        margin: 0 !important;
       }
+    }
+    &--tagline {
+      text-align: center;
+      text-transform: uppercase;
+      width: 100%;
+      padding: 0.6rem 0;
     }
   }
 
   &__video {
-    padding: 0 1rem;
+    padding: 1rem;
     iframe {
       width: 100%;
     }
@@ -199,7 +207,6 @@
 .error--wrapper {
   .v-image {
     min-height: 350px !important;
-
     @include media("<tablet") {
       min-height: 290px !important;
     }
