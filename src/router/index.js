@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    alias: "/genres",
+    // alias: "/genres",
     name: "Home",
     component: Home,
     meta: {
