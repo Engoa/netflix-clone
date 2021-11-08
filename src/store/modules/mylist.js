@@ -5,8 +5,11 @@ const state = {
 
 const mutations = {
   addList(state, payload) {
-    state.myList.unshift(payload);
+    if (!state.myList.find((item) => item.id === payload.id)) {
+      state.myList.push(payload);
+    }
   },
+
   setMyList(state, payload) {
     state.myList = payload;
   },
@@ -30,7 +33,7 @@ const actions = {
 };
 
 const getters = {
-  getMyList: (state) => state.myList,
+  getMyList: (state) => state.myList.reverse(),
 };
 
 export default {

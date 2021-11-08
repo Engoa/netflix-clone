@@ -78,7 +78,7 @@
   }
 }
 
-.search__results {
+.movie-grid {
   display: flex;
   align-items: center;
   justify-content: center;
@@ -86,7 +86,6 @@
   gap: 0.5rem;
   width: 100%;
   margin-top: 1rem;
-  min-height: 100%;
 
   .v-card {
     min-height: 100% !important;
@@ -97,6 +96,7 @@
     transition: $transition-350;
     overflow: hidden;
     border-radius: 0.3rem;
+    z-index: 1;
     @include media("<tablet") {
       max-height: 280px;
       max-width: 175px;

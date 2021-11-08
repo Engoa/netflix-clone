@@ -6,7 +6,6 @@ export default {
       netflixData: "netflix/getNetflixData",
       movieId: "netflix/getMovieById",
       userData: "user/getUserData",
-      myList: "mylist/getMyList",
     }),
 
     MOVIEDB_GENERES() {
@@ -42,8 +41,14 @@ export default {
           text: "Oops, reached max limit (20), please remove something in order to add more!",
           icon: "fas fa-times",
         });
-
         return;
+      }
+
+      if (this.myList.find((item) => item.id === id)) {
+        this.$root.$emit("snackbar", {
+          text: `Oops, selected movie is already in the list!`,
+          icon: "fas fa-times",
+        });
       } else {
         this.addList(this.movieId(id));
         this.$root.$emit("snackbar", {

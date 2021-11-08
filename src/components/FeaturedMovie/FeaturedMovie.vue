@@ -64,7 +64,7 @@
 <script>
 import VClamp from "vue-clamp";
 import fitty from "fitty";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 import "./FeaturedMovie.scss";
 export default {
@@ -82,6 +82,11 @@ export default {
     }),
   },
 
+  computed: {
+    ...mapGetters({
+      myList: "mylist/getMyList",
+    }),
+  },
   mounted() {
     const headline = this.$refs.headline;
     fitty(headline, {

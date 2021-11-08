@@ -9,7 +9,7 @@
 
 <script>
 import NetflixRow from "../components/NetflixRow/NetflixRow.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   components: { NetflixRow },
@@ -20,6 +20,11 @@ export default {
     }),
   },
 
+  computed: {
+    ...mapGetters({
+      myList: "mylist/getMyList",
+    }),
+  },
   mounted() {
     const myListLS = JSON.parse(localStorage.getItem("mylist"));
     if (myListLS) {

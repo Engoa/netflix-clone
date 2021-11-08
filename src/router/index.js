@@ -7,6 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
+    alias: "/genres",
     name: "Home",
     component: Home,
     meta: {
@@ -32,25 +33,11 @@ const routes = [
     component: () =>
       import(/* webpackChunkName: "profile-chunk" */ "../views/Profile.vue"),
   },
-
   {
-    path: "/genres",
-    name: "Genres",
-
+    path: "/genres/:slug",
+    name: "Genre",
     component: () =>
-      import(
-        /* webpackChunkName: "genres-chunk" */ "../views/Genres/Genres.vue"
-      ),
-    children: [
-      {
-        name: "Genre",
-        path: ":slug",
-        component: () =>
-          import(
-            /* webpackChunkName: "genre-chunk" */ "../views/Genres/Genre.vue"
-          ),
-      },
-    ],
+      import(/* webpackChunkName: "genre-chunk" */ "../views/Genres/Genre.vue"),
   },
 ];
 

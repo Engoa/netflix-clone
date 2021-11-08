@@ -13,20 +13,24 @@ export default {
     await store.dispatch("netflix/setNetflixData", res.data.results);
     return res.data;
   },
+
   async trendingLastDays() {
     const res = await axios.get(genFullUrl("trending/all/day"));
     await store.dispatch("netflix/setNetflixData", res.data.results);
     return res.data;
   },
+
   async searchMovies(query, page) {
     const res = await axios.get(genFullUrl("search/movie", query, page));
     await store.dispatch("netflix/setNetflixData", res.data.results);
     return res.data;
   },
+
   async searchMovieByID(query) {
     const res = await axios.get(`${BASE_URL}movie/${query}${API_KEY}`);
     return res.data;
   },
+  
   async searchMovieByIDForVideo(query) {
     const res = await axios.get(`${BASE_URL}movie/${query}/videos${API_KEY}`);
     return res.data;

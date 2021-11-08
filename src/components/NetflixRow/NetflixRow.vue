@@ -1,6 +1,5 @@
 <template>
   <div
-    v-if="userData.email"
     class="slider"
     v-intersect="{
       handler: onIntersect,
@@ -17,24 +16,21 @@
       <span class="slider__header">{{ title }}</span>
       <Swiper :options="swiperOptions" @slide-change="handleSwipe">
         <SwiperSlide
-          v-for="(movie, index) in data || apiData"
-          :key="movie.title + index"
+          v-for="(movie, index) in listData"
+          :key="movie.id + (data ? '__mylist' : index)"
         >
           <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
             <v-img
+              :alt="movie.title"
               :src="`${
                 movie.poster_path === null
                   ? 'https://wallpaperaccess.com/full/2772922.png'
                   : `https://image.tmdb.org/t/p/original${movie.poster_path}`
               }`"
-              :alt="movie.title"
             >
               <template v-slot:placeholder>
                 <v-row class="fill-height ma-0" align="center" justify="center">
-                  <v-progress-circular
-                    indeterminate
-                    color="grey lighten-5"
-                  ></v-progress-circular>
+                  <v-progress-circular indeterminate color="grey lighten-5" />
                 </v-row>
               </template>
             </v-img>
@@ -62,7 +58,7 @@
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
-import { mapActions } from "vuex";
+import { mapActions, mapGetters } from "vuex";
 import "./NetflixRow.scss";
 
 export default {
@@ -70,12 +66,12 @@ export default {
   name: "NetflixRow",
   props: {
     queryString: String,
-    title: String,
-    data: null,
     currentPage: {
       type: Number,
       default: 1,
     },
+    title: String,
+    data: Array,
   },
 
   data: (vm) => ({
@@ -99,6 +95,9 @@ export default {
   },
 
   computed: {
+    ...mapGetters({
+      myList: "mylist/getMyList",
+    }),
     swiperOptions() {
       return {
         parallax: true,
@@ -130,6 +129,10 @@ export default {
           },
         },
       };
+    },
+
+    listData() {
+      return this.data || this.apiData;
     },
   },
 

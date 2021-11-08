@@ -33,9 +33,9 @@
       <div class="api__error" v-if="error">
         <h2>Error fetching data, Please try again later...</h2>
       </div>
-      <div class="search__results my-dialog-inner-container" v-if="!error">
+      <div class="movie-grid" v-if="!error">
         <div
-          class="search__results__images"
+          class="movie-grid__images"
           v-for="(movie, index) in apiData"
           :key="movie.poster_path + index"
         >
@@ -74,8 +74,6 @@
 <script>
 import NetflixService from "../../services/NetflixService";
 import debounce from "lodash/debounce";
-import gsap, { ScrollTrigger } from "gsap/all";
-gsap.registerPlugin(ScrollTrigger);
 import "./SearchBar.scss";
 
 export default {
@@ -95,28 +93,7 @@ export default {
   },
 
   methods: {
-    // listenToModalScroll() {
-    //   const vm = this;
-    //   ScrollTrigger.create({
-    //     scroller: this.$refs.dialog.$el.querySelector(".v-dialog__content"),
-    //     trigger: this.$refs.dialog.$el.querySelector(
-    //       ".my-dialog-inner-container"
-    //     ),
-    //     start: "top bottom",
-    //     markers: true,
-
-    //     onUpdate({ progress }) {
-    //       console.log(progress);
-    //       if (!progress) return;
-    //       if (progress > 0.5) {
-    //         console.log("test dasdsad");
-    //       }
-    //     },
-    //   });
-    // },
-
     async fetchData() {
-      ScrollTrigger.refresh();
       if (!this.inputValue) {
         this.apiData = [];
       } else {
@@ -125,9 +102,6 @@ export default {
             this.queryString + `${this.inputValue}`
           );
           this.apiData = response.results;
-          // this.$nextTick(() => {
-          //   this.listenToModalScroll();
-          // });
         } catch (error) {
           console.log(error);
           this.error = true;

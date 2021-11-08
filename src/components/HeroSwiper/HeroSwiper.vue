@@ -13,6 +13,7 @@
 import NetflixService from "../../services/NetflixService";
 import FeaturedMovie from "../FeaturedMovie/FeaturedMovie.vue";
 import NavigationArrows from "../NavigationArrows/NavigationArrows.vue";
+
 import debounce from "lodash";
 
 import "./HeroSwiper.scss";
