@@ -77,24 +77,7 @@ export default {
         this.debouncedGenreData();
       }
     },
-    scroll() {
-      window.onscroll = () => {
-        let bottomOfWindow =
-          Math.max(
-            window.pageYOffset,
-            document.documentElement.scrollTop,
-            document.body.scrollTop
-          ) +
-            window.innerHeight ===
-          document.documentElement.offsetHeight;
 
-        if (bottomOfWindow) {
-          this.scrolledToBottom = true;
-          this.currentGenrePage++;
-          this.debouncedGenreData();
-        }
-      };
-    },
     async fetchData() {
       try {
         const response = await NetflixService.discoverMovies(
@@ -109,8 +92,21 @@ export default {
       }
     },
   },
+
+  watch: {
+    "$app.scrollPos": function (val) {
+      const heightsSubtraction =
+        document.documentElement.scrollHeight -
+        document.documentElement.clientHeight;
+      if (val >= heightsSubtraction) {
+        // Reached Bottom of page
+        this.currentGenrePage++;
+        this.debouncedGenreData();
+      }
+    },
+  },
+
   mounted() {
-    this.scroll();
     this.debouncedGenreData();
   },
 };

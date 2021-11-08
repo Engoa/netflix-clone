@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <Navbar v-if="userData.email" />
+    <Navbar />
     <MovieModal v-model="videoModalOpen" />
     <SnackBar />
     <GoToTopBtn />
@@ -12,8 +12,8 @@
 import MovieModal from "./components/MovieModal/MovieModal";
 import Navbar from "./components/Navbar/Navbar";
 import SnackBar from "./components/SnackBar";
-import { mapActions } from "vuex";
 import GoToTopBtn from "./components/GoToTopBtn.vue";
+import { mapActions } from "vuex";
 
 export default {
   components: { Navbar, MovieModal, SnackBar, GoToTopBtn },
@@ -59,26 +59,6 @@ export default {
     setTimeout(() => {
       this.$vuetify.goTo(0);
     }, 1000);
-    // Check for user
-    setTimeout(() => {
-      const LSuser = JSON.parse(localStorage.getItem("user"));
-      if (LSuser) {
-        this.setUserData(LSuser);
-      }
-      if (
-        (!LSuser && this.$route.name === "Home") ||
-        (!LSuser && this.$route.name === "Genre") ||
-        (!LSuser && this.$route.name === "Genres")
-      ) {
-        this.$router.replace("/login");
-      }
-      if (
-        (LSuser && this.$route.name === "Login") ||
-        (LSuser && this.$route.name === "Register")
-      ) {
-        this.$router.replace("/");
-      }
-    }, 100);
   },
 };
 </script>

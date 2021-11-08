@@ -243,12 +243,12 @@ export default {
           this.$root.$emit("snackbar", {
             text: `Hi ${
               this.user.fullname.split(" ")[0].charAt(0).toUpperCase() +
-              this.user.fullname.slice(1).split(" ")
+              this.user.fullname.slice(1).split(" ")[0]
             }, you're now successfully signed up!`,
             icon: "fas fa-check",
           });
           setTimeout(() => {
-            this.$router.replace("/");
+            location.reload();
           }, 2000);
         }
       }

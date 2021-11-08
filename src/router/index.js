@@ -7,7 +7,7 @@ Vue.use(VueRouter);
 const routes = [
   {
     path: "/",
-    // alias: "/genres",
+    alias: "/genres",
     name: "Home",
     component: Home,
     meta: {
@@ -45,6 +45,14 @@ const router = new VueRouter({
   mode: "history",
   base: process.env.BASE_URL,
   routes,
+});
+
+router.beforeEach((to, from, next) => {
+  const { exists } = Vue.prototype.$user;
+  const authPages = ["Login", "Register"];
+  if (!authPages.includes(to.name) && !exists) next({ name: "Login" });
+  else if (authPages.includes(to.name) && exists) next({ name: "Home" });
+  else next();
 });
 
 export default router;

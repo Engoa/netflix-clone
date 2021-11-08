@@ -1,6 +1,6 @@
 <template>
   <div>
-    <nav :class="['nav', { 'nav--active': navBarActive }]">
+    <nav :class="['nav', { 'nav--active': navBarActive }]" v-if="$user.exists">
       <div class="nav__left">
         <v-icon
           width="100"
@@ -58,7 +58,7 @@
           />
         </div>
         <div class="sidebar__user--name">
-          <span>{{ userData.fullname.split(" ")[0] }}</span>
+          <span>{{ $user.displayName }}</span>
         </div>
         <v-icon class="sidebar__user--arrow">fa fa-arrow-right</v-icon>
       </router-link>
@@ -114,15 +114,13 @@ export default {
     navBarActive: false,
     sideNav: false,
   }),
-  methods: {
-    updateScroll() {
-      this.scrollPosition = window.scrollY;
-      if (this.scrollPosition > 60) {
-        this.navBarActive = true;
-      } else {
-        this.navBarActive = false;
-      }
+
+  watch: {
+    "$app.scrollPos": function (val) {
+      this.navBarActive = val > 60;
     },
+  },
+  methods: {
     toggleNav() {
       this.sideNav = !this.sideNav;
     },
@@ -130,7 +128,7 @@ export default {
       setUserData: "user/setUserData",
     }),
     logout() {
-      window.localStorage.removeItem("user");
+      this.$user.deleteCurrentUser();
       window.localStorage.removeItem("mylist");
       window.localStorage.removeItem("netflix");
       this.$router.go("/login");
@@ -145,13 +143,6 @@ export default {
         })),
       ];
     },
-  },
-
-  created() {
-    document.addEventListener("scroll", this.updateScroll);
-  },
-  destroyed() {
-    document.removeEventListener("scroll", this.updateScroll);
   },
 };
 </script>

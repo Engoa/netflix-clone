@@ -13,9 +13,10 @@ const AppPlugin = {
 
       methods: {
         listenToScroll() {
-          window.addEventListener("scroll", () => {
-            this.scrollPos = window.scrollY;
-          });
+          window.addEventListener(
+            "scroll",
+            () => (this.scrollPos = window.scrollY)
+          );
         },
       },
     });

@@ -12,19 +12,9 @@ export default {
   name: "GoToTopBtn",
   data: () => ({
     goToTopBtnActive: false,
-    scrollPosition: 0,
   }),
 
   methods: {
-    updateScroll() {
-      this.scrollPosition = window.scrollY;
-      if (this.scrollPosition > 3000) {
-        this.goToTopBtnActive = true;
-      } else {
-        this.goToTopBtnActive = false;
-      }
-    },
-
     scrollToTop() {
       setTimeout(() => {
         this.$vuetify.goTo(0);
@@ -32,11 +22,10 @@ export default {
     },
   },
 
-  created() {
-    document.addEventListener("scroll", this.updateScroll);
-  },
-  destroyed() {
-    document.removeEventListener("scroll", this.updateScroll);
+  watch: {
+    "$app.scrollPos": function (val) {
+      this.goToTopBtnActive = val > 3000;
+    },
   },
 };
 </script>
