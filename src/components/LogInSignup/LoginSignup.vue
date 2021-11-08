@@ -212,7 +212,7 @@ export default {
           });
           this.setUserData(this.user);
           setTimeout(() => {
-            this.$router.replace("/");
+            location.reload();
           }, 2000);
         }
       }
