@@ -17,7 +17,7 @@
       <Swiper :options="swiperOptions" @slide-change="handleSwipe">
         <SwiperSlide
           v-for="(movie, index) in listData"
-          :key="movie.id + (data ? '__mylist' : index)"
+          :key="movie.title + (data ? '__mylist' : index)"
         >
           <v-card class="slider__movie" @click="OPEN_VIDEO(movie.id)">
             <v-img
