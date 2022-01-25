@@ -185,8 +185,8 @@ export default {
   methods: {
     ...mapActions({
       setUserData: "user/setUserData",
-      setCreateUser: "user/setCreateUser",
     }),
+
     onSubmit() {
       if (this.isLogin) {
         if (!this.fields.email & !this.fields.password) {

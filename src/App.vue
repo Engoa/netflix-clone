@@ -13,7 +13,6 @@ import MovieModal from "./components/MovieModal/MovieModal";
 import Navbar from "./components/Navbar/Navbar";
 import SnackBar from "./components/SnackBar";
 import GoToTopBtn from "./components/GoToTopBtn.vue";
-import { mapActions } from "vuex";
 
 export default {
   components: { Navbar, MovieModal, SnackBar, GoToTopBtn },
@@ -22,12 +21,6 @@ export default {
   data: () => ({
     videoModalOpen: false,
   }),
-
-  methods: {
-    ...mapActions({
-      setUserData: "user/setUserData",
-    }),
-  },
 
   watch: {
     $route: {

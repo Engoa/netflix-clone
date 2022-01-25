@@ -1,3 +1,5 @@
+@import "./variables.scss";
+
 .v-image__placeholder {
   display: flex !important;
   // for circular on loading cards
@@ -43,8 +45,8 @@
 .v-application a {
   color: white !important;
 }
-.v-dialog > * {
-  z-index: 10;
+.v-dialog {
+  @include scrollbar;
 }
 
 .v-toolbar {

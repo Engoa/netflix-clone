@@ -10,11 +10,12 @@ const mutations = {
     }
   },
 
-  setMyList(state, payload) {
-    state.myList = payload;
-  },
   removeFromlist(state, payload) {
     state.myList.splice(payload, 1);
+  },
+
+  setMyList(state, payload) {
+    state.myList = payload;
   },
 };
 

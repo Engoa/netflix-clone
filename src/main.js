@@ -7,14 +7,13 @@ import app from "./plugins/app";
 import UserPlugin from "./plugins/user";
 import getImageUrl from "./mixins/getImageUrl";
 import AppMixin from "./mixins/AppMixin";
-import utils from "./mixins/utils";
 import VueAwesomeSwiper from "vue-awesome-swiper";
 import SwiperCore, { Navigation, Parallax } from "swiper";
-import "swiper/swiper-bundle.css";
 import VueYoutube from "vue-youtube";
+import "swiper/swiper-bundle.css";
+import "./styles/global.scss";
 
 Vue.mixin(AppMixin);
-Vue.mixin(utils);
 Vue.mixin(getImageUrl);
 
 SwiperCore.use([Navigation, Parallax]);
